@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>时习 · 论语日课</title>
+<link rel="stylesheet" href="style.css">
+<script src="data-qian-1.js"></script>
+<script src="data-qian-2.js"></script>
+<script src="data-qian-3.js"></script>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="brand">时习论语日课</div>
+    <div class="subtitle" id="dateLine"></div>
+    <button class="help-link" id="helpBtn">使用说明</button>
+  </div>
+
+  <!-- 使用说明浮层 -->
+  <div class="help-overlay" id="helpOverlay">
+    <div class="help-panel">
+      <h3>时习 · 论语日课</h3>
+      <p>每天来这里，抽一张卡片。</p>
+      <p>抽到的这一句，就是今天孔子想送你的话。先别急着看解释——看着它，想一想：<b>我最近的生活里，有没有哪件事、哪个场景，跟这句话有关？</b></p>
+      <p>想明白了，或想看得更深一点，再点「看今日事例」，看看这句话怎么用进今天的生活，然后做一件「今日一试」里的小事。</p>
+      <p>每天一句，学而时习之。</p>
+      <button class="help-close" id="helpClose">开始今天的学习</button>
+    </div>
+  </div>
+
+  <div class="portrait-wrap" id="portraitWrap">
+    <img id="portraitImg" src="kongzi.png" alt="孔子像"
+         onerror="this.parentElement.classList.add('no-img');this.remove()">
+    <div class="portrait-placeholder">孔子像</div>
+  </div>
+
+  <div class="pre-shake" id="preShake">
+    <p class="pre-tip">今天，孔子想送你一句话</p>
+    <button class="shake-btn" id="shakeBtn">抽 一 张</button>
+  </div>
+
+  <div class="card" id="card">
+    <div class="chapter-text" id="chapterText"></div>
+    <div class="translation" id="chapterTranslation"></div>
+    <div class="source" id="chapterSource"></div>
+
+    <div class="clue-label">今日线索</div>
+    <div class="clue-text" id="clueText"></div>
+    <button class="hint-btn" id="hintBtn">看今日事例</button>
+
+    <div class="reveal" id="reveal">
+      <div class="section-label">今日事例 · 孔子想对你说的</div>
+      <div class="insight" id="insightText"></div>
+      <div class="practice-box">
+        <div class="section-label">今日一试</div>
+        <div id="practiceText"></div>
+      </div>
+    </div>
+
+    <div class="card-actions">
+      <button class="share-btn" id="shareBtn">分享今日卡片</button>
+      <div class="day-lock-tip" id="dayLockTip">今天已学 · 明天再来</div>
+    </div>
+  </div>
+
+  <div class="week" id="weekInfo"></div>
+</div>
+
+<!-- 分享卡浮层 -->
+<div class="share-overlay" id="shareOverlay">
+  <div class="share-panel">
+    <div class="share-tabs">
+      <button class="share-tab active" data-fmt="v">竖版 · 小红书</button>
+      <button class="share-tab" data-fmt="s">方形 · 朋友圈</button>
+    </div>
+    <div class="share-canvas-wrap" id="shareCanvasWrap"></div>
+    <p class="share-tip">长按图片保存，或点击下方按钮下载</p>
+    <div class="share-btns">
+      <button class="dl-btn" id="dlBtn">下载图片</button>
+      <button class="share-close" id="shareClose">关闭</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

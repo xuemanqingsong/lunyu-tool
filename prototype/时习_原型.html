@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>时习 · 每日一签</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #faf6ee;
+    color: #3a3226;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px 60px;
+  }
+  .container { max-width: 560px; width: 100%; }
+
+  /* 顶部 */
+  .header { text-align: center; margin-bottom: 20px; position: relative; }
+  .brand { font-size: 22px; letter-spacing: 4px; color: #3a3226; font-weight: 600; margin-bottom: 4px; }
+  .subtitle { font-size: 12px; color: #b0a48c; }
+  .help-link {
+    position: absolute; top: 4px; right: 0;
+    font-size: 12px; color: #8a7a5c;
+    border: 1px solid #c9b98e; border-radius: 16px;
+    padding: 4px 12px; cursor: pointer; background: none;
+    letter-spacing: 1px;
+  }
+  .help-link:hover { background: #f7f1e4; }
+
+  /* 使用说明浮层 */
+  .help-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 100;
+    background: rgba(58,50,38,0.5);
+    align-items: center; justify-content: center;
+    padding: 20px;
+  }
+  .help-overlay.show { display: flex; }
+  .help-panel {
+    background: #fffdf7; border-radius: 16px;
+    max-width: 420px; width: 100%;
+    padding: 28px 24px;
+    max-height: 80vh; overflow-y: auto;
+  }
+  .help-panel h3 { font-size: 16px; color: #3a3226; margin-bottom: 14px; letter-spacing: 2px; }
+  .help-panel p { font-size: 14px; line-height: 1.9; color: #4a4030; margin-bottom: 10px; }
+  .help-close {
+    margin-top: 14px; width: 100%; padding: 10px;
+    background: #8a3d2b; color: #faf6ee; border: none;
+    border-radius: 24px; font-size: 14px; cursor: pointer; letter-spacing: 2px;
+  }
+
+  /* 孔子像占位 */
+  .portrait {
+    width: 100px; height: 120px;
+    margin: 10px auto 16px;
+    background: linear-gradient(145deg, #e8dcc8, #d9c8a8);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: #8a7a5c; font-size: 14px; letter-spacing: 2px;
+    border: 1px solid #d0bfa0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  }
+
+  /* 摇签按钮 */
+  .shake-btn {
+    display: block;
+    margin: 0 auto;
+    padding: 14px 40px;
+    background: #8a3d2b;
+    color: #faf6ee;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(138,61,43,0.3);
+    transition: transform .15s;
+  }
+  .shake-btn:hover { transform: translateY(-1px); }
+  .shake-btn:active { transform: scale(.97); }
+
+  /* 摇签中动画 */
+  .shaking .shake-btn { animation: shake .5s ease-in-out infinite; }
+  @keyframes shake {
+    0%,100% { transform: rotate(0); }
+    25% { transform: rotate(-4deg); }
+    75% { transform: rotate(4deg); }
+  }
+
+  /* 签文区 */
+  .card {
+    display: none;
+    background: #fffdf7;
+    border: 1px solid #e5dcc8;
+    border-radius: 16px;
+    padding: 28px 24px;
+    margin-top: 24px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  }
+  .card.show { display: block; }
+
+  .chapter-text {
+    font-size: 22px;
+    line-height: 1.7;
+    font-family: "Songti SC", "STSong", serif;
+    color: #2a2318;
+    margin-bottom: 6px;
+  }
+  .translation {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #6a5c48;
+    margin-bottom: 6px;
+  }
+  .translation .t-label {
+    color: #8a7a5c;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-right: 6px;
+  }
+  .source { font-size: 12px; color: #b0a48c; margin-bottom: 20px; letter-spacing: 1px; }
+
+  /* 线索区 */
+  .clue-label { font-size: 12px; color: #8a7a5c; letter-spacing: 2px; margin-bottom: 8px; }
+  .clue-text {
+    font-size: 15px;
+    line-height: 1.9;
+    color: #4a4030;
+    padding: 12px 16px;
+    background: #f7f1e4;
+    border-radius: 10px;
+    min-height: 60px;
+  }
+
+  /* 提示阶梯按钮 */
+  .hint-btn {
+    margin-top: 14px;
+    padding: 8px 16px;
+    background: none;
+    border: 1px solid #c9b98e;
+    color: #8a7a5c;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: all .15s;
+  }
+  .hint-btn:hover { background: #f7f1e4; }
+  .hint-btn.done { opacity: .5; cursor: default; }
+
+  /* 解读区 */
+  .reveal {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px dashed #e5dcc8;
+    display: none;
+  }
+  .reveal.show { display: block; }
+  .section-label { font-size: 12px; color: #8a7a5c; letter-spacing: 2px; margin-bottom: 8px; }
+  .insight { font-size: 14.5px; line-height: 1.9; color: #3a3226; }
+  .practice-box {
+    margin-top: 16px;
+    padding: 14px 16px;
+    background: #eef0e0;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #4a4030;
+  }
+  .practice-box .section-label { color: #6a7a4c; }
+
+  /* 换一签 */
+  .again {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 12px;
+    color: #b0a48c;
+    cursor: pointer;
+    letter-spacing: 1px;
+  }
+  .again:hover { color: #8a7a5c; }
+
+  /* 本周签记录 */
+  .week { margin-top: 24px; text-align: center; font-size: 11px; color: #c4b9a0; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="brand">时习论语每日一签</div>
+    <div class="subtitle">学而时习之，不亦说乎</div>
+    <button class="help-link" id="helpBtn">使用说明</button>
+  </div>
+
+  <!-- 使用说明浮层 -->
+  <div class="help-overlay" id="helpOverlay">
+    <div class="help-panel">
+      <h3>时习 · 每日一签</h3>
+      <p>每天来这里，摇一签。</p>
+      <p>摇出的这一句，就是今天孔子想送你的话。先别急着看解释——看着它，想一想：<b>我最近的生活里，有没有哪件事、哪个场景，跟这句话有关？</b></p>
+      <p>想不出来？点「再给一点提示」，提示会一步步变多。</p>
+      <p>想明白了，或实在想不出，再点「看今日事例」，看看这句话怎么用进今天的生活，然后做一件「今日一试」里的小事。</p>
+      <p>一天一签，学而时习之。</p>
+      <button class="help-close" id="helpClose">开始今日一签</button>
+    </div>
+  </div>
+
+  <div class="portrait">孔子像<br><span style="font-size:10px;opacity:.7">（占位）</span></div>
+
+  <button class="shake-btn" id="shakeBtn">摇 一 签</button>
+
+  <div class="card" id="card">
+    <div class="chapter-text" id="chapterText"></div>
+    <div class="translation" id="chapterTranslation"></div>
+    <div class="source" id="chapterSource"></div>
+
+    <div class="clue-label">今日线索</div>
+    <div class="clue-text" id="clueText"></div>
+    <button class="hint-btn" id="hintBtn">看今日事例</button>
+
+    <div class="reveal" id="reveal">
+      <div class="section-label">今日事例 · 孔子想对你说的</div>
+      <div class="insight" id="insightText"></div>
+      <div class="practice-box">
+        <div class="section-label">今日一试</div>
+        <div id="practiceText"></div>
+      </div>
+    </div>
+
+    <div class="again" id="againBtn">今日已摇，换一签试试（原型）</div>
+  </div>
+
+  <div class="week" id="weekInfo"></div>
+</div>
+
+<script>
+// ===== 原型数据：6句（id -> 内容）=====
+const DATA = {
+  "1": {
+    text: "学而时习之，不亦说乎？",
+    translation: "学了，然后时常温习和实践它，不也很愉快吗？",
+    source: "《论语 · 学而篇》",
+    clues: [
+      "你最近有没有一样东西——学过的、读过的、收藏过的——其实一直没真正'用'起来？",
+      "收藏夹、书架、'下次再看'的清单……哪个是你学了却从没让它进过生活的？",
+      "挑一个你'学过但没用上'的东西，今天让它真用上一次。感受一下：用起来的那一刻，和收藏的那一刻，感觉一样吗？",
+    ],
+    insight: "很多人痛苦于「学了却好像没长进」，是因为把学习当成了囤积——收藏了一堆课程，笔记写了一本，却从未回头温习，更未拿来一用。孔子把「习」放在「学」之后：知识只有被反复调用、真正用进生活，才会从负担变成乐趣。那种「说乎」不是鸡汤式的开心，而是能力生长带来的踏实感。别再用「学了多少」衡量自己，改用「用出了多少」。",
+    practice: "今天把你最近学的一个东西，真用上一次——讲给人听、写下来、或用到手头一件事。"
+  },
+  "91": {
+    text: "德不孤，必有邻。",
+    translation: "有德的人不会孤单，一定会有同行的人。",
+    source: "《论语 · 里仁篇》",
+    clues: [
+      "你最近有没有在'坚持某件对的事'时，觉得身边没人懂、有点孤单？",
+      "想想那些'认真做事、不随大流'的时刻——你是更愿意合群，还是更愿意对？",
+      "你欣赏的那种人，现在在你生活里出现吗？如果没有，你今天可以主动靠近一个吗？",
+    ],
+    insight: "坚持原则最痛的时刻是显得「不合群」：别人都在抄近道，你在排队；别人都在酒桌上，你在书桌前。孔子的安慰是概率式的：同频的人只是还没出现，因为德的信号是慢速传播的——但它会到。别用「当下没人懂」判断「这件事错了」，那只是信号还在路上。",
+    practice: "今天主动靠近一个你欣赏的、同频的人——一句欣赏，或一个分享。"
+  },
+  "115": {
+    text: "伯夷、叔齐，不念旧恶，怨是用希。",
+    translation: "伯夷、叔齐不记过去的仇怨，所以怨恨也就少了。",
+    source: "《论语 · 公冶长篇》",
+    clues: [
+      "你心里有没有一份'旧账'，其实对方早忘了，只有你还时不时翻出来？",
+      "那段让你想起来就心堵的往事，到底是在'惩罚对方'，还是在'消耗你自己'？",
+      "那个你想起就堵的人——如果今天把最后一句话在心里说完、然后不再翻它，你舍得吗？",
+    ],
+    insight: "这句话最深的洞察是因果倒置：不是别人少伤害了他们，所以他们怨少；是他们不念旧恶，所以「怨是用希」——怨恨因此稀少。怨恨是自饮的毒酒：对方可能早忘了，你还在每天加热。不念旧恶不是宽恕对方（他或许不配），是释放自己：那些能量可以拿去盖楼，而不是去守着一座废墟。",
+    practice: "今天写下一个人名，把对ta的最后一句怨言在心里说完，然后放下它。"
+  },
+  "174": {
+    text: "子钓而不纲，弋而不射宿。",
+    translation: "孔子钓鱼只用鱼竿不用大网，射鸟不射归巢栖息的鸟。",
+    source: "《论语 · 述而篇》",
+    clues: [
+      "你最近有没有一次'得到'，拿得有点太满，过后才觉得其实该留点余地？",
+      "时间、人情、体力、关系——你正在哪一样上'拿得太狠'，把后面的路堵上了？",
+      "你今天做哪件事时，可以刻意'少取一点'——留点给别人、给明天、给那个更长的你？",
+    ],
+    insight: "钓鱼用竿不用网，射鸟不射归巢的——这是「取之有度」的自觉：要，但不涸泽而渔；取，但给以后留条路。这个分寸今天叫可持续、叫留有余地。很多人的麻烦不是没能力拿，是拿太狠，把未来的路也堵了。真正的智慧不在「能拿多少」，在「拿到哪一步就该收手」。",
+    practice: "今天做一件事时，刻意少取一点——留点余地给别人、给自己、给明天。"
+  },
+  "225": {
+    text: "譬如为山，未成一篑，止，吾止也！",
+    translation: "好比堆一座山，只差一筐土就成功了，停下来，是我自己停的。",
+    source: "《论语 · 子罕篇》",
+    clues: [
+      "你最近有没有一件'差一点就成了'、却停在那里的事？",
+      "那件事停的时候，是谁做的决定？是'做不到'，还是'自己签了停'？",
+      "不用今天做完它。只往前推'一筐土'——体会一下：'进，是我往'，和'止，是我止'，哪个更有力？",
+    ],
+    insight: "孔子把「差一筐土」的停止说得极其冷静：止，吾止也——是我停的，不是山太难。这句话卸掉了所有借口：天气、运气、别人不支持，最后签字的都是你自己。这不是责备，是力量的来源：既然停止是自己的决定，那么继续也只能由自己决定。差一筐土的时候，想的不是还差多少，是已经堆了多少。",
+    practice: "今天挑一件停在90%的事，只往前推'一筐土'——不必做完，但要动。"
+  },
+  "402": {
+    text: "群居终日，言不及义，好行小慧，难矣哉！",
+    translation: "整天聚在一起，说的话没有一句触及正经道理，专爱耍小聪明，这就难办了。",
+    source: "《论语 · 卫灵公篇》",
+    clues: [
+      "你最近有没有一场'热闹'，散了之后，什么也没留下？",
+      "那些常待的群、常赴的局——有多少聊完是'带了点什么'的，有多少只是'耗了段时间'？",
+      "今天那一场可以推掉的闲聊/八卦局，如果换成一次真正有内容的一对一，你愿意吗？",
+    ],
+    insight: "「群居终日」给人陪伴的幻觉，实则是集体性的「无所用心」：笑声散场，谁也没带走什么。判断一场社交是否值得，标准不是开心，是「言及义否」——聊完后你有没有拿到信息、有没有被点醒、有没有更接近某个答案。热闹本身不是价值，热闹之后留下的东西才是。",
+    practice: "今天推掉一个纯闲聊/纯八卦的场合，或把它换成一次真正有内容的一对一。"
+  }
+};
+
+// ===== 状态 =====
+const WEEK_KEY = "shixi_week";
+let current = null;      // 当前签
+let clueLevel = 0;       // 0弱 1中 2强
+let shown = false;       // 是否已摇出
+
+function getWeek() {
+  try { return JSON.parse(localStorage.getItem(WEEK_KEY) || "[]"); }
+  catch(e) { return []; }
+}
+function saveWeek(w) {
+  try { localStorage.setItem(WEEK_KEY, JSON.stringify(w)); } catch(e) {}
+}
+function pickOne() {
+  // 原型阶段：纯随机，方便反复感受不同句子。
+  // 真实产品在这里做"一周内不重复"（506句池足够大，随机即可天然分散）。
+  const ids = Object.keys(DATA);
+  const picked = ids[Math.floor(Math.random() * ids.length)];
+  const w = getWeek();
+  w.push(Number(picked));
+  if (w.length > 7) w.shift();
+  saveWeek(w);
+  return picked;
+}
+
+const card = document.getElementById("card");
+const shakeBtn = document.getElementById("shakeBtn");
+
+function showCard(id) {
+  current = DATA[id];
+  shown = true;
+  card.classList.add("show");
+  document.getElementById("chapterText").textContent = current.text;
+  document.getElementById("chapterTranslation").innerHTML = '<span class="t-label">现代汉语翻译</span>' + (current.translation || "");
+  document.getElementById("chapterSource").textContent = current.source;
+  renderClue();
+  document.getElementById("reveal").classList.remove("show");
+  document.getElementById("hintBtn").textContent = "看今日事例";
+  document.getElementById("againBtn").style.display = "inline";
+}
+
+function renderClue() {
+  // 默认直接显示中等强度线索（clues[1]）
+  document.getElementById("clueText").textContent = current.clues[1];
+}
+
+function shake() {
+  document.body.classList.add("shaking");
+  shakeBtn.textContent = "摇 签 中…";
+  setTimeout(() => {
+    document.body.classList.remove("shaking");
+    shakeBtn.textContent = "摇 一 签";
+    const id = pickOne();
+    showCard(id);
+    document.getElementById("card").scrollIntoView({ behavior: "smooth", block: "start" });
+    updateWeek();
+  }, 600);
+}
+
+document.getElementById("hintBtn").onclick = () => {
+  document.getElementById("insightText").textContent = current.insight;
+  document.getElementById("practiceText").textContent = current.practice;
+  document.getElementById("reveal").classList.add("show");
+  document.getElementById("reveal").scrollIntoView({ behavior: "smooth", block: "start" });
+};
+
+document.getElementById("againBtn").onclick = () => {
+  card.classList.remove("show");
+  shake();
+};
+
+shakeBtn.onclick = shake;
+
+// 使用说明浮层
+document.getElementById("helpBtn").onclick = () => {
+  document.getElementById("helpOverlay").classList.add("show");
+};
+document.getElementById("helpClose").onclick = () => {
+  document.getElementById("helpOverlay").classList.remove("show");
+};
+document.getElementById("helpOverlay").addEventListener("click", (e) => {
+  if (e.target.id === "helpOverlay") document.getElementById("helpOverlay").classList.remove("show");
+});
+
+function updateWeek() {
+  const w = getWeek();
+  const names = w.map(id => DATA[id] ? DATA[id].text.slice(0, 6) : "").filter(Boolean);
+  document.getElementById("weekInfo").textContent = "本周已抽：" + names.join(" · ");
+}
+</script>
+</body>
+</html>

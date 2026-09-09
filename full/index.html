@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>时习 · 论语摇一摇全量版</title>
+  <meta name="description" content="《论语》二十篇、506 章全量收录。学《论语》，从你的一个词读起——想一个词，摇出与你相关的那章《论语》，展开看引申讲解与今日实践。">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%239e3b2c'/><text x='50' y='68' font-size='52' font-family='serif' fill='%23f6ead8' text-anchor='middle'>时</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="paper">
+
+    <header>
+      <div class="seal" aria-hidden="true">时习</div>
+      <h1>时习 · 论语摇一摇全量版</h1>
+      <p class="sub">《论语》二十篇、506 章全量收录。先想一想你正在经历什么、或在思考什么，然后闭上眼睛做一次深呼吸，想一个词，填在下面。</p>
+      <p class="hint">然后点「摇一摇」，让两千五百年前的那句话，回应你的此刻。</p>
+      <button class="help-link" id="helpToggle">使用说明</button>
+      <div class="help-panel" id="helpPanel" hidden>
+        <ol>
+          <li><b>「时习」是一个《论语》学习小工具。</b>它帮助你从自己真实的生活场景、近前的思考出发，去学习《论语》——不从第一页背起，而是从"你的此刻"进入。本版收录《论语》全部 506 章，是从头到尾学全《论语》的完整版。</li>
+          <li><b>认真想一个词。</b>把此刻的经历或思考浓缩成一个词——学习、复习、坚持、请教……词越贴近你的真实处境，摇到的那章就越与你相关。</li>
+          <li><b>摇到之后，展开讲解。</b>每一章都配了「引申讲解」和「今日一试」——点「展开讲解」，看懂这一章在讲什么，再看看今天能做什么。学而不习，等于没学。</li>
+          <li><b>没摇到与你相关的那章？换一换。</b>全量版句子更多，同一主题常有多章对应。点「换一句」，或看看下方的「另可参详」，直到摇中你心里那一章。</li>
+        </ol>
+      </div>
+    </header>
+
+    <section class="input-area">
+      <div class="inputs">
+        <input id="kw1" type="text" maxlength="12" placeholder="一个词" autocomplete="off">
+      </div>
+      <button id="ask">摇 一 摇</button>
+      <div class="examples" id="examples"><span class="ex-label">试试：</span></div>
+    </section>
+
+    <section id="result" hidden></section>
+
+    <footer>
+      <p class="fn">"学而时习之，不亦说乎？"——《论语·学而篇》。「时习」之名即取于此：学了，然后时时刻刻去习。</p>
+      <p class="disclaimer">· 免责声明 · 本页面内容为传统文化学习与自我启发，仅供一般参考，不能替代专业心理咨询或医疗诊断。若你正经历严重的心理困扰或情绪危机，请务必及时向专业心理咨询师、医生求助，或拨打当地心理援助热线。</p>
+    </footer>
+  </div>
+
+  <script src="data-1.js"></script>
+  <script src="data-2.js"></script>
+  <script src="data-3.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

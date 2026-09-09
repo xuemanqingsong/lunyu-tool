@@ -1,0 +1,258 @@
+/* 时习 · 论语每日一签（/qian/） */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: #faf6ee;
+  color: #3a3226;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: max(24px, env(safe-area-inset-top)) 16px calc(60px + env(safe-area-inset-bottom));
+}
+.container { max-width: 560px; width: 100%; }
+
+/* 顶部 */
+.header { text-align: center; margin-bottom: 14px; position: relative; }
+.brand { font-size: 22px; letter-spacing: 4px; color: #3a3226; font-weight: 600; margin-bottom: 4px; }
+.subtitle { font-size: 12px; color: #b0a48c; letter-spacing: 1px; }
+.help-link {
+  position: absolute; top: 4px; right: 0;
+  font-size: 12px; color: #8a7a5c;
+  border: 1px solid #c9b98e; border-radius: 16px;
+  padding: 4px 12px; cursor: pointer; background: none;
+  letter-spacing: 1px;
+}
+.help-link:hover { background: #f7f1e4; }
+
+/* 使用说明浮层 */
+.help-overlay {
+  display: none;
+  position: fixed; inset: 0; z-index: 100;
+  background: rgba(58,50,38,0.5);
+  align-items: center; justify-content: center;
+  padding: 20px;
+}
+.help-overlay.show { display: flex; }
+.help-panel {
+  background: #fffdf7; border-radius: 16px;
+  max-width: 420px; width: 100%;
+  padding: 28px 24px;
+  max-height: 80vh; overflow-y: auto;
+}
+.help-panel h3 { font-size: 16px; color: #3a3226; margin-bottom: 14px; letter-spacing: 2px; }
+.help-panel p { font-size: 14px; line-height: 1.9; color: #4a4030; margin-bottom: 10px; }
+.help-close {
+  margin-top: 14px; width: 100%; padding: 10px;
+  background: #8a3d2b; color: #faf6ee; border: none;
+  border-radius: 24px; font-size: 14px; cursor: pointer; letter-spacing: 2px;
+}
+
+/* 孔子像 */
+.portrait-wrap {
+  width: 100px; height: 120px;
+  margin: 10px auto 16px;
+  position: relative;
+}
+.portrait-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid #d0bfa0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+.portrait-placeholder {
+  position: absolute; inset: 0;
+  background: linear-gradient(145deg, #e8dcc8, #d9c8a8);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  color: #8a7a5c; font-size: 14px; letter-spacing: 2px;
+  border: 1px solid #d0bfa0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+.portrait-wrap:not(.no-img) .portrait-placeholder { display: none; }
+
+/* 摇签前 */
+.pre-shake { text-align: center; }
+.pre-tip { font-size: 14px; color: #8a7a5c; margin-bottom: 16px; letter-spacing: 1px; }
+
+/* 摇签按钮 */
+.shake-btn {
+  display: inline-block;
+  padding: 14px 40px;
+  background: #8a3d2b;
+  color: #faf6ee;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  letter-spacing: 3px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(138,61,43,0.3);
+  transition: transform .15s;
+}
+.shake-btn:hover { transform: translateY(-1px); }
+.shake-btn:active { transform: scale(.97); }
+.shake-btn:disabled { opacity: .55; cursor: default; transform: none; }
+
+/* 摇签中动画 */
+.shaking .shake-btn { animation: shake .5s ease-in-out infinite; }
+@keyframes shake {
+  0%,100% { transform: rotate(0); }
+  25% { transform: rotate(-4deg); }
+  75% { transform: rotate(4deg); }
+}
+
+/* 签文区 */
+.card {
+  display: none;
+  background: #fffdf7;
+  border: 1px solid #e5dcc8;
+  border-radius: 16px;
+  padding: 28px 24px;
+  margin-top: 24px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+}
+.card.show { display: block; }
+
+.chapter-text {
+  font-size: 22px;
+  line-height: 1.7;
+  font-family: "Songti SC", "STSong", serif;
+  color: #2a2318;
+  margin-bottom: 6px;
+}
+.translation {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #6a5c48;
+  margin-bottom: 6px;
+}
+.translation .t-label {
+  color: #8a7a5c;
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-right: 6px;
+}
+.source { font-size: 12px; color: #b0a48c; margin-bottom: 20px; letter-spacing: 1px; }
+
+/* 线索区 */
+.clue-label { font-size: 12px; color: #8a7a5c; letter-spacing: 2px; margin-bottom: 8px; }
+.clue-text {
+  font-size: 15px;
+  line-height: 1.9;
+  color: #4a4030;
+  padding: 12px 16px;
+  background: #f7f1e4;
+  border-radius: 10px;
+}
+
+/* 看今日事例按钮 */
+.hint-btn {
+  margin-top: 14px;
+  padding: 8px 16px;
+  background: none;
+  border: 1px solid #c9b98e;
+  color: #8a7a5c;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all .15s;
+}
+.hint-btn:hover { background: #f7f1e4; }
+
+/* 今日事例展开区 */
+.reveal {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px dashed #e5dcc8;
+  display: none;
+}
+.reveal.show { display: block; }
+.section-label { font-size: 12px; color: #8a7a5c; letter-spacing: 2px; margin-bottom: 8px; }
+.insight { font-size: 14.5px; line-height: 1.9; color: #3a3226; }
+.practice-box {
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: #eef0e0;
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #4a4030;
+}
+.practice-box .section-label { color: #6a7a4c; }
+
+/* 卡片底部动作 */
+.card-actions { margin-top: 20px; text-align: center; }
+.share-btn {
+  padding: 9px 26px;
+  background: none;
+  border: 1px solid #c9b98e;
+  color: #8a7a5c;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  letter-spacing: 2px;
+  transition: all .15s;
+}
+.share-btn:hover { background: #f7f1e4; }
+.day-lock-tip {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #b0a48c;
+  letter-spacing: 1px;
+}
+
+/* 本周签记录 */
+.week { margin-top: 24px; text-align: center; font-size: 11px; color: #c4b9a0; line-height: 1.8; }
+
+/* ===== 分享卡浮层 ===== */
+.share-overlay {
+  display: none;
+  position: fixed; inset: 0; z-index: 110;
+  background: rgba(58,50,38,0.55);
+  align-items: center; justify-content: center;
+  padding: 16px;
+}
+.share-overlay.show { display: flex; }
+.share-panel {
+  background: #fffdf7; border-radius: 16px;
+  max-width: 400px; width: 100%;
+  max-height: 92vh;
+  padding: 16px 14px 14px;
+  display: flex; flex-direction: column;
+}
+.share-tabs { display: flex; gap: 8px; margin-bottom: 12px; }
+.share-tab {
+  flex: 1; padding: 8px 0;
+  background: none; border: 1px solid #d9cfba; border-radius: 18px;
+  font-size: 13px; color: #8a7a5c; cursor: pointer; letter-spacing: 1px;
+}
+.share-tab.active { background: #8a3d2b; border-color: #8a3d2b; color: #faf6ee; }
+.share-canvas-wrap {
+  flex: 1; overflow-y: auto;
+  border-radius: 10px;
+  background: #f3ede1;
+  min-height: 200px;
+  display: flex; align-items: flex-start; justify-content: center;
+}
+.share-canvas-wrap canvas { max-width: 100%; height: auto; border-radius: 10px; }
+.share-tip { font-size: 12px; color: #b0a48c; text-align: center; margin: 10px 0 8px; }
+.share-btns { display: flex; gap: 10px; }
+.dl-btn, .share-close {
+  flex: 1; padding: 10px 0; border: none; border-radius: 22px;
+  font-size: 14px; cursor: pointer; letter-spacing: 2px;
+}
+.dl-btn { background: #8a3d2b; color: #faf6ee; }
+.dl-btn:disabled { opacity: .55; }
+.share-close { background: none; border: 1px solid #d9cfba; color: #8a7a5c; }
+
+/* 生成中提示 */
+.gen-tip { padding: 60px 20px; text-align: center; color: #8a7a5c; font-size: 14px; letter-spacing: 1px; }
+
+/* 窄屏适配 */
+@media (max-width: 420px) {
+  .chapter-text { font-size: 20px; }
+  .card { padding: 24px 18px; }
+  .brand { font-size: 20px; }
+}

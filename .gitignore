@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# 运行数据（摇签记录/查询日志/反馈——持续膨胀，不进版本库）
+data/*.jsonl
+*/data/*.jsonl
+logs/
+
+# 临时文件
+*.tmp
+*.bak
+*~

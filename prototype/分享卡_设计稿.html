@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>分享卡设计稿</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #2a2318;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    gap: 40px;
+    font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", sans-serif;
+  }
+
+  .note { color: #b0a48c; font-size: 13px; letter-spacing: 1px; text-align: center; max-width: 500px; line-height: 1.8; }
+
+  /* ===== 分享卡本体（1080×1080） ===== */
+  .card {
+    width: 1080px;
+    height: 1080px;
+    background: linear-gradient(160deg, #faf6ee 0%, #f2ead8 55%, #e8dcc4 100%);
+    position: relative;
+    overflow: hidden;
+    padding: 72px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* 顶部品牌 */
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand-name {
+    font-size: 30px;
+    letter-spacing: 6px;
+    color: #8a3d2b;
+    font-weight: 600;
+  }
+  .card-date {
+    font-size: 26px;
+    color: #8a7a5c;
+    letter-spacing: 2px;
+  }
+
+  /* 孔子像占位 */
+  .portrait-area {
+    margin: 24px auto 8px;
+    width: 150px;
+    height: 185px;
+    background: linear-gradient(145deg, #e8dcc8, #d9c8a8);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8a7a5c;
+    font-size: 20px;
+    letter-spacing: 3px;
+    border: 2px solid #d0bfa0;
+  }
+
+  /* 书法风格句子 */
+  .calligraphy {
+    text-align: center;
+    font-family: "STKaiti", "KaiTi", "Kaiti SC", serif;
+    font-size: 88px;
+    color: #2a2318;
+    line-height: 1.5;
+    margin-top: 30px;
+    letter-spacing: 4px;
+  }
+
+  /* 出处 */
+  .source {
+    text-align: center;
+    font-size: 28px;
+    color: #8a7a5c;
+    letter-spacing: 3px;
+    margin-top: 28px;
+  }
+
+  /* 底部品牌区 */
+  .card-bottom {
+    margin-top: auto;
+    text-align: center;
+    padding-top: 40px;
+    border-top: 1px solid rgba(138,122,92,0.3);
+  }
+  .bottom-text {
+    font-size: 24px;
+    color: #8a7a5c;
+    letter-spacing: 4px;
+  }
+  .bottom-sub {
+    font-size: 20px;
+    color: #b0a48c;
+    letter-spacing: 2px;
+    margin-top: 8px;
+  }
+
+  /* ===== 竖版（1080×1440） ===== */
+  .card-v {
+    width: 1080px;
+    height: 1440px;
+    background: linear-gradient(160deg, #faf6ee 0%, #f2ead8 55%, #e8dcc4 100%);
+    position: relative;
+    overflow: hidden;
+    padding: 88px;
+    display: flex;
+    flex-direction: column;
+  }
+  .card-v .portrait-area {
+    width: 180px; height: 220px;
+    margin: 50px auto 20px;
+  }
+  .card-v .calligraphy {
+    font-size: 104px;
+    margin-top: 50px;
+    line-height: 1.6;
+  }
+  .card-v .source { font-size: 32px; margin-top: 40px; }
+  .card-v .card-bottom { padding-top: 60px; }
+</style>
+</head>
+<body>
+
+<div class="note">
+  <b>分享卡设计稿</b><br>
+  上方：方形版 1080×1080（朋友圈友好）<br>
+  下方：竖版 1080×1440（小红书友好）<br>
+  孔子像为占位，可替换成书法句或孔子画像。
+</div>
+
+<!-- 方形版 -->
+<div class="card">
+  <div class="card-top">
+    <span class="brand-name">时习</span>
+    <span class="card-date">2026年9月8日 · 周二</span>
+  </div>
+
+  <div class="portrait-area">孔子像<br><span style="font-size:16px;opacity:.7">占位</span></div>
+
+  <div class="calligraphy">学而时习之<br>不亦说乎</div>
+
+  <div class="source">——《论语 · 学而篇》</div>
+
+  <div class="card-bottom">
+    <div class="bottom-text">时习 · 论语每日一签</div>
+    <div class="bottom-sub">一天一签 · 学而时习之</div>
+  </div>
+</div>
+
+<!-- 竖版 -->
+<div class="card-v">
+  <div class="card-top">
+    <span class="brand-name">时习</span>
+    <span class="card-date">2026年9月8日 · 周二</span>
+  </div>
+
+  <div class="portrait-area">孔子像<br><span style="font-size:16px;opacity:.7">占位</span></div>
+
+  <div class="calligraphy">德不孤<br>必有邻</div>
+
+  <div class="source">——《论语 · 里仁篇》</div>
+
+  <div class="card-bottom">
+    <div class="bottom-text">时习 · 论语每日一签</div>
+    <div class="bottom-sub">一天一签 · 学而时习之</div>
+  </div>
+</div>
+
+</body>
+</html>
