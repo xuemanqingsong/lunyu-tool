@@ -17,25 +17,9 @@
 └── selftest.sh            # 本地起服务自测脚本
 ```
 
-## 分支约定
+## 备份约定
 
-| 分支 | 含义 |
-|---|---|
-| `main` | 永远等于线上运行版本，不直接改 |
-| `dev` | 日常开发/内容清洗在这里做，本地 `selftest.sh` 通过后合并进 `main` |
-
-## 日常流程
-
-```bash
-git checkout dev          # 切到开发分支
-# …改代码/清洗内容…
-git add -A && git commit -m "说清楚改了什么、为什么"
-bash selftest.sh          # 本地自测
-git checkout main && git merge dev && git push   # 合并并推送
-git checkout dev          # 回到 dev 继续
-```
-
-运行数据（`*/data/*.jsonl` 摇签/查询/反馈记录）不进版本库，已在 `.gitignore` 排除。
+本仓库由 agent 全权维护：阶段性改动定稿后由 agent 直接提交并推送到 `main`，无需人工操作。分支策略、提交时机、Issues/Milestones 均由 agent 自行管理。
 
 ## 当前里程碑
 
