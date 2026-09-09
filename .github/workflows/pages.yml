@@ -6,6 +6,9 @@ name: Deploy qian_v2 to GitHub Pages
 on:
   push:
     branches: [main]
+    paths:
+      - 'qian_v2/**'
+      - '.github/workflows/pages.yml'
   workflow_dispatch:
 
 permissions:

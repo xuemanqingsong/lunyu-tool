@@ -206,6 +206,9 @@ body {
 /* 本周记录 */
 .week { margin-top: 24px; text-align: center; font-size: 11px; color: #c4b9a0; line-height: 1.8; }
 
+/* 访问统计 */
+.stats-line { margin-top: 10px; text-align: center; font-size: 11px; color: #c4b9a0; letter-spacing: 1px; }
+
 /* ===== 分享卡浮层 ===== */
 .share-overlay {
   display: none;

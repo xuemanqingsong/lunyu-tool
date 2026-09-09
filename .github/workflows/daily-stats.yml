@@ -1,0 +1,65 @@
+# 每日抓取不蒜子累计访问数据，记录到 stats/daily.json
+# 用法：相邻两天累计值相减 = 当天新增浏览量/访客数
+name: Daily Busuanzi Stats
+
+on:
+  schedule:
+    # 每天 00:10 抓取（UTC+8 08:10，覆盖前一天完整数据）
+    - cron: '10 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Collect stats from busuanzi
+        run: |
+          set -e
+          RESP=$(curl -s -m 20 \
+            -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36" \
+            -e "https://xuemanqingsong.github.io/lunyu-tool/" \
+            "https://busuanzi.ibruce.info/busuanzi?jsonpCallback=BusuanziCallback")
+          echo "RAW: $RESP"
+          SITE_PV=$(echo "$RESP" | grep -oE '"site_pv":[0-9]+' | grep -oE '[0-9]+' | head -1)
+          SITE_UV=$(echo "$RESP" | grep -oE '"site_uv":[0-9]+' | grep -oE '[0-9]+' | head -1)
+          if [ -z "$SITE_PV" ] || [ -z "$SITE_UV" ]; then
+            echo "::error::无法解析不蒜子响应，跳过本次记录"
+            exit 1
+          fi
+          echo "site_pv=$SITE_PV site_uv=$SITE_UV"
+          # 写入 stats/daily.json（保留历史，追加当天记录）
+          mkdir -p stats
+          python3 - <<PY
+import json, os, datetime
+today = datetime.date.today().isoformat()
+pv = int("$SITE_PV"); uv = int("$SITE_UV")
+path = "stats/daily.json"
+records = []
+if os.path.exists(path):
+    try:
+        records = json.load(open(path, encoding="utf-8"))
+    except Exception:
+        records = []
+# 去重：同一天覆盖，不同天追加
+records = [r for r in records if r["date"] != today]
+records.append({"date": today, "site_pv": pv, "site_uv": uv, "ts": datetime.datetime.now().isoformat(timespec="seconds")})
+records.sort(key=lambda r: r["date"])
+json.dump(records, open(path, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+print(f"已记录 {today}: pv={pv} uv={uv}，共 {len(records)} 天")
+PY
+      - name: Commit and push
+        run: |
+          git config user.name "lunyu-bot"
+          git config user.email "lunyu-bot@users.noreply.github.com"
+          git add stats/daily.json
+          if git diff --cached --quiet; then
+            echo "无变化，跳过提交"
+          else
+            git commit -m "stats: 每日访问数据 $(date +%F)"
+            git push origin main
+          fi
