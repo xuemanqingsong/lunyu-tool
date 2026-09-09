@@ -40,13 +40,16 @@ function loadJSON(key, fb) { try { return JSON.parse(localStorage.getItem(key)) 
 function saveJSON(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) {} }
 
 // ===== 抽组 =====
+function pickOne(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
 function pickGroup() {
-  // 每主题各取 1，池内随机
+  // 每主题各取 1 章，池内随机；每章从其 3 条情境切片里再随机取 1 条展示
   const group = THEMES.map(th => {
     const pool = THEME_POOL[th];
-    return pool[Math.floor(Math.random() * pool.length)];
+    const ch = pool[Math.floor(Math.random() * pool.length)];
+    return { ch: ch, scene: pickOne(ch.scenes) };
   });
-  // 打乱顺序（避免总是 工作/家庭/待人/内心 的固定顺序）
+  // 打乱顺序（避免总是固定主题顺序）
   for (let i = group.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [group[i], group[j]] = [group[j], group[i]];
@@ -56,11 +59,12 @@ function pickGroup() {
 
 function getTodayDraw() {
   const rec = loadJSON(K_DAY, null);
-  if (rec && rec.date === todayStr() && rec.ids && rec.ids.length === 4) return rec;
+  if (rec && rec.date === todayStr() && rec.items && rec.items.length === 4) return rec;
   return null;
 }
-function setTodayDraw(ids) {
-  saveJSON(K_DAY, { date: todayStr(), ids: ids, remaining: 2 }); // 初始可再换 2 次
+function setTodayDraw(items) {
+  // items: [{id, scene}] 记住每张卡片的章 id 和展示的 scene
+  saveJSON(K_DAY, { date: todayStr(), items: items, remaining: 2 }); // 初始可再换 2 次
 }
 
 // 一周内不重复（记录已看过的情境 id）
@@ -86,11 +90,12 @@ function showGroup(group) {
   cards.innerHTML = "";
   cards.classList.add("show");
   group.forEach((item, idx) => {
+    const ch = item.ch;
     const div = document.createElement("div");
     div.className = "scene-card";
     div.innerHTML =
       '<div class="scene-text">' + item.scene + "</div>" +
-      '<div class="scene-theme"><span class="dot">◆</span> ' + THEME_LABEL[item.theme[0]] + "</div>";
+      '<div class="scene-theme"><span class="dot">◆</span> ' + THEME_LABEL[ch.theme[0]] + "</div>";
     div.onclick = () => openDetail(item, idx);
     cards.appendChild(div);
   });
@@ -100,18 +105,20 @@ function showGroup(group) {
 
 function openDetail(item, idx) {
   // 进入详情 = 认领了这个情境，记入本周
-  pushWeekSeen(item.id);
+  const ch = item.ch;
+  pushWeekSeen(ch.id);
   $("drawView").style.display = "none";
   $("detailView").style.display = "block";
   $("sceneBanner").textContent = item.scene;
-  $("chapterText").textContent = item.text;
-  $("chapterTranslation").textContent = item.translation || "";
-  $("chapterSource").textContent = "《论语 · " + item.source + "》";
-  $("insightText").textContent = item.insight || "";
-  $("practiceText").textContent = item.practice || "";
+  $("chapterText").textContent = ch.text;
+  $("chapterTranslation").textContent = ch.translation || "";
+  $("chapterSource").textContent = "《论语 · " + ch.source + "》";
+  $("insightText").textContent = ch.insight || "";
+  // 今日行动从 3 条里随机展示 1 条
+  $("practiceText").textContent = pickOne(ch.practices) || "";
   window.scrollTo({ top: 0, behavior: "smooth" });
   $("detailView").scrollIntoView({ block: "start" });
-  currentDetail = item;
+  currentDetail = ch;
 }
 
 function updateAgainCount() {
@@ -127,12 +134,12 @@ function updateAgainCount() {
 function draw() {
   let rec = getTodayDraw();
   let group;
-  if (rec && rec.ids.length === 4) {
+  if (rec && rec.items.length === 4) {
     // 当日已有组（含再来一组后的状态）——直接展示
-    group = rec.ids.map(id => BY_ID[id]).filter(Boolean);
+    group = rec.items.map(it => ({ ch: BY_ID[it.id], scene: it.scene })).filter(it => it.ch);
   } else {
     group = pickGroup();
-    setTodayDraw(group.map(c => c.id));
+    setTodayDraw(group.map(g => ({ id: g.ch.id, scene: g.scene })));
   }
   showGroup(group);
 }
@@ -141,9 +148,8 @@ function drawNew() {
   let rec = getTodayDraw();
   if (!rec || rec.remaining <= 0) return;
   rec.remaining -= 1;
-  saveJSON(K_DAY, rec);
   const group = pickGroup();
-  rec.ids = group.map(c => c.id);
+  rec.items = group.map(g => ({ id: g.ch.id, scene: g.scene }));
   saveJSON(K_DAY, rec);
   showGroup(group);
   $("cards").scrollIntoView({ behavior: "smooth", block: "start" });
@@ -332,7 +338,7 @@ $("dlBtn").onclick = () => {
 (function init() {
   $("dateLine").textContent = fmtDateLine();
   const today = getTodayDraw();
-  if (today && today.ids.length === 4) {
+  if (today && today.items.length === 4) {
     draw(); // 当日已有组，直接展示
   }
 })();
