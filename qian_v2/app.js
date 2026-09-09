@@ -237,10 +237,10 @@ function drawShareCard(fmt) {
   ctx.stroke();
   ctx.fillStyle = "#8a7a5c";
   ctx.font = px(38) + "px 'PingFang SC', sans-serif";
-  ctx.fillText("时习 · 论语日课", W / 2, by + px(22));
+  ctx.fillText("时习 · 论语日课", W / 2, by + px(14));
   ctx.fillStyle = "#b0a48c";
   ctx.font = px(34) + "px 'PingFang SC', sans-serif";
-  ctx.fillText("每天一句 · 学而时习之", W / 2, by + px(60));
+  ctx.fillText("每天一句 · 学而时习之", W / 2, by + px(78));
 
   return canvas;
 }
