@@ -117,7 +117,6 @@ function shake() {
     setTodayDraw(id);
     pushWeekId(id);
     showCard(id, false);
-    if (window.__qianLog) window.__qianLog(id);
     setTimeout(() => $("card").scrollIntoView({ behavior: "smooth", block: "start" }), 60);
   }, 600);
 }
@@ -296,17 +295,6 @@ $("helpClose").onclick = () => $("helpOverlay").classList.remove("show");
 $("helpOverlay").addEventListener("click", e => {
   if (e.target === $("helpOverlay")) $("helpOverlay").classList.remove("show");
 });
-
-// ===== 后台上报（可选：服务端不可用时静默）=====
-window.__qianLog = function (id) {
-  try {
-    fetch("/qian/api/draw", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ chapterId: id, chapterText: QIAN_BY_ID[id].text.slice(0, 100), source: QIAN_BY_ID[id].source })
-    }).catch(() => {});
-  } catch (e) {}
-};
 
 // ===== 初始化 =====
 (function init() {
