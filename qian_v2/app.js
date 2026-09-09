@@ -107,11 +107,11 @@ function updateWeek() {
 function shake() {
   const btn = $("shakeBtn");
   document.body.classList.add("shaking");
-  btn.textContent = "抽 卡 中…";
+  btn.textContent = "接收中…";
   btn.disabled = true;
   setTimeout(() => {
     document.body.classList.remove("shaking");
-    btn.textContent = "抽 一 张";
+    btn.textContent = "接 收";
     btn.disabled = false;
     const id = pickOne();
     setTodayDraw(id);
