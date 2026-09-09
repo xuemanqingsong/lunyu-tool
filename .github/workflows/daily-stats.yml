@@ -34,24 +34,7 @@ jobs:
           echo "site_pv=$SITE_PV site_uv=$SITE_UV"
           # 写入 stats/daily.json（保留历史，追加当天记录）
           mkdir -p stats
-          python3 - <<PY
-import json, os, datetime
-today = datetime.date.today().isoformat()
-pv = int("$SITE_PV"); uv = int("$SITE_UV")
-path = "stats/daily.json"
-records = []
-if os.path.exists(path):
-    try:
-        records = json.load(open(path, encoding="utf-8"))
-    except Exception:
-        records = []
-# 去重：同一天覆盖，不同天追加
-records = [r for r in records if r["date"] != today]
-records.append({"date": today, "site_pv": pv, "site_uv": uv, "ts": datetime.datetime.now().isoformat(timespec="seconds")})
-records.sort(key=lambda r: r["date"])
-json.dump(records, open(path, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
-print(f"已记录 {today}: pv={pv} uv={uv}，共 {len(records)} 天")
-PY
+          python3 -c "import json,os,datetime; today=datetime.date.today().isoformat(); pv=int('$SITE_PV'); uv=int('$SITE_UV'); path='stats/daily.json'; records=json.load(open(path,encoding='utf-8')) if os.path.exists(path) else []; records=[r for r in records if r['date']!=today]; records.append({'date':today,'site_pv':pv,'site_uv':uv,'ts':datetime.datetime.now().isoformat(timespec='seconds')}); records.sort(key=lambda r:r['date']); json.dump(records,open(path,'w',encoding='utf-8'),ensure_ascii=False,indent=2); print(f'已记录 {today}: pv={pv} uv={uv}，共 {len(records)} 天')"
       - name: Commit and push
         run: |
           git config user.name "lunyu-bot"
