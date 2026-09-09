@@ -47,7 +47,7 @@ function pickGroup() {
   const group = THEMES.map(th => {
     const pool = THEME_POOL[th];
     const ch = pool[Math.floor(Math.random() * pool.length)];
-    return { ch: ch, scene: pickOne(ch.scenes) };
+    return { ch: ch, scene: pickOne(ch.scenes), theme: th };
   });
   // 打乱顺序（避免总是固定主题顺序）
   for (let i = group.length - 1; i > 0; i--) {
@@ -63,7 +63,7 @@ function getTodayDraw() {
   return null;
 }
 function setTodayDraw(items) {
-  // items: [{id, scene}] 记住每张卡片的章 id 和展示的 scene
+  // items: [{id, scene, theme}] 记住每张卡片的章 id、展示的 scene 和主题池
   saveJSON(K_DAY, { date: todayStr(), items: items, remaining: 2 }); // 初始可再换 2 次
 }
 
@@ -95,7 +95,7 @@ function showGroup(group) {
     div.className = "scene-card";
     div.innerHTML =
       '<div class="scene-text">' + item.scene + "</div>" +
-      '<div class="scene-theme"><span class="dot">◆</span> ' + THEME_LABEL[ch.theme[0]] + "</div>";
+      '<div class="scene-theme"><span class="dot">◆</span> ' + THEME_LABEL[item.theme] + "</div>";
     div.onclick = () => openDetail(item, idx);
     cards.appendChild(div);
   });
@@ -136,10 +136,10 @@ function draw() {
   let group;
   if (rec && rec.items.length === 4) {
     // 当日已有组（含再来一组后的状态）——直接展示
-    group = rec.items.map(it => ({ ch: BY_ID[it.id], scene: it.scene })).filter(it => it.ch);
+    group = rec.items.map(it => ({ ch: BY_ID[it.id], scene: it.scene, theme: it.theme })).filter(it => it.ch);
   } else {
     group = pickGroup();
-    setTodayDraw(group.map(g => ({ id: g.ch.id, scene: g.scene })));
+    setTodayDraw(group.map(g => ({ id: g.ch.id, scene: g.scene, theme: g.theme })));
   }
   showGroup(group);
 }
@@ -149,7 +149,7 @@ function drawNew() {
   if (!rec || rec.remaining <= 0) return;
   rec.remaining -= 1;
   const group = pickGroup();
-  rec.items = group.map(g => ({ id: g.ch.id, scene: g.scene }));
+  rec.items = group.map(g => ({ id: g.ch.id, scene: g.scene, theme: g.theme }));
   saveJSON(K_DAY, rec);
   showGroup(group);
   $("cards").scrollIntoView({ behavior: "smooth", block: "start" });
