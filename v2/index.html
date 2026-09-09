@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>时习 · 论语情境签</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+  <!-- 顶部 -->
+  <div class="header">
+    <div class="brand">时习 · 论语情境签</div>
+    <div class="subtitle">先认领一个像你的情境，再听孔子说</div>
+    <button class="help-link" id="helpBtn">使用说明</button>
+  </div>
+  <div class="date-line" id="dateLine"></div>
+
+  <!-- 使用说明浮层 -->
+  <div class="help-overlay" id="helpOverlay">
+    <div class="help-panel">
+      <h3>时习 · 论语情境签</h3>
+      <p>每天来这里，抽一组生活情境。</p>
+      <p>每组 4 个，来自工作、家庭、待人、内心四个角落。别急着挑"最正确的"——挑那个让你心里"咯噔"一下、"这就是我"的。</p>
+      <p>挑中了，点进去，看这一句情境对应的论语。先自己琢磨一下它和你最近的生活有什么关系，再看讲解，做一件「今日行动」里的小事。</p>
+      <p>这组不像你？点「再来一组」，换一组。</p>
+      <button class="help-close" id="helpClose">开始</button>
+    </div>
+  </div>
+
+  <!-- 抽情境界面 -->
+  <div id="drawView">
+    <button class="draw-btn" id="drawBtn">抽 一 组 情 境</button>
+    <p class="draw-hint">每天一次，4 个情境，挑最像你的那个</p>
+
+    <div class="cards" id="cards"></div>
+
+    <div class="again-row" id="againRow" style="display:none">
+      <button class="again-btn" id="againBtn">再来一组</button>
+      <span class="again-count" id="againCount"></span>
+    </div>
+  </div>
+
+  <!-- 情境详情界面 -->
+  <div id="detailView" style="display:none">
+    <div class="back-link" id="backBtn">← 换一个情境</div>
+
+    <div class="scene-banner" id="sceneBanner"></div>
+
+    <div class="detail-card">
+      <div class="chapter-text" id="chapterText"></div>
+      <div class="translation"><span class="t-label">现代汉语翻译</span><span id="chapterTranslation"></span></div>
+      <div class="source" id="chapterSource"></div>
+
+      <div class="section-label">深入讲解</div>
+      <div class="insight" id="insightText"></div>
+
+      <div class="practice-box">
+        <div class="section-label" style="color:#6a7a4c">今日行动</div>
+        <div id="practiceText"></div>
+      </div>
+    </div>
+
+    <button class="share-btn" id="shareBtn">分享</button>
+  </div>
+
+  <!-- 分享浮层 -->
+  <div class="share-overlay" id="shareOverlay">
+    <div class="share-panel">
+      <div class="share-tabs">
+        <button class="share-tab active" data-fmt="v">竖版</button>
+        <button class="share-tab" data-fmt="s">方形</button>
+      </div>
+      <div id="shareCanvasWrap"><div class="gen-tip">生成中…</div></div>
+      <div class="share-actions">
+        <button class="dl-btn" id="dlBtn">下载图片</button>
+        <button class="share-close" id="shareClose">关闭</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
