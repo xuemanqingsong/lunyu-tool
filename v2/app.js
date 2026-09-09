@@ -110,6 +110,7 @@ function openDetail(item, idx) {
   $("drawView").style.display = "none";
   $("detailView").style.display = "block";
   $("sceneBanner").textContent = item.scene;
+  currentScene = item.scene;
   $("chapterText").textContent = ch.text;
   $("chapterTranslation").textContent = ch.translation || "";
   $("chapterSource").textContent = "《论语 · " + ch.source + "》";
@@ -157,6 +158,7 @@ function drawNew() {
 
 // ===== 分享卡（Canvas，复用 qian_v2 逻辑改造）=====
 let currentDetail = null;
+let currentScene = "";
 const shareState = { fmt: "v", canvas: null };
 
 function _roundRect(ctx, x, y, w, h, r) {
@@ -205,7 +207,7 @@ function drawShareCard(fmt) {
   // 情境（顶部，小字）
   ctx.fillStyle = "#4a4030";
   ctx.font = px(36) + "px 'PingFang SC', sans-serif";
-  const sceneLines = wrapText(ctx, cur.scene, W - pad * 2 - 40, px(44));
+  const sceneLines = wrapText(ctx, currentScene, W - pad * 2 - 40, px(44));
   let y = pad + px(150);
   for (const ln of sceneLines) {
     ctx.fillText(ln, pad + 20, y);
