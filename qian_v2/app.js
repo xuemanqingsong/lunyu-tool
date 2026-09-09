@@ -154,11 +154,11 @@ function drawShareCard(fmt) {
 
   // 顶部品牌 + 日期
   ctx.fillStyle = "#8a3d2b";
-  ctx.font = "600 " + px(36) + "px 'PingFang SC', sans-serif";
+  ctx.font = "600 " + px(42) + "px 'PingFang SC', sans-serif";
   ctx.textBaseline = "top";
   ctx.fillText("时  习", pad, pad + 8);
   ctx.fillStyle = "#8a7a5c";
-  ctx.font = px(30) + "px 'PingFang SC', sans-serif";
+  ctx.font = px(34) + "px 'PingFang SC', sans-serif";
   ctx.textAlign = "right";
   ctx.fillText(fmtDateLine(), W - pad, pad + 12);
   ctx.textAlign = "left";
@@ -183,10 +183,10 @@ function drawShareCard(fmt) {
     } else lines = [raw];
   }
   const maxLineLen = Math.max(...lines.map(l => l.length));
-  let fontSize = fmt === "v" ? 104 : 88;
+  let fontSize = fmt === "v" ? 122 : 104;
   const maxW = W - pad * 2 - 40;
   if (maxLineLen * fontSize * 1.05 > maxW) fontSize = Math.floor(maxW / (maxLineLen * 1.05));
-  fontSize = Math.max(fontSize, 40);
+  fontSize = Math.max(fontSize, 46);
 
   ctx.fillStyle = "#2a2318";
   ctx.font = fontSize + "px 'Kaiti SC', 'STKaiti', 'KaiTi', 'Songti SC', serif";
@@ -224,7 +224,7 @@ function drawShareCard(fmt) {
   // 出处
   y += px(14);
   ctx.fillStyle = "#8a7a5c";
-  ctx.font = px(fmt === "v" ? 40 : 36) + "px 'Songti SC', serif";
+  ctx.font = px(fmt === "v" ? 46 : 42) + "px 'Songti SC', serif";
   ctx.fillText("——《论语 · " + current.source + "》", W / 2, y);
 
   // 底部品牌区
@@ -236,11 +236,11 @@ function drawShareCard(fmt) {
   ctx.lineTo(W - pad - px(60), by);
   ctx.stroke();
   ctx.fillStyle = "#8a7a5c";
-  ctx.font = px(32) + "px 'PingFang SC', sans-serif";
+  ctx.font = px(38) + "px 'PingFang SC', sans-serif";
   ctx.fillText("时习 · 论语日课", W / 2, by + px(22));
   ctx.fillStyle = "#b0a48c";
-  ctx.font = px(28) + "px 'PingFang SC', sans-serif";
-  ctx.fillText("每天一句 · 学而时习之", W / 2, by + px(58));
+  ctx.font = px(34) + "px 'PingFang SC', sans-serif";
+  ctx.fillText("每天一句 · 学而时习之", W / 2, by + px(60));
 
   return canvas;
 }
