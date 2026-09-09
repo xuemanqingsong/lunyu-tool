@@ -122,23 +122,23 @@ body {
   margin-bottom: 6px;
 }
 .translation {
-  font-size: 14px;
-  line-height: 1.7;
+  font-size: 17px;
+  line-height: 1.8;
   color: #6a5c48;
   margin-bottom: 6px;
 }
 .translation .t-label {
   color: #8a7a5c;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 1px;
   margin-right: 6px;
 }
 .source { font-size: 12px; color: #b0a48c; margin-bottom: 20px; letter-spacing: 1px; }
 
 /* 线索区 */
-.clue-label { font-size: 12px; color: #8a7a5c; letter-spacing: 2px; margin-bottom: 8px; }
+.clue-label { font-size: 13px; color: #8a7a5c; letter-spacing: 2px; margin-bottom: 8px; }
 .clue-text {
-  font-size: 15px;
+  font-size: 17px;
   line-height: 1.9;
   color: #4a4030;
   padding: 12px 16px;
@@ -169,14 +169,14 @@ body {
   display: none;
 }
 .reveal.show { display: block; }
-.section-label { font-size: 12px; color: #8a7a5c; letter-spacing: 2px; margin-bottom: 8px; }
-.insight { font-size: 14.5px; line-height: 1.9; color: #3a3226; }
+.section-label { font-size: 13px; color: #8a7a5c; letter-spacing: 2px; margin-bottom: 8px; }
+.insight { font-size: 17px; line-height: 1.9; color: #3a3226; }
 .practice-box {
   margin-top: 16px;
   padding: 14px 16px;
   background: #eef0e0;
   border-radius: 10px;
-  font-size: 14px;
+  font-size: 17px;
   line-height: 1.8;
   color: #4a4030;
 }
