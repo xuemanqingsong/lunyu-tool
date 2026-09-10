@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>论语锦囊摇一摇</title>
+  <meta name="description" content="闭上眼睛做一次深呼吸，想三个词，看两千五百年前的话语如何回应。">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%239e3b2c'/><text x='50' y='68' font-size='52' font-family='serif' fill='%23f6ead8' text-anchor='middle'>问</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="paper">
+
+    <div style="background:#9e3b2c;color:#f6ead8;padding:16px 22px;border-radius:12px;text-align:center;font-size:15.5px;line-height:1.7;margin-bottom:22px;">
+      📣 新版上线：<a href="/one/" style="color:#fff;text-decoration:underline;font-weight:bold;">时习 · 论语摇一摇</a>（学习版，只需想一个词）—— 点此进入新版本，本页为旧版，仍可继续使用
+    </div>
+
+    <header>
+      <div class="seal" aria-hidden="true">问津</div>
+      <h1>论语锦囊摇一摇</h1>
+      <p class="sub">先想一想你现在有什么困扰，然后闭上眼睛做一次深呼吸，想三个词，填在下面。</p>
+      <p class="hint">然后点「摇一摇」，看两千五百年前的话语如何回应你。</p>
+      <button class="help-link" id="helpToggle">使用说明</button>
+      <div class="help-panel" id="helpPanel" hidden>
+        <ol>
+          <li><b>安静下来，认真想三个词。</b>找一个不被打扰的时刻，专注地梳理当下的困扰，让三个词尽量准确反映你真实的心境——词越真，回应越准。</li>
+          <li><b>第一句没戳中你？不妨换一换。</b>有时摇出的对应句子不止一句。如果第一句没有切中你的处境，点「换一句」，或看看下方的「另可参详」，或许另一句更能回应你。</li>
+          <li><b>看完原文，别忘了「今日一试」。</b>除了理解《论语》原文和白话翻译，请一定看看底下的行动建议——把一句道理做出来，才是真正走出困境的开始。</li>
+        </ol>
+      </div>
+    </header>
+
+    <section class="input-area">
+      <div class="inputs">
+        <input id="kw1" type="text" maxlength="12" placeholder="第一个词" autocomplete="off">
+        <input id="kw2" type="text" maxlength="12" placeholder="第二个词" autocomplete="off">
+        <input id="kw3" type="text" maxlength="12" placeholder="第三个词" autocomplete="off">
+      </div>
+      <button id="ask">摇 一 摇</button>
+      <div class="examples" id="examples"><span class="ex-label">试试：</span></div>
+    </section>
+
+    <section id="result" hidden></section>
+
+    <footer>
+      <p class="fn">「使子路问津」——《论语·微子》。津，渡口。愿每一问，皆有渡处。</p>
+      <p class="disclaimer">· 免责声明 · 本页面内容为传统文化解读与自我启发，仅供一般参考，不能替代专业心理咨询或医疗诊断。若你正经历严重的心理困扰或情绪危机，请务必及时向专业心理咨询师、医生求助，或拨打当地心理援助热线。</p>
+    </footer>
+  </div>
+
+  <script src="data-1.js"></script>
+  <script src="data-2.js"></script>
+  <script src="data-3.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

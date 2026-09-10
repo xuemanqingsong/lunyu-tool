@@ -1,56 +1,73 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>论语锦囊摇一摇</title>
-  <meta name="description" content="闭上眼睛做一次深呼吸，想三个词，看两千五百年前的话语如何回应。">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%239e3b2c'/><text x='50' y='68' font-size='52' font-family='serif' fill='%23f6ead8' text-anchor='middle'>问</text></svg>">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>时习论语日课</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #faf6ee;
+    color: #3a3226;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 20px 60px;
+  }
+  .container { max-width: 480px; width: 100%; text-align: center; }
+  .brand { font-size: 26px; letter-spacing: 6px; color: #3a3226; font-weight: 600; }
+  .subtitle { font-size: 13px; color: #b0a48c; margin-top: 10px; letter-spacing: 1px; line-height: 1.8; }
+  .date-line { font-size: 12px; color: #c4b9a0; margin: 14px 0 36px; letter-spacing: 1px; }
+
+  .entry-card {
+    display: block;
+    background: #fffdf7; border: 1px solid #e5dcc8; border-radius: 16px;
+    padding: 26px 24px; margin-bottom: 18px; text-decoration: none; color: inherit;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+    transition: all .15s;
+  }
+  .entry-card:hover { border-color: #c9b98e; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0,0,0,0.08); }
+  .entry-card .e-name { font-size: 18px; font-weight: 600; letter-spacing: 2px; color: #3a3226; }
+  .entry-card .e-badge {
+    display: inline-block; font-size: 11px; color: #8a3d2b;
+    border: 1px solid #c9a98a; border-radius: 10px; padding: 1px 8px;
+    margin-left: 8px; vertical-align: 2px; letter-spacing: 1px;
+  }
+  .entry-card .e-desc { font-size: 13px; color: #8a7a5c; margin-top: 10px; line-height: 1.8; }
+
+  .footer { margin-top: 20px; font-size: 11px; color: #c4b9a0; letter-spacing: 1px; }
+</style>
 </head>
 <body>
-  <div class="paper">
+<div class="container">
+  <div class="brand">时习论语日课</div>
+  <div class="subtitle">每天学一句，把论语活进今天的生活</div>
+  <div class="date-line" id="dateLine"></div>
 
-    <div style="background:#9e3b2c;color:#f6ead8;padding:16px 22px;border-radius:12px;text-align:center;font-size:15.5px;line-height:1.7;margin-bottom:22px;">
-      📣 新版上线：<a href="/one/" style="color:#fff;text-decoration:underline;font-weight:bold;">时习 · 论语摇一摇</a>（学习版，只需想一个词）—— 点此进入新版本，本页为旧版，仍可继续使用
-    </div>
+  <a class="entry-card" href="v2/">
+    <span class="e-name">时习论语日课 · 情境版</span><span class="e-badge">新</span>
+    <div class="e-desc">抽一组生活情境，挑中「这就是我」的那个，看对应的一句论语和今天的行动。</div>
+  </a>
 
-    <header>
-      <div class="seal" aria-hidden="true">问津</div>
-      <h1>论语锦囊摇一摇</h1>
-      <p class="sub">先想一想你现在有什么困扰，然后闭上眼睛做一次深呼吸，想三个词，填在下面。</p>
-      <p class="hint">然后点「摇一摇」，看两千五百年前的话语如何回应你。</p>
-      <button class="help-link" id="helpToggle">使用说明</button>
-      <div class="help-panel" id="helpPanel" hidden>
-        <ol>
-          <li><b>安静下来，认真想三个词。</b>找一个不被打扰的时刻，专注地梳理当下的困扰，让三个词尽量准确反映你真实的心境——词越真，回应越准。</li>
-          <li><b>第一句没戳中你？不妨换一换。</b>有时摇出的对应句子不止一句。如果第一句没有切中你的处境，点「换一句」，或看看下方的「另可参详」，或许另一句更能回应你。</li>
-          <li><b>看完原文，别忘了「今日一试」。</b>除了理解《论语》原文和白话翻译，请一定看看底下的行动建议——把一句道理做出来，才是真正走出困境的开始。</li>
-        </ol>
-      </div>
-    </header>
+  <a class="entry-card" href="qian_v2/">
+    <span class="e-name">时习 · 论语日课 · 每日一句</span>
+    <div class="e-desc">每天一句论语，先自己琢磨它和你今天的关联，再看讲解，做一件今日一试的小事。</div>
+  </a>
 
-    <section class="input-area">
-      <div class="inputs">
-        <input id="kw1" type="text" maxlength="12" placeholder="第一个词" autocomplete="off">
-        <input id="kw2" type="text" maxlength="12" placeholder="第二个词" autocomplete="off">
-        <input id="kw3" type="text" maxlength="12" placeholder="第三个词" autocomplete="off">
-      </div>
-      <button id="ask">摇 一 摇</button>
-      <div class="examples" id="examples"><span class="ex-label">试试：</span></div>
-    </section>
+  <a class="entry-card" href="jinang.html">
+    <span class="e-name">论语锦囊 · 摇一摇</span>
+    <div class="e-desc">想三个词，看两千五百年前的话语如何回应你（旧版）。</div>
+  </a>
 
-    <section id="result" hidden></section>
+  <div class="footer">学而时习之，不亦说乎</div>
+</div>
 
-    <footer>
-      <p class="fn">「使子路问津」——《论语·微子》。津，渡口。愿每一问，皆有渡处。</p>
-      <p class="disclaimer">· 免责声明 · 本页面内容为传统文化解读与自我启发，仅供一般参考，不能替代专业心理咨询或医疗诊断。若你正经历严重的心理困扰或情绪危机，请务必及时向专业心理咨询师、医生求助，或拨打当地心理援助热线。</p>
-    </footer>
-  </div>
-
-  <script src="data-1.js"></script>
-  <script src="data-2.js"></script>
-  <script src="data-3.js"></script>
-  <script src="app.js"></script>
+<script>
+  const d = new Date();
+  const wd = ["周日","周一","周二","周三","周四","周五","周六"][d.getDay()];
+  document.getElementById("dateLine").textContent = d.getFullYear() + "年" + (d.getMonth()+1) + "月" + d.getDate() + "日 · " + wd;
+</script>
 </body>
 </html>

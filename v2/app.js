@@ -1,4 +1,4 @@
-// 时习 · 论语情境签（v2 情境版）
+// 时习论语日课 · 情境版（v2）
 // 依赖：data.js 定义 window.LUNYU_V2 = [{id, theme, scene, text, source, translation, insight, practice}]
 "use strict";
 
@@ -94,8 +94,7 @@ function showGroup(group) {
     const div = document.createElement("div");
     div.className = "scene-card";
     div.innerHTML =
-      '<div class="scene-text">' + item.scene + "</div>" +
-      '<div class="scene-theme"><span class="dot">◆</span> ' + THEME_LABEL[item.theme] + "</div>";
+      '<div class="scene-text">' + item.scene + "</div>";
     div.onclick = () => openDetail(item, idx);
     cards.appendChild(div);
   });
@@ -268,7 +267,7 @@ function drawShareCard(fmt) {
   ctx.stroke();
   ctx.fillStyle = "#8a7a5c";
   ctx.font = px(38) + "px 'PingFang SC', sans-serif";
-  ctx.fillText("时习 · 论语情境签", W / 2, by + px(14));
+  ctx.fillText("时习论语日课 · 情境版", W / 2, by + px(14));
   ctx.fillStyle = "#b0a48c";
   ctx.font = px(34) + "px 'PingFang SC', sans-serif";
   ctx.fillText("抽一组情境 · 认领像你的那个", W / 2, by + px(78));
@@ -331,7 +330,7 @@ $("shareOverlay").addEventListener("click", e => {
 $("dlBtn").onclick = () => {
   if (!shareState.canvas) return;
   const a = document.createElement("a");
-  a.download = "时习论语情境签_" + todayStr() + (shareState.fmt === "v" ? "_竖版" : "_方形") + ".png";
+  a.download = "时习论语日课情境版_" + todayStr() + (shareState.fmt === "v" ? "_竖版" : "_方形") + ".png";
   a.href = shareState.canvas.toDataURL("image/png");
   a.click();
 };

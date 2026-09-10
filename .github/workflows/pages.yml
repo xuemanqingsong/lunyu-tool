@@ -1,13 +1,20 @@
-# 部署「时习 · 论语情境签」(v2/) 到 GitHub Pages
+# 部署「时习论语日课」全站（仓库根）到 GitHub Pages
 # 站点：https://xuemanqingsong.github.io/lunyu-tool/
-# 触发：推送 main 分支（v2/ 或本 workflow 有改动时自动更新线上）
-name: Deploy v2 to GitHub Pages
+# 包含：/ 入口导航、/v2/ 情境版、/qian_v2/ 每日一句版、/jinang.html 锦囊摇一摇
+# 触发：推送 main 分支（这些目录有改动时自动更新线上）
+name: Deploy Lunyu Tool to GitHub Pages
 
 on:
   push:
     branches: [main]
     paths:
+      - 'index.html'
+      - 'jinang.html'
+      - 'style.css'
+      - 'app.js'
+      - 'data-*.js'
       - 'v2/**'
+      - 'qian_v2/**'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
@@ -31,7 +38,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: v2
+          path: .
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
