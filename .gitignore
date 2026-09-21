@@ -16,3 +16,6 @@ logs/
 *.tmp
 *.bak
 *~
+
+# 数据合并备份（可重建，不进版本库）
+_review_backups/

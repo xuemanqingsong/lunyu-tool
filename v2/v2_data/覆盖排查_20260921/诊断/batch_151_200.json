@@ -1,0 +1,1004 @@
+[
+  {
+    "id": 151,
+    "clause_count": 1,
+    "core_groups": 4,
+    "groups": [
+      {
+        "name": "德之不修",
+        "scene_ok": false,
+        "practice_ok": false,
+        "insight_ok": true
+      },
+      {
+        "name": "学之不讲",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "闻义不能徙",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "不善不能改",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "scenes,practices",
+    "note": "4 个意群，scenes/practices 各 3 条均缺「德之不修」的对应"
+  },
+  {
+    "id": 152,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "燕居舒展和悦",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 153,
+    "clause_count": 2,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "叹老而念周公（对理想的向往）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 154,
+    "clause_count": 2,
+    "core_groups": 4,
+    "groups": [
+      {
+        "name": "志于道",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "据于德",
+        "scene_ok": false,
+        "practice_ok": false,
+        "insight_ok": true
+      },
+      {
+        "name": "依于仁",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "游于艺",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "scenes,practices",
+    "note": "4 个意群，scenes/practices 各 3 条均缺「据于德」的对应"
+  },
+  {
+    "id": 155,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "自愿求学皆教诲",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 156,
+    "clause_count": 3,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "不愤不启",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "不悱不发",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 157,
+    "clause_count": 2,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "食于有丧者之侧未尝饱",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "是日哭则不歌",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 158,
+    "clause_count": 5,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "用之则行舍之则藏",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "临事而惧好谋而成",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 159,
+    "clause_count": 2,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "富而可求则求之（不耻执鞭）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "不可求则从吾所好",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 160,
+    "clause_count": 1,
+    "core_groups": 3,
+    "groups": [
+      {
+        "name": "齐（斋戒慎礼）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "战（慎兵）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "疾（慎病）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 161,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "闻韶三月不知肉味（乐感之深）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 162,
+    "clause_count": 7,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "求仁而得仁无怨（按原则决断）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 163,
+    "clause_count": 2,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "饭疏食饮水乐在其中",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "不义富贵如浮云",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 164,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "加年学易以无大过（持续求学）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 165,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "郑重场合用雅言（用语准确）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 166,
+    "clause_count": 3,
+    "core_groups": 3,
+    "groups": [
+      {
+        "name": "发愤忘食",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "乐以忘忧",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "不知老之将至",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 167,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "非生知，好古敏以求之",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 168,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "不语怪力乱神",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 169,
+    "clause_count": 2,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "三人行必有我师",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "择善而从，不善而改",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 170,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "天生德于予（持守使命不惧威胁）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 171,
+    "clause_count": 3,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "无隐——日常言行即是教导",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 172,
+    "clause_count": 1,
+    "core_groups": 4,
+    "groups": [
+      {
+        "name": "文（文化知识）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "行（行为实践）",
+        "scene_ok": false,
+        "practice_ok": false,
+        "insight_ok": true
+      },
+      {
+        "name": "忠（尽心）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "信（守信）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "scenes,practices",
+    "note": "4 个意群，scenes/practices 各 3 条未增至 4，「行」无专属对应"
+  },
+  {
+    "id": 173,
+    "clause_count": 5,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "见君子有恒者足矣",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "虚饰者难有恒（无装有/虚装盈/约装泰）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 174,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "钓而不纲，弋不射宿（取物有节）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 175,
+    "clause_count": 2,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "不知而作吾无是也",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "多闻择善，多见而识",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 176,
+    "clause_count": 5,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "与其进不保其往（肯定当下求进）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 177,
+    "clause_count": 2,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "我欲仁斯仁至（仁可由己愿实践）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 178,
+    "clause_count": 7,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "苟有过人必知之（闻过则喜）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 179,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "与人歌而善必使反之（欣赏学习）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 180,
+    "clause_count": 2,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "文莫吾犹人也",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "躬行君子未之有得",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 181,
+    "clause_count": 3,
+    "core_groups": 3,
+    "groups": [
+      {
+        "name": "不敢自居圣仁",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "为之不厌",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "诲人不倦",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 182,
+    "clause_count": 5,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "丘之祷久矣（平日敬慎即祷）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 183,
+    "clause_count": 2,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "宁俭毋奢（奢骄俭固的取舍）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 184,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "君子坦荡荡小人长戚戚",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 185,
+    "clause_count": 1,
+    "core_groups": 3,
+    "groups": [
+      {
+        "name": "温而厉",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "威而不猛",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "恭而安",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 186,
+    "clause_count": 2,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "三以天下让民无得称（让而不显）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 187,
+    "clause_count": 3,
+    "core_groups": 3,
+    "groups": [
+      {
+        "name": "恭慎勇直无礼则失",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "笃于亲则民兴于仁",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "故旧不遗则民不偷",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 188,
+    "clause_count": 5,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "终身谨护身体免毁伤（战战兢兢）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 189,
+    "clause_count": 6,
+    "core_groups": 4,
+    "groups": [
+      {
+        "name": "动容貌远暴慢",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "正颜色近信",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "出辞气远鄙倍",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "笾豆之事有司存",
+        "scene_ok": false,
+        "practice_ok": false,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "scenes,practices",
+    "note": "4 个意群，scenes/practices 各 3 条均缺「笾豆之事有司存」的对应"
+  },
+  {
+    "id": 190,
+    "clause_count": 2,
+    "core_groups": 3,
+    "groups": [
+      {
+        "name": "以能问不能，以多问寡",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "有若无，实若虚",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "犯而不校",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 191,
+    "clause_count": 3,
+    "core_groups": 3,
+    "groups": [
+      {
+        "name": "可托六尺之孤",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "可寄百里之命",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "临大节而不可夺",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 192,
+    "clause_count": 3,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "士不可不弘毅",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "任重道远（仁为己任，死而后已）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 193,
+    "clause_count": 1,
+    "core_groups": 3,
+    "groups": [
+      {
+        "name": "兴于诗",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "立于礼",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "成于乐",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 194,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "民可使由之，不可使知之",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 195,
+    "clause_count": 2,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "好勇疾贫则乱",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "疾不仁太甚则乱",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 196,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "才美而骄吝则不足观",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 197,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "学而不志禄难得（求知本身）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 198,
+    "clause_count": 5,
+    "core_groups": 4,
+    "groups": [
+      {
+        "name": "笃信好学守死善道",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "危邦不入乱邦不居",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "有道则见无道则隐",
+        "scene_ok": false,
+        "practice_ok": false,
+        "insight_ok": true
+      },
+      {
+        "name": "邦有道贫贱耻，无道富贵耻",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "scenes,practices",
+    "note": "4 个意群，scenes/practices 各 3 条均缺「有道则见无道则隐」进退抉择的对应"
+  },
+  {
+    "id": 199,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "不在其位不谋其政（职分边界）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 200,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "洋洋乎盈耳（乐之盛美）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  }
+]

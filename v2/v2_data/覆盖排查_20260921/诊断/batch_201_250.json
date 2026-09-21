@@ -1,0 +1,926 @@
+[
+  {
+    "id": 201,
+    "clause_count": 1,
+    "core_groups": 3,
+    "groups": [
+      {
+        "name": "狂而不直（狂放须正直）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "侗而不愿（无知须谨厚）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "悾悾而不信（貌似诚恳须守信）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：情境与行动各3条分别对应三例，讲解三种情形均提及"
+  },
+  {
+    "id": 202,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "学如不及犹恐失之（求学的迫切与珍惜）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 203,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "有天下而不与（权力不视为私有）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 204,
+    "clause_count": 5,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "赞尧德配天、功业文章盛大",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：各分句均为赞尧的递进展开，合为1个意群"
+  },
+  {
+    "id": 205,
+    "clause_count": 5,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "才难（人才难得）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "周之至德（三分有其二仍服事殷）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 206,
+    "clause_count": 5,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "俭于己而厚于所事（三组对照）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：三组对照为同一道理的三例，情境行动均对应"
+  },
+  {
+    "id": 207,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "罕言利命仁（慎谈利、命、仁）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：三条情境行动分别落于利、命、仁三面"
+  },
+  {
+    "id": 208,
+    "clause_count": 6,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "博学无所成名，以执御自谦回应",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：问答体合为1个意群"
+  },
+  {
+    "id": 209,
+    "clause_count": 5,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "俭则从众（麻冕改纯）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "关乎礼敬则守（拜下不从众）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 210,
+    "clause_count": 1,
+    "core_groups": 4,
+    "groups": [
+      {
+        "name": "毋意（不臆测）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "毋必（不必然预定）",
+        "scene_ok": false,
+        "practice_ok": false,
+        "insight_ok": true
+      },
+      {
+        "name": "毋固（不固执）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "毋我（不以自我为中心）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "scenes,practices",
+    "note": "核心意群4个（意/必/固/我），情境与行动仅各3条且均缺「毋必」对应，需增至4条"
+  },
+  {
+    "id": 211,
+    "clause_count": 4,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "文在兹、天不丧斯文（文化使命与信念）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 212,
+    "clause_count": 7,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "少贱故多能鄙事（坦诚出身学得技能）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "君子不必多能（区分圣德与技能）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 213,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "不试故艺（未被任用故习技艺）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 214,
+    "clause_count": 3,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "自谦无知，扣其两端而竭",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 215,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "凤鸟不至吾已矣夫（道难行的叹息）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 216,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "见齐衰冕衣裳瞽者必作必趋（尊重特殊处境）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：三条情境分别对应丧服者、礼服者、盲者"
+  },
+  {
+    "id": 217,
+    "clause_count": 3,
+    "core_groups": 3,
+    "groups": [
+      {
+        "name": "道之高坚难穷",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "循循善诱、博文约礼",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "竭才欲从、末由也已",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 218,
+    "clause_count": 6,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "反对无臣而为有臣（不以不实换体面）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 219,
+    "clause_count": 5,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "待贾而沽（愿用于世而待识者）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 220,
+    "clause_count": 4,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "君子居之何陋之有（德化不因地陋）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 221,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "乐正、雅颂各得其所",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 222,
+    "clause_count": 1,
+    "core_groups": 4,
+    "groups": [
+      {
+        "name": "出则事公卿",
+        "scene_ok": false,
+        "practice_ok": false,
+        "insight_ok": true
+      },
+      {
+        "name": "入则事父兄",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "丧事不敢不勉",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "不为酒困",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "scenes,practices",
+    "note": "核心意群4个，情境与行动仅各3条且缺「出则事公卿」对应，需增至4条"
+  },
+  {
+    "id": 223,
+    "clause_count": 2,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "逝者如斯不舍昼夜（时光流逝之叹）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 224,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "未见好德如好色（好德不及好色）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 225,
+    "clause_count": 2,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "为山平地，进止皆由己",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：两喻为同一道理的正反举例，合为1个意群"
+  },
+  {
+    "id": 226,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "语之而不惰（听教而勤于实行）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 227,
+    "clause_count": 3,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "惜颜渊之进而不止（哀惜与赞叹）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 228,
+    "clause_count": 2,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "苗而不秀、秀而不实（有始未必有成）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 229,
+    "clause_count": 2,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "后生可畏（不轻视后来者）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "四十五十而无闻不足畏（年长无成的警醒）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 230,
+    "clause_count": 5,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "法语之言，改之为贵",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "巽与之言，绎之为贵",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：末句说而不绎从而不改为前两点之反证总结，不单列"
+  },
+  {
+    "id": 231,
+    "clause_count": 1,
+    "core_groups": 3,
+    "groups": [
+      {
+        "name": "主忠信",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "毋友不如己者（择友砥砺）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "过则勿惮改",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：情境行动各3条与三意群一一对应"
+  },
+  {
+    "id": 232,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "匹夫不可夺志（志不可夺）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 233,
+    "clause_count": 4,
+    "core_groups": 3,
+    "groups": [
+      {
+        "name": "衣敝缊袍与狐貉者立而不耻",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "不忮不求（不嫉妒不贪求）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "是道也何足以臧（不止于此）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：三条情境行动与三意群一一对应"
+  },
+  {
+    "id": 234,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "岁寒知松柏之后凋（艰难见操守）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 235,
+    "clause_count": 1,
+    "core_groups": 3,
+    "groups": [
+      {
+        "name": "知者不惑",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "仁者不忧",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "勇者不惧",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：情境行动各3条与三意群一一对应"
+  },
+  {
+    "id": 236,
+    "clause_count": 3,
+    "core_groups": 3,
+    "groups": [
+      {
+        "name": "共学未可与适道",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "适道未可与立",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "立未可与权",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：三层递进各得情境与行动对应"
+  },
+  {
+    "id": 237,
+    "clause_count": 5,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "未之思也夫何远之有（真思则不远）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 238,
+    "clause_count": 2,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "乡党恂恂似不能言",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "宗庙朝廷便便言唯谨",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 239,
+    "clause_count": 3,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "对不同地位者言行各有合宜分寸",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：三组仪态为同一分寸道理之例，合为1个意群"
+  },
+  {
+    "id": 240,
+    "clause_count": 4,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "接待宾客庄重有始有终（宾退复命）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 241,
+    "clause_count": 7,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "入公门之庄重（对场合的认真）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 242,
+    "clause_count": 4,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "执圭、享礼、私觌各环节分寸",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：三环节为同一分寸道理之例，情境行动均有对应"
+  },
+  {
+    "id": 243,
+    "clause_count": 10,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "衣着合宜于场合与实际需要",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：多分句均为服饰礼制细节，同一主题"
+  },
+  {
+    "id": 244,
+    "clause_count": 2,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "斋戒整备（为郑重之事作准备）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 245,
+    "clause_count": 13,
+    "core_groups": 3,
+    "groups": [
+      {
+        "name": "饮食卫生（变质不食）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "饮食节制（不多食、酒不及乱）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "进餐礼仪（食不语、祭必齐如）",
+        "scene_ok": true,
+        "practice_ok": false,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "practices",
+    "note": "三个意群情境各一对应，行动缺「进餐礼仪」对应（3条行动落在卫生与节制上）"
+  },
+  {
+    "id": 246,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "席不正不坐（事前作必要整理）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 247,
+    "clause_count": 2,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "杖者出斯出（尊长与体谅行动不便者）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "乡人傩朝服立阼阶（对乡仪之郑重）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 248,
+    "clause_count": 2,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "问人于他邦再拜送之（郑重托付）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "馈药未达不敢尝（敬意与审慎）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 249,
+    "clause_count": 2,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "伤人乎不问马（人命重于财物）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  },
+  {
+    "id": 250,
+    "clause_count": 6,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "君赐食腥生之妥善处置",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "应对探视与召见（认真回应、有边界）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整"
+  }
+]

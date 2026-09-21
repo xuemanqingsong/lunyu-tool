@@ -1,0 +1,986 @@
+[
+  {
+    "id": 401,
+    "clause_count": 3,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "遇事须自问如之何",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：三情境与三行动均落在「自问怎么办」这一意群，讲解亦实质提及"
+  },
+  {
+    "id": 402,
+    "clause_count": 4,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "言不及义",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "好行小慧",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：情境行动分别对应两意群，讲解均实质提及"
+  },
+  {
+    "id": 403,
+    "clause_count": 5,
+    "core_groups": 4,
+    "groups": [
+      {
+        "name": "义以为质",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "礼以行之",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "孙以出之",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "信以成之",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "scenes,practices",
+    "note": "核心意群4个，情境与行动各仅3条，数量不足，应各增至4条"
+  },
+  {
+    "id": 404,
+    "clause_count": 2,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "病无能",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "不病人之不己知",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：两意群各得对应情境行动，讲解兼提能力与外界评价"
+  },
+  {
+    "id": 405,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "疾没世而名不称",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：三情境行动均指向「留下可称述之名」，讲解实质提及"
+  },
+  {
+    "id": 406,
+    "clause_count": 2,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "君子求诸己",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "小人求诸人",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：正反两面各得对应情境行动，讲解亦提及对己对人之分"
+  },
+  {
+    "id": 407,
+    "clause_count": 2,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "矜而不争",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "群而不党",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：两意群各得情境行动，讲解均实质提及"
+  },
+  {
+    "id": 408,
+    "clause_count": 2,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "不以言举人",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "不以人废言",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：两意群各得情境行动，讲解兼提举人凭据与听言凭据"
+  },
+  {
+    "id": 409,
+    "clause_count": 4,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "己所不欲勿施于人",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：问答体核心为恕道，三情境行动均对应，讲解实质提及"
+  },
+  {
+    "id": 410,
+    "clause_count": 6,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "不轻毁誉、称誉有据",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "直道待民",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：毁誉与待民两意群各得情境行动，讲解均提及"
+  },
+  {
+    "id": 411,
+    "clause_count": 4,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "阙文存疑",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "借马借人",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：两意群各得情境行动，讲解均实质提及"
+  },
+  {
+    "id": 412,
+    "clause_count": 3,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "巧言乱德",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "小不忍乱大谋",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：两意群各得情境行动，讲解均实质提及"
+  },
+  {
+    "id": 413,
+    "clause_count": 4,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "众恶众好必察",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：正反对举实为一意群，三情境行动均对应，讲解实质提及"
+  },
+  {
+    "id": 414,
+    "clause_count": 2,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "人能弘道",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：一意群三情境行动均对应，讲解实质提及"
+  },
+  {
+    "id": 415,
+    "clause_count": 2,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "过而不改是谓过",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：一意群三情境行动均对应，讲解实质提及"
+  },
+  {
+    "id": 416,
+    "clause_count": 5,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "思不如学",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：一意群三情境行动均对应，讲解实质提及"
+  },
+  {
+    "id": 417,
+    "clause_count": 6,
+    "core_groups": 3,
+    "groups": [
+      {
+        "name": "谋道不谋食",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "耕馁学禄",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "忧道不忧贫",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：三意群各得情境行动，讲解均实质提及"
+  },
+  {
+    "id": 418,
+    "clause_count": 13,
+    "core_groups": 4,
+    "groups": [
+      {
+        "name": "知及之",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "仁能守之",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "庄以莅之",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "动之以礼",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "scenes,practices",
+    "note": "核心意群4个（知及/仁守/庄莅/动礼），情境与行动各仅3条，数量不足，应各增至4条"
+  },
+  {
+    "id": 419,
+    "clause_count": 4,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "君子可大受",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "小人可小知",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：两意群各得情境行动，讲解均实质提及"
+  },
+  {
+    "id": 420,
+    "clause_count": 5,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "民之于仁甚于水火",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：一意群三情境行动均对应，讲解实质提及"
+  },
+  {
+    "id": 421,
+    "clause_count": 2,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "当仁不让于师",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：一意群三情境行动均对应，讲解实质提及"
+  },
+  {
+    "id": 422,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "贞而不谅",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：一意群三情境行动均对应，讲解实质提及"
+  },
+  {
+    "id": 423,
+    "clause_count": 2,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "敬其事而后其食",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：一意群三情境行动均对应，讲解兼提尽职与合理报酬"
+  },
+  {
+    "id": 424,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "有教无类",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：一意群三情境行动均对应，讲解实质提及"
+  },
+  {
+    "id": 425,
+    "clause_count": 2,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "道不同不相为谋",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：一意群三情境行动均对应，讲解实质提及"
+  },
+  {
+    "id": 426,
+    "clause_count": 2,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "辞达而已",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：一意群三情境行动均对应，讲解实质提及"
+  },
+  {
+    "id": 427,
+    "clause_count": 12,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "固相师之道（体恤辅助）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：叙事章核心为相师之道，三情境行动均对应，讲解实质提及"
+  },
+  {
+    "id": 428,
+    "clause_count": 49,
+    "core_groups": 4,
+    "groups": [
+      {
+        "name": "陈力就列不能者止",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "均无贫和无寡安无倾",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "修文德以来之既来之安之",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "忧在萧墙之内",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "scenes,practices",
+    "note": "核心意群4个，情境与行动各仅3条，数量不足，应各增至4条"
+  },
+  {
+    "id": 429,
+    "clause_count": 14,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "礼乐征伐自天子出（政权层递与归位）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：政权下移与有道归位为正反一体，三情境行动均对应，讲解实质提及"
+  },
+  {
+    "id": 430,
+    "clause_count": 6,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "三桓之子孙微矣（根基不牢则衰）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：一意群三情境行动均对应，讲解实质提及"
+  },
+  {
+    "id": 431,
+    "clause_count": 9,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "益者三友",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "损者三友",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：益损两类各得情境行动，讲解两分并点出善柔最需留神"
+  },
+  {
+    "id": 432,
+    "clause_count": 9,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "益者三乐",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "损者三乐",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：益损两类各得情境行动，讲解两分俱到"
+  },
+  {
+    "id": 433,
+    "clause_count": 6,
+    "core_groups": 3,
+    "groups": [
+      {
+        "name": "未及而言为躁",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "及而不言为隐",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "未见颜色而言为瞽",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：三意群各得情境行动，讲解逐条提及并总括时机分寸"
+  },
+  {
+    "id": 434,
+    "clause_count": 9,
+    "core_groups": 3,
+    "groups": [
+      {
+        "name": "少戒色",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "壮戒斗",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "老戒得",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：三意群各得情境行动，讲解逐条提及"
+  },
+  {
+    "id": 435,
+    "clause_count": 6,
+    "core_groups": 3,
+    "groups": [
+      {
+        "name": "畏天命",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "畏大人",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "畏圣人之言",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：三畏各得情境行动，讲解合为敬畏内核并实质提及"
+  },
+  {
+    "id": 436,
+    "clause_count": 8,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "生知学知困知次第",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "困而不学为下",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：次第与最下两意群各得情境行动，讲解均实质提及"
+  },
+  {
+    "id": 437,
+    "clause_count": 9,
+    "core_groups": 3,
+    "groups": [
+      {
+        "name": "视听色貌言事之思（日常感官言行）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "疑思问忿思难",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "见得思义",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：三组各得情境行动，讲解三组并点出最贴近日常几条"
+  },
+  {
+    "id": 438,
+    "clause_count": 8,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "见善如不及见不善如探汤",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "隐居成志行义达道",
+        "scene_ok": false,
+        "practice_ok": false,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "scenes,practices",
+    "note": "意群「隐居成志、行义达道」无对应情境与行动，三条情境行动全落「见善见不善」"
+  },
+  {
+    "id": 439,
+    "clause_count": 8,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "德行为人所称不系于富",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：齐景公与伯夷叔齐对举实为一意群，三情境行动均对应，讲解实质提及"
+  },
+  {
+    "id": 440,
+    "clause_count": 21,
+    "core_groups": 3,
+    "groups": [
+      {
+        "name": "不学诗无以言",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "不学礼无以立",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "君子远其子（不偏爱）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：三意群各得情境行动，讲解以诗礼并提，远其子以不私藏呼应"
+  },
+  {
+    "id": 441,
+    "clause_count": 7,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "称谓各当其分",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：一意群三情境行动均对应，讲解实质提及"
+  },
+  {
+    "id": 442,
+    "clause_count": 18,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "岁不我与（当及时有为）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：叙事问答核心为「岁不我与」，三情境行动均对应，讲解实质提及"
+  },
+  {
+    "id": 443,
+    "clause_count": 2,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "性相近",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "习相远",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：两意群各得情境行动，讲解两者俱到"
+  },
+  {
+    "id": 444,
+    "clause_count": 1,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "唯上知与下愚不移",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：一意群三情境行动均对应，讲解实质提及"
+  },
+  {
+    "id": 445,
+    "clause_count": 10,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "事无大小皆以道（君子学道则爱人）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "前言戏之（错了就认）",
+        "scene_ok": false,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "scenes",
+    "note": "意群「错了就认」缺对应情境，三条情境全落「小事亦用道」，仅行动与讲解有对应"
+  },
+  {
+    "id": 446,
+    "clause_count": 10,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "如有用我者吾其为东周（借机行道）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：叙事核心为孔子行道之念，三情境行动均对应，讲解实质提及"
+  },
+  {
+    "id": 447,
+    "clause_count": 10,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "恭宽信敏惠为仁（各有其效）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：五德及其效实为一体，三情境行动均对应，讲解五条与回报俱提"
+  },
+  {
+    "id": 448,
+    "clause_count": 15,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "磨而不磷涅而不缁（真坚白不惧环境）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "焉能系而不食（有才当用）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：两意群各得情境行动，讲解均实质提及"
+  },
+  {
+    "id": 449,
+    "clause_count": 17,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "六言六蔽（好德不好学各有其蔽）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "学为补蔽之方（碰壁回头弄明白）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：六蔽与学之功效两意群各得情境行动，讲解均实质提及"
+  },
+  {
+    "id": 450,
+    "clause_count": 9,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "诗可兴观群怨",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "事父事君多识鸟兽草木之名",
+        "scene_ok": false,
+        "practice_ok": false,
+        "insight_ok": false
+      }
+    ],
+    "needs_fix": "scenes,practices,insight",
+    "note": "意群「事父事君、多识草木之名」在情境、行动、讲解中均无对应，全章只覆盖兴观群怨"
+  }
+]

@@ -43,7 +43,7 @@ function saveJSON(key, val) { try { localStorage.setItem(key, JSON.stringify(val
 function pickOne(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 
 function pickGroup() {
-  // 每主题各取 1 章，池内随机；每章从其 3 条情境切片里再随机取 1 条展示
+  // 每主题各取 1 章，池内随机；每章从其情境切片里再随机取 1 条展示
   const group = THEMES.map(th => {
     const pool = THEME_POOL[th];
     const ch = pool[Math.floor(Math.random() * pool.length)];
@@ -114,7 +114,7 @@ function openDetail(item, idx) {
   $("chapterTranslation").textContent = ch.translation || "";
   $("chapterSource").textContent = "《论语 · " + ch.source + "》";
   $("insightText").textContent = ch.insight || "";
-  // 今日行动从 3 条里随机展示 1 条
+  // 今日行动从该章行动列表里随机展示 1 条
   $("practiceText").textContent = pickOne(ch.practices) || "";
   window.scrollTo({ top: 0, behavior: "smooth" });
   $("detailView").scrollIntoView({ block: "start" });

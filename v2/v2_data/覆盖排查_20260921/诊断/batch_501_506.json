@@ -1,0 +1,188 @@
+[
+  {
+    "id": 501,
+    "clause_count": 6,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "谦逊自知，不因夸赞而飘（我墙及肩，一览无余）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "不得其门难窥其深，不可因看不见而轻断（夫子之墙数仞）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：情境/行动/讲解均覆盖自谦与识人深浅两个意群"
+  },
+  {
+    "id": 502,
+    "clause_count": 6,
+    "core_groups": 1,
+    "groups": [
+      {
+        "name": "真贤如日月不可毁，诋毁无效反显毁者不自量力",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：全章为单一主张（真东西毁不掉，不必回击），情境行动讲解均对应"
+  },
+  {
+    "id": 503,
+    "clause_count": 6,
+    "core_groups": 2,
+    "groups": [
+      {
+        "name": "言不可不慎，一句话见智见愚",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "凭具体事实与能力辨认人的分量，不空口吹捧也不盲目贬",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：情境/行动/讲解均覆盖言慎与以实据识人两个意群"
+  },
+  {
+    "id": 504,
+    "clause_count": 16,
+    "core_groups": 5,
+    "groups": [
+      {
+        "name": "守中道、以民为念（允执其中，四海困穷天禄永终，重民食丧祭）",
+        "scene_ok": false,
+        "practice_ok": false,
+        "insight_ok": false
+      },
+      {
+        "name": "有罪自担不委人（有罪不敢赦，朕躬有罪无以万方，罪在朕躬）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "亲仁人、厚赏善人（虽有周亲不如仁人，善人是富）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "修制度、存亡继绝、举逸民（谨权量审法度修废官，兴灭国继绝世举逸民）",
+        "scene_ok": false,
+        "practice_ok": true,
+        "insight_ok": false
+      },
+      {
+        "name": "为政四德：宽则得众，信则民任，敏则有功，公则说",
+        "scene_ok": false,
+        "practice_ok": false,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "scenes,practices,insight",
+    "note": "情境仅覆盖罪己与让功，行动缺守中道与四德，讲解未提允执其中与修政举措"
+  },
+  {
+    "id": 505,
+    "clause_count": 15,
+    "core_groups": 9,
+    "groups": [
+      {
+        "name": "惠而不费（因民之所利而利之）",
+        "scene_ok": false,
+        "practice_ok": false,
+        "insight_ok": true
+      },
+      {
+        "name": "劳而不怨（择可劳而劳之）",
+        "scene_ok": false,
+        "practice_ok": false,
+        "insight_ok": true
+      },
+      {
+        "name": "欲而不贪（欲仁而得仁）",
+        "scene_ok": false,
+        "practice_ok": false,
+        "insight_ok": false
+      },
+      {
+        "name": "泰而不骄（无众寡小大敢慢）",
+        "scene_ok": false,
+        "practice_ok": false,
+        "insight_ok": true
+      },
+      {
+        "name": "威而不猛（正衣冠尊瞻视）",
+        "scene_ok": false,
+        "practice_ok": false,
+        "insight_ok": true
+      },
+      {
+        "name": "不教而杀谓之虐",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "不戒视成谓之暴",
+        "scene_ok": false,
+        "practice_ok": false,
+        "insight_ok": false
+      },
+      {
+        "name": "慢令致期谓之贼",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "出纳之吝谓之贪",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": false
+      }
+    ],
+    "needs_fix": "scenes,practices,insight",
+    "note": "情境与行动仅覆盖四恶中三条，五美及不戒视成无对应；讲解漏欲而不贪、不戒视成、出纳之吝"
+  },
+  {
+    "id": 506,
+    "clause_count": 3,
+    "core_groups": 3,
+    "groups": [
+      {
+        "name": "知命（分清能改与不能改，对改不了者坦然）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "知礼（懂与人相处的分寸，方以立身）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      },
+      {
+        "name": "知言（辨话中真意，方能知人）",
+        "scene_ok": true,
+        "practice_ok": true,
+        "insight_ok": true
+      }
+    ],
+    "needs_fix": "none",
+    "note": "覆盖完整：知命、知礼、知言三意群各有情境与行动对应，讲解逐一讲到"
+  }
+]

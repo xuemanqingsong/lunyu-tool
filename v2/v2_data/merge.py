@@ -31,8 +31,8 @@ def validate(data, ids=range(1, 507)):
                 raise ValueError(f'{d["id"]}.{k} 必须为非空字符串数组')
             if len(set(v)) != len(v):
                 raise ValueError(f'{d["id"]}.{k} 存在重复')
-            if k != 'theme' and len(v) != 3:
-                raise ValueError(f'{d["id"]}.{k} 必须恰有3条')
+            if k != 'theme' and len(v) < 3:
+                raise ValueError(f'{d["id"]}.{k} 至少3条')
             if k == 'theme' and not set(v) <= {'工作', '家庭', '待人', '内心'}:
                 raise ValueError(f'{d["id"]}.theme 未知主题')
     return data
