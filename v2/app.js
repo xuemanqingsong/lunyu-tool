@@ -17,7 +17,7 @@ const THEME_LABEL = { 工作: "工作", 家庭: "家庭", 待人: "待人", 内�
 const K_DAY = "shixi_v2_day";     // {date, groups:[[4张卡],...], remaining, cur}
 const K_WEEK = "shixi_v2_week";   // {week, ids: 已看过的情境id}
 const K_STATS = "shixi_v2_stats"; // {date: {pv, draw, again, claim, feedback}}
-const K_FEEDBACK = "shixi_v2_feedback"; // [{date, time, text, contact}]
+const K_FEEDBACK = "shixi_v2_feedback"; // [{date, time, text}]
 const K_PICK = "shixi_v2_pick";   // {date, picks: {chapterId: {sceneIdx, practiceIdx}}}
 
 // ===== 统计上报接口（占位）=====
@@ -422,20 +422,19 @@ function closeFeedback() { $("fbOverlay").classList.remove("show"); }
 function submitFeedback() {
   const text = $("fbText").value.trim();
   if (!text) { $("fbStatus").textContent = "写点什么再提交吧。"; return; }
-  const contact = $("fbContact").value.trim();
   const list = loadJSON(K_FEEDBACK, []);
-  list.push({ date: todayStr(), time: new Date().toTimeString().slice(0, 5), text: text, contact: contact });
+  list.push({ date: todayStr(), time: new Date().toTimeString().slice(0, 5), text: text });
   if (list.length > 100) list.shift();
   saveJSON(K_FEEDBACK, list);
   bumpStat("feedback");
-  $("fbText").value = ""; $("fbContact").value = "";
+  $("fbText").value = "";
   $("fbStatus").textContent = "已收到，谢谢你的意见 🙏";
   // 可选远程上报反馈内容
   if (REPORT_ENDPOINT) {
     try {
       fetch(REPORT_ENDPOINT, {
         method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ evt: "feedback", date: todayStr(), ts: Date.now(), text: text, contact: contact }),
+        body: JSON.stringify({ evt: "feedback", date: todayStr(), ts: Date.now(), text: text }),
         keepalive: true
       });
     } catch (e) {}
@@ -460,7 +459,7 @@ function showStatsPanel() {
   if (fb.length > 0) {
     html += "<h4>意见反馈（" + fb.length + " 条）</h4>";
     for (const f of fb.slice(-10).reverse()) {
-      html += '<div class="fb-item"><div class="fb-meta">' + f.date + " " + (f.time || "") + (f.contact ? " · " + f.contact : "") + "</div>" + f.text + "</div>";
+      html += '<div class="fb-item"><div class="fb-meta">' + f.date + " " + (f.time || "") + "</div>" + f.text + "</div>";
     }
   }
   html += "</div>";
