@@ -165,7 +165,6 @@ function openDetail(item, idx) {
   $("drawView").style.display = "none";
   $("detailView").style.display = "block";
   $("sceneBanner").textContent = item.scene;
-  currentScene = item.scene;
   currentSceneIdx = item.sceneIdx != null ? item.sceneIdx : (item.scene === ch.scenes[0] ? 0 : 0);
   $("chapterText").textContent = ch.text;
   $("chapterTranslation").textContent = ch.translation || "";
@@ -174,7 +173,6 @@ function openDetail(item, idx) {
   renderPractices(ch, currentSceneIdx);
   window.scrollTo({ top: 0, behavior: "smooth" });
   $("detailView").scrollIntoView({ block: "start" });
-  currentDetail = ch;
 }
 
 // 今日行动：列出该章全部行动，用户自选（默认选中与认领情境同下标的那条）
@@ -265,157 +263,6 @@ function bumpStat(key) {
   }
 }
 
-// ===== 分享卡（Canvas，复用 qian_v2 逻辑改造）=====
-let currentDetail = null;
-let currentScene = "";
-const shareState = { fmt: "v", canvas: null };
-
-function _roundRect(ctx, x, y, w, h, r) {
-  ctx.beginPath();
-  ctx.moveTo(x + r, y);
-  ctx.arcTo(x + w, y, x + w, y + h, r);
-  ctx.arcTo(x + w, y + h, x, y + h, r);
-  ctx.arcTo(x, y + h, x, y, r);
-  ctx.arcTo(x, y, x + w, y, r);
-  ctx.closePath();
-}
-
-function drawShareCard(fmt) {
-  const W = 1080, H = fmt === "v" ? 1440 : 1080;
-  const scale = fmt === "v" ? 1 : 0.96;
-  const canvas = document.createElement("canvas");
-  canvas.width = W; canvas.height = H;
-  const ctx = canvas.getContext("2d");
-
-  const grad = ctx.createLinearGradient(0, 0, W * 0.6, H);
-  grad.addColorStop(0, "#faf6ee");
-  grad.addColorStop(0.55, "#f2ead8");
-  grad.addColorStop(1, "#e8dcc4");
-  ctx.fillStyle = grad;
-  ctx.fillRect(0, 0, W, H);
-
-  ctx.strokeStyle = "rgba(138,122,92,0.35)";
-  ctx.lineWidth = 2;
-  ctx.strokeRect(44, 44, W - 88, H - 88);
-
-  const px = v => v * scale;
-  const pad = fmt === "v" ? 88 : 72;
-  const cur = currentDetail;
-
-  // 顶部品牌 + 日期
-  ctx.fillStyle = "#8a3d2b";
-  ctx.font = "600 " + px(42) + "px 'PingFang SC', sans-serif";
-  ctx.textBaseline = "top";
-  ctx.fillText("时  习", pad, pad + 8);
-  ctx.fillStyle = "#8a7a5c";
-  ctx.font = px(34) + "px 'PingFang SC', sans-serif";
-  ctx.textAlign = "right";
-  ctx.fillText(fmtDateLine(), W - pad, pad + 12);
-  ctx.textAlign = "left";
-
-  // 情境（顶部，小字）
-  ctx.fillStyle = "#4a4030";
-  ctx.font = px(36) + "px 'PingFang SC', sans-serif";
-  const sceneLines = wrapText(ctx, currentScene, W - pad * 2 - 40, px(44));
-  let y = pad + px(150);
-  for (const ln of sceneLines) {
-    ctx.fillText(ln, pad + 20, y);
-    y += px(52);
-  }
-
-  // 句子（书法感：楷体，按句读断行）
-  const raw = cur.text.replace(/[？?！!。；;，,]\s*$/, "");
-  const parts = raw.split(/[，,；;]/).filter(Boolean);
-  let lines = [];
-  if (parts.length >= 2) {
-    if (parts.length <= 4) lines = parts.map(s => s.replace(/^[、\s]+/, ""));
-    else {
-      const half = Math.ceil(parts.length / 2);
-      lines = [parts.slice(0, half).join("，"), parts.slice(half).join("，")];
-    }
-  } else {
-    if (raw.length > 12) {
-      const mid = Math.ceil(raw.length / 2);
-      lines = [raw.slice(0, mid), raw.slice(mid)];
-    } else lines = [raw];
-  }
-  const maxLineLen = Math.max(...lines.map(l => l.length));
-  let fontSize = fmt === "v" ? 122 : 104;
-  const maxW = W - pad * 2 - 40;
-  if (maxLineLen * fontSize * 1.05 > maxW) fontSize = Math.floor(maxW / (maxLineLen * 1.05));
-  fontSize = Math.max(fontSize, 46);
-
-  y += px(30);
-  ctx.fillStyle = "#2a2318";
-  ctx.font = fontSize + "px 'Kaiti SC', 'STKaiti', 'KaiTi', 'Songti SC', serif";
-  ctx.textAlign = "center";
-  const lineH = fontSize * 1.55;
-  const textBlockH = lines.length * lineH;
-
-  // 让句子块居中
-  const availH = H - y - pad * 2 - px(150);
-  y = y + Math.max(0, (availH - textBlockH - px(70)) / 2);
-
-  for (const line of lines) {
-    ctx.fillText(line, W / 2, y);
-    y += lineH;
-  }
-
-  // 出处
-  y += px(14);
-  ctx.fillStyle = "#8a7a5c";
-  ctx.font = px(fmt === "v" ? 46 : 42) + "px 'Songti SC', serif";
-  ctx.fillText("——《论语 · " + cur.source + "》", W / 2, y);
-
-  // 底部品牌区
-  const by = H - pad - px(120);
-  ctx.strokeStyle = "rgba(138,122,92,0.3)";
-  ctx.lineWidth = 1.5;
-  ctx.beginPath();
-  ctx.moveTo(pad + px(60), by);
-  ctx.lineTo(W - pad - px(60), by);
-  ctx.stroke();
-  ctx.fillStyle = "#8a7a5c";
-  ctx.font = px(38) + "px 'PingFang SC', sans-serif";
-  ctx.fillText("时习·论语日课 · 情境版", W / 2, by + px(14));
-  ctx.fillStyle = "#b0a48c";
-  ctx.font = px(34) + "px 'PingFang SC', sans-serif";
-  ctx.fillText("抽一组情境 · 认领像你的那个", W / 2, by + px(78));
-
-  return canvas;
-}
-
-function wrapText(ctx, text, maxW, lineH) {
-  const chars = text.split("");
-  const lines = [];
-  let cur = "";
-  for (const ch of chars) {
-    if (ctx.measureText(cur + ch).width > maxW && cur) {
-      lines.push(cur);
-      cur = ch;
-    } else cur += ch;
-  }
-  if (cur) lines.push(cur);
-  return lines;
-}
-
-function openShare() {
-  $("shareOverlay").classList.add("show");
-  renderShare("v");
-}
-function renderShare(fmt) {
-  shareState.fmt = fmt;
-  document.querySelectorAll(".share-tab").forEach(t => t.classList.toggle("active", t.dataset.fmt === fmt));
-  const wrap = $("shareCanvasWrap");
-  wrap.innerHTML = '<div class="gen-tip">生成中…</div>';
-  setTimeout(() => {
-    const canvas = drawShareCard(fmt);
-    shareState.canvas = canvas;
-    wrap.innerHTML = "";
-    wrap.appendChild(canvas);
-  }, 30);
-}
-
 // ===== 意见反馈 =====
 function openFeedback() { $("fbOverlay").classList.add("show"); $("fbStatus").textContent = ""; }
 function closeFeedback() { $("fbOverlay").classList.remove("show"); }
@@ -481,21 +328,6 @@ $("helpClose").onclick = () => $("helpOverlay").classList.remove("show");
 $("helpOverlay").addEventListener("click", e => {
   if (e.target === $("helpOverlay")) $("helpOverlay").classList.remove("show");
 });
-$("shareBtn").onclick = openShare;
-document.querySelectorAll(".share-tab").forEach(t => {
-  t.onclick = () => renderShare(t.dataset.fmt);
-});
-$("shareClose").onclick = () => $("shareOverlay").classList.remove("show");
-$("shareOverlay").addEventListener("click", e => {
-  if (e.target === $("shareOverlay")) $("shareOverlay").classList.remove("show");
-});
-$("dlBtn").onclick = () => {
-  if (!shareState.canvas) return;
-  const a = document.createElement("a");
-  a.download = "时习·论语日课情境版_" + todayStr() + (shareState.fmt === "v" ? "_竖版" : "_方形") + ".png";
-  a.href = shareState.canvas.toDataURL("image/png");
-  a.click();
-};
 $("feedbackBtn").onclick = openFeedback;
 $("fbClose").onclick = closeFeedback;
 $("fbOverlay").addEventListener("click", e => {
