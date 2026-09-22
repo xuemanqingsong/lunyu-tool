@@ -23,10 +23,10 @@ const K_CHECKIN = "shixi_v2_checkin"; // {date, ids: [已打卡章节id]}
 const K_HELPFUL = "shixi_v2_helpful"; // {date, result: {chapterId: "yes"|"no"}}
 const K_UID = "shixi_v2_uid";     // 匿名访客标识（用于上报去重/统计 UV）
 
-// ===== 统计上报接口（占位）=====
-// 纯静态站点无后端：本地先全量记录。如需远程汇总，填入一个接收 POST JSON 的端点
-// （自建服务 / Cloudflare Worker / Supabase 等），事件会以 {evt, uid, date, ts, extra} 形式 POST 过去。
-const REPORT_ENDPOINT = ""; // 阶段A：接入数据服务后填入
+// ===== 统计上报接口 =====
+// 腾讯云 CloudBase 云函数（云存储落盘），接收 POST JSON
+// 事件以 {evt, uid, date, ts, extra} 形式 POST 过去
+const REPORT_ENDPOINT = "https://lunyu-tool-d8g7ein3wdae230a9-1493747713.ap-shanghai.app.tcloudbase.com/report";
 
 // ===== 匿名访客标识（本地生成一次，用于上报去重/UV）=====
 function getUid() {
