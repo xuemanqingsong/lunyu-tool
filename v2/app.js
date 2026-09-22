@@ -19,11 +19,24 @@ const K_WEEK = "shixi_v2_week";   // {week, ids: 已看过的情境id}
 const K_STATS = "shixi_v2_stats"; // {date: {pv, draw, again, claim, feedback}}
 const K_FEEDBACK = "shixi_v2_feedback"; // [{date, time, text}]
 const K_PICK = "shixi_v2_pick";   // {date, picks: {chapterId: {sceneIdx, practiceIdx}}}
+const K_CHECKIN = "shixi_v2_checkin"; // {date, ids: [已打卡章节id]}
+const K_HELPFUL = "shixi_v2_helpful"; // {date, result: {chapterId: "yes"|"no"}}
+const K_UID = "shixi_v2_uid";     // 匿名访客标识（用于上报去重/统计 UV）
 
 // ===== 统计上报接口（占位）=====
 // 纯静态站点无后端：本地先全量记录。如需远程汇总，填入一个接收 POST JSON 的端点
-// （自建服务 / Formspree / Webhook 等），事件会以 {evt, date, ts} 形式 POST 过去。
-const REPORT_ENDPOINT = ""; // 上线时决定是否填入
+// （自建服务 / Cloudflare Worker / Supabase 等），事件会以 {evt, uid, date, ts, extra} 形式 POST 过去。
+const REPORT_ENDPOINT = ""; // 阶段A：接入数据服务后填入
+
+// ===== 匿名访客标识（本地生成一次，用于上报去重/UV）=====
+function getUid() {
+  let uid = loadJSON(K_UID, null);
+  if (!uid) {
+    uid = "u_" + Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
+    saveJSON(K_UID, uid);
+  }
+  return uid;
+}
 
 // ===== 日期工具 =====
 function todayStr() {
@@ -98,6 +111,8 @@ const $ = id => document.getElementById(id);
 let currentGroup = [];
 let currentGroupIdx = 0;
 let currentSceneIdx = 0;
+let currentChapter = null; // 当前详情页的章节对象
+let currentScene = "";     // 当前详情页的情境文本
 
 // 已抽过的组标签（第1组/第2组/…），可随时翻回
 function renderGroupTabs() {
@@ -165,12 +180,16 @@ function openDetail(item, idx) {
   $("drawView").style.display = "none";
   $("detailView").style.display = "block";
   $("sceneBanner").textContent = item.scene;
+  currentScene = item.scene;
   currentSceneIdx = item.sceneIdx != null ? item.sceneIdx : (item.scene === ch.scenes[0] ? 0 : 0);
   $("chapterText").textContent = ch.text;
   $("chapterTranslation").textContent = ch.translation || "";
   $("chapterSource").textContent = "《论语 · " + ch.source + "》";
   $("insightText").textContent = ch.insight || "";
   renderPractices(ch, currentSceneIdx);
+  currentChapter = ch;
+  renderCheckin(ch.id);
+  renderHelpful(ch.id);
   window.scrollTo({ top: 0, behavior: "smooth" });
   $("detailView").scrollIntoView({ block: "start" });
 }
@@ -198,6 +217,67 @@ function renderPractices(ch, sceneIdx) {
     if (i === want) div.classList.add("selected");
     wrap.appendChild(div);
   });
+}
+
+// ===== 打卡（今天做到了）=====
+function getCheckins() {
+  const rec = loadJSON(K_CHECKIN, null);
+  if (rec && rec.date === todayStr()) return rec.ids || [];
+  return [];
+}
+function renderCheckin(chId) {
+  const btn = $("checkinBtn");
+  const done = getCheckins().indexOf(chId) >= 0;
+  btn.classList.toggle("done", done);
+  btn.textContent = done ? "今天已打卡 ✓" : "今天我做到了 ✓";
+}
+function doCheckin() {
+  const chId = currentChapter.id;
+  const done = getCheckins().indexOf(chId) >= 0;
+  if (done) return; // 当天一次
+  const ids = getCheckins();
+  ids.push(chId);
+  saveJSON(K_CHECKIN, { date: todayStr(), ids: ids });
+  bumpStat("checkin", { chapterId: chId });
+  renderCheckin(chId);
+}
+
+// ===== 这章帮到你了吗 =====
+function getHelpful() {
+  const rec = loadJSON(K_HELPFUL, null);
+  if (rec && rec.date === todayStr()) return rec.result || {};
+  return {};
+}
+function renderHelpful(chId) {
+  const result = getHelpful();
+  const yes = $("helpfulYes"), no = $("helpfulNo");
+  if (result[chId]) {
+    // 已答过：高亮所选，隐藏"没帮到"按钮与标签（点完即消失不追问）
+    yes.classList.toggle("chosen", result[chId] === "yes");
+    no.classList.toggle("chosen", result[chId] === "no");
+    yes.disabled = true;
+    no.disabled = true;
+    $("helpfulNo").style.display = result[chId] === "no" ? "inline-block" : "none";
+    if (result[chId] === "yes") {
+      $("helpfulYes").textContent = "已收到 ✓";
+    }
+  } else {
+    yes.disabled = false;
+    no.disabled = false;
+    yes.classList.remove("chosen");
+    no.classList.remove("chosen");
+    yes.textContent = "帮到";
+    no.style.display = "inline-block";
+  }
+}
+function doHelpful(val) {
+  const chId = currentChapter.id;
+  const result = getHelpful();
+  if (result[chId]) return; // 已答过
+  result[chId] = val;
+  saveJSON(K_HELPFUL, { date: todayStr(), result: result });
+  bumpStat("helpful", { chapterId: chId, value: val });
+  renderHelpful(chId);
 }
 
 function updateAgainCount() {
@@ -242,10 +322,11 @@ function drawNew() {
 }
 
 // ===== 使用统计（本地 + 可选远程上报）=====
-function bumpStat(key) {
+// extra: 可选的附加信息（如章节id、选项值），随上报透传
+function bumpStat(key, extra) {
   const stats = loadJSON(K_STATS, {});
   const t = todayStr();
-  if (!stats[t]) stats[t] = { pv: 0, draw: 0, again: 0, claim: 0, feedback: 0, pick: 0 };
+  if (!stats[t]) stats[t] = { pv: 0, draw: 0, again: 0, claim: 0, feedback: 0, pick: 0, checkin: 0, helpful: 0 };
   stats[t][key] = (stats[t][key] || 0) + 1;
   // 只保留最近 60 天
   const keys = Object.keys(stats).sort();
@@ -256,7 +337,7 @@ function bumpStat(key) {
     try {
       fetch(REPORT_ENDPOINT, {
         method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ evt: key, date: t, ts: Date.now() }),
+        body: JSON.stringify({ evt: key, uid: getUid(), date: t, ts: Date.now(), extra: extra || null }),
         keepalive: true
       });
     } catch (e) {}
@@ -288,6 +369,174 @@ function submitFeedback() {
   }
 }
 
+// ===== 分享图卡（Canvas，重新设计版）=====
+// 信息层级：情境（钩子）→ 论语原文+出处 → 今日行动 → 品牌落款+行动钩子+网址/小程序码占位
+const shareState = { fmt: "v", canvas: null };
+
+function _roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.arcTo(x + w, y, x + w, y + h, r);
+  ctx.arcTo(x + w, y + h, x, y + h, r);
+  ctx.arcTo(x, y + h, x, y, r);
+  ctx.arcTo(x, y, x + w, y, r);
+  ctx.closePath();
+}
+
+function wrapText(ctx, text, maxW, lineH) {
+  const chars = text.split("");
+  const lines = [];
+  let cur = "";
+  for (const ch of chars) {
+    if (ctx.measureText(cur + ch).width > maxW && cur) {
+      lines.push(cur);
+      cur = ch;
+    } else cur += ch;
+  }
+  if (cur) lines.push(cur);
+  return lines;
+}
+
+function drawShareCard(fmt) {
+  const W = 1080, H = fmt === "v" ? 1440 : 1080;
+  const canvas = document.createElement("canvas");
+  canvas.width = W; canvas.height = H;
+  const ctx = canvas.getContext("2d");
+  const ch = currentChapter;
+  const pad = fmt === "v" ? 88 : 72;
+  const px = v => v;
+
+  // 背景（米色渐变，呼应品牌）
+  const grad = ctx.createLinearGradient(0, 0, W * 0.6, H);
+  grad.addColorStop(0, "#faf6ee");
+  grad.addColorStop(0.55, "#f2ead8");
+  grad.addColorStop(1, "#e8dcc4");
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, W, H);
+
+  // 细边框
+  ctx.strokeStyle = "rgba(138,122,92,0.35)";
+  ctx.lineWidth = 2;
+  ctx.strokeRect(44, 44, W - 88, H - 88);
+
+  // 顶部品牌 + 日期
+  ctx.fillStyle = "#8a3d2b";
+  ctx.font = "600 " + px(40) + "px 'PingFang SC', sans-serif";
+  ctx.textBaseline = "top";
+  ctx.fillText("时习·论语日课", pad, pad + 10);
+  ctx.fillStyle = "#8a7a5c";
+  ctx.font = px(30) + "px 'PingFang SC', sans-serif";
+  ctx.textAlign = "right";
+  ctx.fillText(fmtDateLine(), W - pad, pad + 16);
+  ctx.textAlign = "left";
+
+  // 情境（钩子，顶部卡片内突出）
+  const scene = currentScene || (ch.scenes ? ch.scenes[0] : "");
+  const sceneBoxY = pad + px(110);
+  ctx.fillStyle = "#f7f1e4";
+  _roundRect(ctx, pad, sceneBoxY, W - pad * 2, px(130), px(20));
+  ctx.fill();
+  ctx.strokeStyle = "rgba(201,185,142,0.5)";
+  ctx.lineWidth = 1.5;
+  _roundRect(ctx, pad, sceneBoxY, W - pad * 2, px(130), px(20));
+  ctx.stroke();
+  ctx.fillStyle = "#4a4030";
+  ctx.font = px(34) + "px 'PingFang SC', sans-serif";
+  const sceneLines = wrapText(ctx, scene, W - pad * 2 - px(60), px(46));
+  let y = sceneBoxY + px(26);
+  for (const ln of sceneLines.slice(0, 2)) {
+    ctx.fillText(ln, pad + px(30), y);
+    y += px(48);
+  }
+
+  // 论语原文（大号书法体，居中）
+  y = sceneBoxY + px(180);
+  ctx.fillStyle = "#2a2318";
+  ctx.font = "bold " + (fmt === "v" ? 96 : 84) + "px 'Kaiti SC', 'STKaiti', 'KaiTi', 'Songti SC', serif";
+  ctx.textAlign = "center";
+  const raw = (ch.text || "").replace(/[？?！!。；;，,]\s*$/, "");
+  const parts = raw.split(/[，,；;]/).filter(Boolean);
+  let lines = [];
+  if (parts.length >= 2) {
+    if (parts.length <= 4) lines = parts.map(s => s.replace(/^[、\s]+/, ""));
+    else {
+      const half = Math.ceil(parts.length / 2);
+      lines = [parts.slice(0, half).join("，"), parts.slice(half).join("，")];
+    }
+  } else {
+    if (raw.length > 12) {
+      const mid = Math.ceil(raw.length / 2);
+      lines = [raw.slice(0, mid), raw.slice(mid)];
+    } else lines = [raw];
+  }
+  const lineH = px(120);
+  for (const line of lines) {
+    ctx.fillText(line, W / 2, y);
+    y += lineH;
+  }
+
+  // 出处
+  y += px(6);
+  ctx.fillStyle = "#8a7a5c";
+  ctx.font = px(38) + "px 'Songti SC', serif";
+  ctx.fillText("——《论语 · " + (ch.source || "") + "》", W / 2, y);
+
+  // 今日行动（用户选中那条，若有）
+  const picks = getPicks();
+  const picked = picks[ch.id] && picks[ch.id].practiceIdx != null ? (ch.practices || [])[picks[ch.id].practiceIdx] : "";
+  if (picked) {
+    y += px(60);
+    ctx.fillStyle = "#6a7a4c";
+    ctx.font = px(30) + "px 'PingFang SC', sans-serif";
+    ctx.fillText("今日行动", W / 2, y);
+    y += px(48);
+    ctx.fillStyle = "#4a4030";
+    ctx.font = px(34) + "px 'PingFang SC', sans-serif";
+    const actLines = wrapText(ctx, picked, W - pad * 2 - px(40), px(46));
+    for (const ln of actLines.slice(0, 2)) {
+      ctx.fillText(ln, W / 2, y);
+      y += px(48);
+    }
+  }
+
+  // 底部品牌区
+  const by = H - pad - px(150);
+  ctx.strokeStyle = "rgba(138,122,92,0.3)";
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(pad + px(60), by);
+  ctx.lineTo(W - pad - px(60), by);
+  ctx.stroke();
+  ctx.fillStyle = "#8a7a5c";
+  ctx.font = px(36) + "px 'PingFang SC', sans-serif";
+  ctx.fillText("时习·论语日课 · 情境版", W / 2, by + px(16));
+  ctx.fillStyle = "#b0a48c";
+  ctx.font = px(30) + "px 'PingFang SC', sans-serif";
+  ctx.fillText("每天认领一个情境，做一件小事", W / 2, by + px(66));
+  ctx.fillStyle = "#c4b9a0";
+  ctx.font = px(26) + "px 'PingFang SC', sans-serif";
+  ctx.fillText("lunyu-tool · 情境版（小程序码上线后替换）", W / 2, by + px(104));
+
+  return canvas;
+}
+
+function openShare() {
+  $("shareOverlay").classList.add("show");
+  renderShare("v");
+}
+function renderShare(fmt) {
+  shareState.fmt = fmt;
+  document.querySelectorAll(".share-tab").forEach(t => t.classList.toggle("active", t.dataset.fmt === fmt));
+  const wrap = $("shareCanvasWrap");
+  wrap.innerHTML = '<div class="gen-tip">生成中…</div>';
+  setTimeout(() => {
+    const canvas = drawShareCard(fmt);
+    shareState.canvas = canvas;
+    wrap.innerHTML = "";
+    wrap.appendChild(canvas);
+  }, 30);
+}
+
 // ===== 审核统计面板（URL 带 ?stats=1 时显示）=====
 function showStatsPanel() {
   const stats = loadJSON(K_STATS, {});
@@ -296,10 +545,10 @@ function showStatsPanel() {
   let html = '<div class="stats-panel"><h4>使用统计（本地 · 仅审核用）</h4>';
   if (days.length === 0) html += "<p>暂无数据。</p>";
   else {
-    html += "<table><tr><th>日期</th><th>访问</th><th>抽组</th><th>换组</th><th>认领</th><th>选行动</th><th>反馈</th></tr>";
+    html += "<table><tr><th>日期</th><th>访问</th><th>抽组</th><th>换组</th><th>认领</th><th>选行动</th><th>打卡</th><th>帮到</th><th>反馈</th></tr>";
     for (const d of days) {
       const s = stats[d] || {};
-      html += "<tr><td>" + d + "</td><td>" + (s.pv || 0) + "</td><td>" + (s.draw || 0) + "</td><td>" + (s.again || 0) + "</td><td>" + (s.claim || 0) + "</td><td>" + (s.pick || 0) + "</td><td>" + (s.feedback || 0) + "</td></tr>";
+      html += "<tr><td>" + d + "</td><td>" + (s.pv || 0) + "</td><td>" + (s.draw || 0) + "</td><td>" + (s.again || 0) + "</td><td>" + (s.claim || 0) + "</td><td>" + (s.pick || 0) + "</td><td>" + (s.checkin || 0) + "</td><td>" + (s.helpful || 0) + "</td><td>" + (s.feedback || 0) + "</td></tr>";
     }
     html += "</table>";
   }
@@ -334,6 +583,24 @@ $("fbOverlay").addEventListener("click", e => {
   if (e.target === $("fbOverlay")) closeFeedback();
 });
 $("fbSubmit").onclick = submitFeedback;
+$("checkinBtn").onclick = doCheckin;
+$("helpfulYes").onclick = () => doHelpful("yes");
+$("helpfulNo").onclick = () => doHelpful("no");
+$("shareBtn").onclick = openShare;
+document.querySelectorAll(".share-tab").forEach(t => {
+  t.onclick = () => renderShare(t.dataset.fmt);
+});
+$("shareClose").onclick = () => $("shareOverlay").classList.remove("show");
+$("shareOverlay").addEventListener("click", e => {
+  if (e.target === $("shareOverlay")) $("shareOverlay").classList.remove("show");
+});
+$("dlBtn").onclick = () => {
+  if (!shareState.canvas) return;
+  const a = document.createElement("a");
+  a.download = "时习论语日课情境版_" + todayStr() + (shareState.fmt === "v" ? "_竖版" : "_方形") + ".png";
+  a.href = shareState.canvas.toDataURL("image/png");
+  a.click();
+};
 
 // ===== 初始化 =====
 (function init() {

@@ -1,0 +1,14 @@
+# 时习·论语日课 情境版 —— 数据上报 Worker 配置
+# 部署步骤：
+#   1. wrangler login（号主浏览器授权）
+#   2. wrangler kv namespace create EVENTS   # 输出 id，填到下面 bindings 的 id
+#   3. wrangler deploy
+# 部署后把生成的 workers.dev 地址填入前端 v2/app.js 的 REPORT_ENDPOINT
+
+name = "lunyu-tool-events"
+main = "上报服务_cloudflare_worker.js"
+compatibility_date = "2024-01-01"
+
+[[kv_namespaces]]
+binding = "EVENTS"
+id = "在此填入 kv namespace id"

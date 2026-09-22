@@ -146,6 +146,75 @@ body {
   background: #6a7a4c; border-color: #6a7a4c; color: #faf6ee;
 }
 
+/* 打卡按钮 */
+.checkin-btn {
+  display: block; width: 100%; margin-top: 12px; padding: 10px;
+  background: none; border: 1px solid #6a7a4c; color: #6a7a4c;
+  border-radius: 22px; font-size: 14px; cursor: pointer; letter-spacing: 2px;
+  font-family: inherit; transition: all .15s;
+}
+.checkin-btn:hover { background: #e7ebd5; }
+.checkin-btn.done {
+  background: #6a7a4c; color: #faf6ee; cursor: default;
+}
+
+/* 这章帮到你了吗 */
+.helpful-box {
+  margin-top: 16px; text-align: center; padding: 4px 0;
+}
+.helpful-label { font-size: 12px; color: #b0a48c; letter-spacing: 1px; margin-right: 10px; }
+.helpful-btn {
+  padding: 4px 16px; background: none; border: 1px solid #d8cdb4;
+  color: #8a7a5c; border-radius: 16px; font-size: 13px; cursor: pointer;
+  margin-left: 6px; font-family: inherit; transition: all .15s;
+}
+.helpful-btn:hover { border-color: #c9b98e; background: #f7f1e4; }
+.helpful-btn.chosen {
+  background: #8a3d2b; border-color: #8a3d2b; color: #faf6ee;
+}
+.helpful-done {
+  font-size: 12px; color: #b0a48c; letter-spacing: 1px;
+}
+
+/* 分享按钮 */
+.share-btn {
+  display: block; margin: 20px auto 0; padding: 10px 34px;
+  background: none; border: 1px solid #c9b98e; color: #8a7a5c;
+  border-radius: 26px; font-size: 14px; cursor: pointer; letter-spacing: 2px;
+  font-family: inherit;
+}
+.share-btn:hover { background: #f7f1e4; }
+
+/* 分享浮层 */
+.share-overlay {
+  display: none; position: fixed; inset: 0; z-index: 100;
+  background: rgba(58,50,38,0.6); align-items: center; justify-content: center;
+  padding: 20px; overflow-y: auto;
+}
+.share-overlay.show { display: flex; }
+.share-panel {
+  background: #fffdf7; border-radius: 16px; max-width: 480px; width: 100%;
+  padding: 20px; text-align: center;
+}
+.share-tabs { display: flex; gap: 10px; justify-content: center; margin-bottom: 14px; }
+.share-tab {
+  padding: 6px 18px; background: none; border: 1px solid #c9b98e;
+  color: #8a7a5c; border-radius: 18px; font-size: 13px; cursor: pointer;
+}
+.share-tab.active { background: #8a3d2b; border-color: #8a3d2b; color: #faf6ee; }
+#shareCanvasWrap { display: flex; justify-content: center; min-height: 120px; }
+#shareCanvasWrap canvas { max-width: 100%; height: auto; border-radius: 8px; }
+.gen-tip { color: #b0a48c; font-size: 13px; padding: 40px 0; }
+.share-actions { display: flex; gap: 12px; justify-content: center; margin-top: 14px; }
+.dl-btn {
+  padding: 9px 22px; background: #8a3d2b; color: #faf6ee; border: none;
+  border-radius: 22px; font-size: 14px; cursor: pointer;
+}
+.share-close {
+  padding: 9px 22px; background: none; border: 1px solid #c9b98e;
+  color: #8a7a5c; border-radius: 22px; font-size: 14px; cursor: pointer;
+}
+
 /* 动画 */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(10px); }
