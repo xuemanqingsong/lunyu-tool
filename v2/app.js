@@ -1,4 +1,4 @@
-// 时习论语日课 · 情境版（v2）
+// 时习·论语日课 · 情境版（v2）
 // 依赖：data.js 定义 window.LUNYU_V2 = [{id, theme, scene, text, source, translation, insight, practice}]
 "use strict";
 
@@ -14,8 +14,15 @@ for (const th of THEMES) THEME_POOL[th] = DATA.filter(c => c.theme.includes(th))
 const THEME_LABEL = { 工作: "工作", 家庭: "家庭", 待人: "待人", 内心: "内心" };
 
 // ===== localStorage 键 =====
-const K_DAY = "shixi_v2_day";     // {date, ids:[4个id], remaining: 可再来组数}
+const K_DAY = "shixi_v2_day";     // {date, groups:[[4张卡],...], remaining, cur}
 const K_WEEK = "shixi_v2_week";   // {week, ids: 已看过的情境id}
+const K_STATS = "shixi_v2_stats"; // {date: {pv, draw, again, claim, feedback}}
+const K_FEEDBACK = "shixi_v2_feedback"; // [{date, time, text, contact}]
+
+// ===== 统计上报接口（占位）=====
+// 纯静态站点无后端：本地先全量记录。如需远程汇总，填入一个接收 POST JSON 的端点
+// （自建服务 / Formspree / Webhook 等），事件会以 {evt, date, ts} 形式 POST 过去。
+const REPORT_ENDPOINT = ""; // 上线时决定是否填入
 
 // ===== 日期工具 =====
 function todayStr() {
@@ -59,12 +66,16 @@ function pickGroup() {
 
 function getTodayDraw() {
   const rec = loadJSON(K_DAY, null);
-  if (rec && rec.date === todayStr() && rec.items && rec.items.length === 4) return rec;
+  if (rec && rec.date === todayStr() && rec.groups && rec.groups.length >= 1) {
+    // 兼容旧格式：{date, items, remaining} → groups
+    if (!rec.groups) rec.groups = [rec.items];
+    return rec;
+  }
   return null;
 }
-function setTodayDraw(items) {
-  // items: [{id, scene, theme}] 记住每张卡片的章 id、展示的 scene 和主题池
-  saveJSON(K_DAY, { date: todayStr(), items: items, remaining: 2 }); // 初始可再换 2 次
+function setTodayDraw(group) {
+  // group: [{id, scene, theme}]；记住每组卡的章 id、展示的 scene 和主题池
+  saveJSON(K_DAY, { date: todayStr(), groups: [group], remaining: 2, cur: 0 }); // 初始可再换 2 次
 }
 
 // 一周内不重复（记录已看过的情境 id）
@@ -83,6 +94,34 @@ function pushWeekSeen(id) {
 // ===== 渲染 =====
 const $ = id => document.getElementById(id);
 let currentGroup = [];
+let currentGroupIdx = 0;
+
+// 已抽过的组标签（第1组/第2组/…），可随时翻回
+function renderGroupTabs() {
+  const rec = getTodayDraw();
+  const tabs = $("groupTabs");
+  if (!rec || rec.groups.length <= 1) { tabs.innerHTML = ""; return; }
+  tabs.innerHTML = "";
+  rec.groups.forEach((g, i) => {
+    const b = document.createElement("button");
+    b.className = "group-tab" + (i === currentGroupIdx ? " active" : "");
+    b.textContent = "第 " + (i + 1) + " 组";
+    b.onclick = () => { currentGroupIdx = i; showGroupByIndex(i); };
+    tabs.appendChild(b);
+  });
+}
+
+function showGroupByIndex(idx) {
+  const rec = getTodayDraw();
+  if (!rec || !rec.groups[idx]) return;
+  rec.cur = idx;
+  saveJSON(K_DAY, rec);
+  currentGroupIdx = idx;
+  const group = rec.groups[idx]
+    .map(it => ({ ch: BY_ID[it.id], scene: it.scene, theme: it.theme }))
+    .filter(it => it.ch);
+  showGroup(group);
+}
 
 function showGroup(group) {
   currentGroup = group;
@@ -99,6 +138,7 @@ function showGroup(group) {
     cards.appendChild(div);
   });
   $("againRow").style.display = "inline-block";
+  renderGroupTabs();
   updateAgainCount();
 }
 
@@ -106,6 +146,7 @@ function openDetail(item, idx) {
   // 进入详情 = 认领了这个情境，记入本周
   const ch = item.ch;
   pushWeekSeen(ch.id);
+  bumpStat("claim");
   $("drawView").style.display = "none";
   $("detailView").style.display = "block";
   $("sceneBanner").textContent = item.scene;
@@ -134,12 +175,16 @@ function updateAgainCount() {
 function draw() {
   let rec = getTodayDraw();
   let group;
-  if (rec && rec.items.length === 4) {
-    // 当日已有组（含再来一组后的状态）——直接展示
-    group = rec.items.map(it => ({ ch: BY_ID[it.id], scene: it.scene, theme: it.theme })).filter(it => it.ch);
+  if (rec) {
+    // 当日已有组——直接展示当前组（记住的 cur）
+    currentGroupIdx = Math.min(rec.cur || 0, rec.groups.length - 1);
+    group = rec.groups[currentGroupIdx]
+      .map(it => ({ ch: BY_ID[it.id], scene: it.scene, theme: it.theme }))
+      .filter(it => it.ch);
   } else {
     group = pickGroup();
     setTodayDraw(group.map(g => ({ id: g.ch.id, scene: g.scene, theme: g.theme })));
+    bumpStat("draw");
   }
   showGroup(group);
 }
@@ -149,10 +194,35 @@ function drawNew() {
   if (!rec || rec.remaining <= 0) return;
   rec.remaining -= 1;
   const group = pickGroup();
-  rec.items = group.map(g => ({ id: g.ch.id, scene: g.scene, theme: g.theme }));
+  rec.groups.push(group.map(g => ({ id: g.ch.id, scene: g.scene, theme: g.theme })));
+  rec.cur = rec.groups.length - 1;
+  currentGroupIdx = rec.cur;
   saveJSON(K_DAY, rec);
+  bumpStat("again");
   showGroup(group);
   $("cards").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+// ===== 使用统计（本地 + 可选远程上报）=====
+function bumpStat(key) {
+  const stats = loadJSON(K_STATS, {});
+  const t = todayStr();
+  if (!stats[t]) stats[t] = { pv: 0, draw: 0, again: 0, claim: 0, feedback: 0 };
+  stats[t][key] = (stats[t][key] || 0) + 1;
+  // 只保留最近 60 天
+  const keys = Object.keys(stats).sort();
+  while (keys.length > 60) { delete stats[keys.shift()]; }
+  saveJSON(K_STATS, stats);
+  // 远程上报（可选）
+  if (REPORT_ENDPOINT) {
+    try {
+      fetch(REPORT_ENDPOINT, {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ evt: key, date: t, ts: Date.now() }),
+        keepalive: true
+      });
+    } catch (e) {}
+  }
 }
 
 // ===== 分享卡（Canvas，复用 qian_v2 逻辑改造）=====
@@ -267,7 +337,7 @@ function drawShareCard(fmt) {
   ctx.stroke();
   ctx.fillStyle = "#8a7a5c";
   ctx.font = px(38) + "px 'PingFang SC', sans-serif";
-  ctx.fillText("时习论语日课 · 情境版", W / 2, by + px(14));
+  ctx.fillText("时习·论语日课 · 情境版", W / 2, by + px(14));
   ctx.fillStyle = "#b0a48c";
   ctx.font = px(34) + "px 'PingFang SC', sans-serif";
   ctx.fillText("抽一组情境 · 认领像你的那个", W / 2, by + px(78));
@@ -306,6 +376,59 @@ function renderShare(fmt) {
   }, 30);
 }
 
+// ===== 意见反馈 =====
+function openFeedback() { $("fbOverlay").classList.add("show"); $("fbStatus").textContent = ""; }
+function closeFeedback() { $("fbOverlay").classList.remove("show"); }
+function submitFeedback() {
+  const text = $("fbText").value.trim();
+  if (!text) { $("fbStatus").textContent = "写点什么再提交吧。"; return; }
+  const contact = $("fbContact").value.trim();
+  const list = loadJSON(K_FEEDBACK, []);
+  list.push({ date: todayStr(), time: new Date().toTimeString().slice(0, 5), text: text, contact: contact });
+  if (list.length > 100) list.shift();
+  saveJSON(K_FEEDBACK, list);
+  bumpStat("feedback");
+  $("fbText").value = ""; $("fbContact").value = "";
+  $("fbStatus").textContent = "已收到，谢谢你的意见 🙏";
+  // 可选远程上报反馈内容
+  if (REPORT_ENDPOINT) {
+    try {
+      fetch(REPORT_ENDPOINT, {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ evt: "feedback", date: todayStr(), ts: Date.now(), text: text, contact: contact }),
+        keepalive: true
+      });
+    } catch (e) {}
+  }
+}
+
+// ===== 审核统计面板（URL 带 ?stats=1 时显示）=====
+function showStatsPanel() {
+  const stats = loadJSON(K_STATS, {});
+  const fb = loadJSON(K_FEEDBACK, []);
+  const days = Object.keys(stats).sort().slice(-14);
+  let html = '<div class="stats-panel"><h4>使用统计（本地 · 仅审核用）</h4>';
+  if (days.length === 0) html += "<p>暂无数据。</p>";
+  else {
+    html += "<table><tr><th>日期</th><th>访问</th><th>抽组</th><th>换组</th><th>认领</th><th>反馈</th></tr>";
+    for (const d of days) {
+      const s = stats[d] || {};
+      html += "<tr><td>" + d + "</td><td>" + (s.pv || 0) + "</td><td>" + (s.draw || 0) + "</td><td>" + (s.again || 0) + "</td><td>" + (s.claim || 0) + "</td><td>" + (s.feedback || 0) + "</td></tr>";
+    }
+    html += "</table>";
+  }
+  if (fb.length > 0) {
+    html += "<h4>意见反馈（" + fb.length + " 条）</h4>";
+    for (const f of fb.slice(-10).reverse()) {
+      html += '<div class="fb-item"><div class="fb-meta">' + f.date + " " + (f.time || "") + (f.contact ? " · " + f.contact : "") + "</div>" + f.text + "</div>";
+    }
+  }
+  html += "</div>";
+  const wrap = document.createElement("div");
+  wrap.innerHTML = html;
+  document.querySelector(".container").appendChild(wrap);
+}
+
 // ===== 事件绑定 =====
 $("drawBtn").onclick = draw;
 $("againBtn").onclick = drawNew;
@@ -330,16 +453,24 @@ $("shareOverlay").addEventListener("click", e => {
 $("dlBtn").onclick = () => {
   if (!shareState.canvas) return;
   const a = document.createElement("a");
-  a.download = "时习论语日课情境版_" + todayStr() + (shareState.fmt === "v" ? "_竖版" : "_方形") + ".png";
+  a.download = "时习·论语日课情境版_" + todayStr() + (shareState.fmt === "v" ? "_竖版" : "_方形") + ".png";
   a.href = shareState.canvas.toDataURL("image/png");
   a.click();
 };
+$("feedbackBtn").onclick = openFeedback;
+$("fbClose").onclick = closeFeedback;
+$("fbOverlay").addEventListener("click", e => {
+  if (e.target === $("fbOverlay")) closeFeedback();
+});
+$("fbSubmit").onclick = submitFeedback;
 
 // ===== 初始化 =====
 (function init() {
   $("dateLine").textContent = fmtDateLine();
+  bumpStat("pv");
   const today = getTodayDraw();
-  if (today && today.items.length === 4) {
+  if (today) {
     draw(); // 当日已有组，直接展示
   }
+  if (location.search.indexOf("stats") >= 0) showStatsPanel();
 })();

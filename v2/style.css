@@ -1,4 +1,4 @@
-/* 时习论语日课 · 情境版 —— v2 */
+/* 时习·论语日课 · 情境版 —— v2 */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
   font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
@@ -64,6 +64,21 @@ body {
 
 /* 情境卡片组 */
 .cards { display: flex; flex-direction: column; gap: 12px; }
+
+/* 已抽过的组标签（可翻回） */
+.group-tabs {
+  display: flex; gap: 8px; justify-content: center;
+  margin: 0 0 14px; flex-wrap: wrap;
+}
+.group-tab {
+  padding: 4px 14px; background: none; border: 1px solid #e5dcc8;
+  color: #b0a48c; border-radius: 16px; font-size: 12px; cursor: pointer;
+  letter-spacing: 1px; transition: all .15s;
+}
+.group-tab:hover { border-color: #c9b98e; color: #8a7a5c; }
+.group-tab.active {
+  background: #8a3d2b; border-color: #8a3d2b; color: #faf6ee;
+}
 .scene-card {
   background: #fffdf7; border: 1px solid #e5dcc8; border-radius: 14px;
   padding: 18px 20px; cursor: pointer; transition: all .15s;
@@ -166,3 +181,62 @@ body {
 .cards.show .scene-card:nth-child(2) { animation-delay: .06s; }
 .cards.show .scene-card:nth-child(3) { animation-delay: .12s; }
 .cards.show .scene-card:nth-child(4) { animation-delay: .18s; }
+
+/* 页脚反馈入口 */
+.v2-footer { margin-top: 28px; text-align: center; }
+.feedback-link {
+  font-size: 12px; color: #b0a48c; cursor: pointer;
+  border: 1px solid #e5dcc8; border-radius: 16px;
+  padding: 4px 14px; letter-spacing: 1px; transition: all .15s;
+  display: inline-block; background: none; font-family: inherit;
+}
+.feedback-link:hover { border-color: #c9b98e; color: #8a7a5c; background: #f7f1e4; }
+
+/* 反馈浮层 */
+.fb-overlay {
+  display: none; position: fixed; inset: 0; z-index: 120;
+  background: rgba(58,50,38,0.6); align-items: center; justify-content: center;
+  padding: 20px;
+}
+.fb-overlay.show { display: flex; }
+.fb-panel {
+  background: #fffdf7; border-radius: 16px; max-width: 420px; width: 100%;
+  padding: 26px 24px; box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+}
+.fb-panel h3 { font-size: 16px; color: #3a3226; letter-spacing: 2px; margin-bottom: 10px; }
+.fb-desc { font-size: 13px; line-height: 1.8; color: #8a7a5c; margin-bottom: 14px; }
+.fb-panel textarea {
+  width: 100%; border: 1px solid #e5dcc8; border-radius: 10px;
+  padding: 10px 12px; font-size: 14px; line-height: 1.7; color: #3a3226;
+  background: #fffdf7; font-family: inherit; resize: vertical; box-sizing: border-box;
+}
+.fb-panel textarea:focus { outline: none; border-color: #c9b98e; }
+.fb-panel input {
+  width: 100%; margin-top: 10px; border: 1px solid #e5dcc8; border-radius: 10px;
+  padding: 9px 12px; font-size: 13px; color: #3a3226; background: #fffdf7;
+  font-family: inherit; box-sizing: border-box;
+}
+.fb-panel input:focus { outline: none; border-color: #c9b98e; }
+.fb-status { min-height: 20px; font-size: 12px; color: #6a7a4c; margin-top: 8px; }
+.fb-actions { display: flex; gap: 12px; justify-content: flex-end; margin-top: 6px; }
+.fb-submit {
+  padding: 8px 24px; background: #8a3d2b; color: #faf6ee; border: none;
+  border-radius: 22px; font-size: 14px; cursor: pointer; letter-spacing: 2px;
+}
+.fb-close {
+  padding: 8px 20px; background: none; border: 1px solid #c9b98e;
+  color: #8a7a5c; border-radius: 22px; font-size: 14px; cursor: pointer;
+}
+
+/* 审核统计面板（?stats=1 时显示） */
+.stats-panel {
+  margin-top: 26px; background: #f7f1e4; border: 1px solid #e5dcc8;
+  border-radius: 14px; padding: 18px 18px; font-size: 13px; color: #4a4030;
+  line-height: 1.9;
+}
+.stats-panel h4 { font-size: 14px; color: #3a3226; letter-spacing: 1px; margin-bottom: 8px; }
+.stats-panel table { width: 100%; border-collapse: collapse; }
+.stats-panel th, .stats-panel td { padding: 4px 6px; text-align: left; border-bottom: 1px dashed #ddd2b8; font-size: 12px; }
+.stats-panel th { color: #8a7a5c; font-weight: 500; }
+.stats-panel .fb-item { border-bottom: 1px dashed #ddd2b8; padding: 6px 0; }
+.stats-panel .fb-item .fb-meta { font-size: 11px; color: #b0a48c; }

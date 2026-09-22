@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>时习论语日课 · 情境版</title>
+<title>时习·论语日课 · 情境版</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,7 +11,7 @@
 
   <!-- 顶部 -->
   <div class="header">
-    <div class="brand">时习论语日课 · 情境版</div>
+    <div class="brand">时习·论语日课 · 情境版</div>
     <div class="subtitle">选一个熟悉的情境，读一章《论语》</div>
     <button class="help-link" id="helpBtn">使用说明</button>
   </div>
@@ -20,11 +20,11 @@
   <!-- 使用说明浮层 -->
   <div class="help-overlay" id="helpOverlay">
     <div class="help-panel">
-      <h3>时习论语日课 · 情境版</h3>
+      <h3>时习·论语日课 · 情境版</h3>
       <p>每天来这里，抽一组生活情境。</p>
       <p>每组 4 个，涉及工作、家庭、待人和自己的心事。不用挑「最正确的」，选一个最接近你最近生活的情境。</p>
       <p>点开情境，读一读对应的《论语》原文和白话。先想想它与你的生活有什么关系，再看讲解，试着做一件「今日行动」里的小事。</p>
-      <p>这组不像你？点「再来一组」，换一组。</p>
+      <p>这组不像你？点「再来一组」，换一组。抽过的组都可以点上面的「第几组」标签随时翻回去看。</p>
       <button class="help-close" id="helpClose">开始</button>
     </div>
   </div>
@@ -33,6 +33,8 @@
   <div id="drawView">
     <button class="draw-btn" id="drawBtn">抽 一 组 情 境</button>
     <p class="draw-hint">每天一次，4 个情境，挑最像你的那个</p>
+
+    <div class="group-tabs" id="groupTabs"></div>
 
     <div class="cards" id="cards"></div>
 
@@ -78,6 +80,26 @@
         <button class="share-close" id="shareClose">关闭</button>
       </div>
     </div>
+  </div>
+
+  <!-- 意见反馈浮层 -->
+  <div class="fb-overlay" id="fbOverlay">
+    <div class="fb-panel">
+      <h3>意见 · 建议</h3>
+      <p class="fb-desc">你的想法会让这个日课变得更好。说说哪里不顺、想要什么，或者任何想说的话。</p>
+      <textarea id="fbText" rows="4" placeholder="写点什么……"></textarea>
+      <input id="fbContact" type="text" placeholder="联系方式（选填，方便我们回复你）">
+      <div class="fb-status" id="fbStatus"></div>
+      <div class="fb-actions">
+        <button class="fb-submit" id="fbSubmit">提交</button>
+        <button class="fb-close" id="fbClose">关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 页脚 -->
+  <div class="v2-footer">
+    <button class="feedback-link" id="feedbackBtn" type="button">意见 · 建议</button>
   </div>
 
 </div>
