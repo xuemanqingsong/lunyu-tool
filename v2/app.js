@@ -18,6 +18,7 @@ const K_DAY = "shixi_v2_day";     // {date, groups:[[4张卡],...], remaining, c
 const K_WEEK = "shixi_v2_week";   // {week, ids: 已看过的情境id}
 const K_STATS = "shixi_v2_stats"; // {date: {pv, draw, again, claim, feedback}}
 const K_FEEDBACK = "shixi_v2_feedback"; // [{date, time, text, contact}]
+const K_PICK = "shixi_v2_pick";   // {date, picks: {chapterId: {sceneIdx, practiceIdx}}}
 
 // ===== 统计上报接口（占位）=====
 // 纯静态站点无后端：本地先全量记录。如需远程汇总，填入一个接收 POST JSON 的端点
@@ -54,7 +55,8 @@ function pickGroup() {
   const group = THEMES.map(th => {
     const pool = THEME_POOL[th];
     const ch = pool[Math.floor(Math.random() * pool.length)];
-    return { ch: ch, scene: pickOne(ch.scenes), theme: th };
+    const si = Math.floor(Math.random() * ch.scenes.length);
+    return { ch: ch, scene: ch.scenes[si], sceneIdx: si, theme: th };
   });
   // 打乱顺序（避免总是固定主题顺序）
   for (let i = group.length - 1; i > 0; i--) {
@@ -74,7 +76,7 @@ function getTodayDraw() {
   return null;
 }
 function setTodayDraw(group) {
-  // group: [{id, scene, theme}]；记住每组卡的章 id、展示的 scene 和主题池
+  // group: [{id, scene, sceneIdx, theme}]；记住每组卡的章 id、展示的 scene（含下标）和主题池
   saveJSON(K_DAY, { date: todayStr(), groups: [group], remaining: 2, cur: 0 }); // 初始可再换 2 次
 }
 
@@ -95,6 +97,7 @@ function pushWeekSeen(id) {
 const $ = id => document.getElementById(id);
 let currentGroup = [];
 let currentGroupIdx = 0;
+let currentSceneIdx = 0;
 
 // 已抽过的组标签（第1组/第2组/…），可随时翻回
 function renderGroupTabs() {
@@ -118,7 +121,7 @@ function showGroupByIndex(idx) {
   saveJSON(K_DAY, rec);
   currentGroupIdx = idx;
   const group = rec.groups[idx]
-    .map(it => ({ ch: BY_ID[it.id], scene: it.scene, theme: it.theme }))
+    .map(it => ({ ch: BY_ID[it.id], scene: it.scene, sceneIdx: it.sceneIdx, theme: it.theme }))
     .filter(it => it.ch);
   showGroup(group);
 }
@@ -142,6 +145,18 @@ function showGroup(group) {
   updateAgainCount();
 }
 
+// 记录用户今天认领的情境下标与选中的行动下标（用于详情页回看时保持选择）
+function getPicks() {
+  const rec = loadJSON(K_PICK, null);
+  if (rec && rec.date === todayStr() && rec.picks) return rec.picks;
+  return {};
+}
+function savePick(chId, sceneIdx, practiceIdx) {
+  const picks = getPicks();
+  picks[chId] = { sceneIdx: sceneIdx, practiceIdx: practiceIdx };
+  saveJSON(K_PICK, { date: todayStr(), picks: picks });
+}
+
 function openDetail(item, idx) {
   // 进入详情 = 认领了这个情境，记入本周
   const ch = item.ch;
@@ -151,15 +166,40 @@ function openDetail(item, idx) {
   $("detailView").style.display = "block";
   $("sceneBanner").textContent = item.scene;
   currentScene = item.scene;
+  currentSceneIdx = item.sceneIdx != null ? item.sceneIdx : (item.scene === ch.scenes[0] ? 0 : 0);
   $("chapterText").textContent = ch.text;
   $("chapterTranslation").textContent = ch.translation || "";
   $("chapterSource").textContent = "《论语 · " + ch.source + "》";
   $("insightText").textContent = ch.insight || "";
-  // 今日行动从该章行动列表里随机展示 1 条
-  $("practiceText").textContent = pickOne(ch.practices) || "";
+  renderPractices(ch, currentSceneIdx);
   window.scrollTo({ top: 0, behavior: "smooth" });
   $("detailView").scrollIntoView({ block: "start" });
   currentDetail = ch;
+}
+
+// 今日行动：列出该章全部行动，用户自选（默认选中与认领情境同下标的那条）
+function renderPractices(ch, sceneIdx) {
+  const wrap = $("practiceList");
+  wrap.innerHTML = "";
+  const picks = getPicks();
+  const prev = picks[ch.id];
+  const practices = ch.practices || [];
+  practices.forEach((p, i) => {
+    const div = document.createElement("div");
+    div.className = "practice-item";
+    div.textContent = p;
+    div.onclick = () => {
+      // 点选即选中并记住
+      wrap.querySelectorAll(".practice-item").forEach(x => x.classList.remove("selected"));
+      div.classList.add("selected");
+      savePick(ch.id, sceneIdx, i);
+      bumpStat("pick");
+    };
+    // 默认选中：今天已选过则沿用，否则选中与认领情境同下标那条（若存在）
+    const want = prev && prev.practiceIdx != null ? prev.practiceIdx : sceneIdx;
+    if (i === want) div.classList.add("selected");
+    wrap.appendChild(div);
+  });
 }
 
 function updateAgainCount() {
@@ -179,11 +219,11 @@ function draw() {
     // 当日已有组——直接展示当前组（记住的 cur）
     currentGroupIdx = Math.min(rec.cur || 0, rec.groups.length - 1);
     group = rec.groups[currentGroupIdx]
-      .map(it => ({ ch: BY_ID[it.id], scene: it.scene, theme: it.theme }))
+      .map(it => ({ ch: BY_ID[it.id], scene: it.scene, sceneIdx: it.sceneIdx, theme: it.theme }))
       .filter(it => it.ch);
   } else {
     group = pickGroup();
-    setTodayDraw(group.map(g => ({ id: g.ch.id, scene: g.scene, theme: g.theme })));
+    setTodayDraw(group.map(g => ({ id: g.ch.id, scene: g.scene, sceneIdx: g.sceneIdx, theme: g.theme })));
     bumpStat("draw");
   }
   showGroup(group);
@@ -194,7 +234,7 @@ function drawNew() {
   if (!rec || rec.remaining <= 0) return;
   rec.remaining -= 1;
   const group = pickGroup();
-  rec.groups.push(group.map(g => ({ id: g.ch.id, scene: g.scene, theme: g.theme })));
+  rec.groups.push(group.map(g => ({ id: g.ch.id, scene: g.scene, sceneIdx: g.sceneIdx, theme: g.theme })));
   rec.cur = rec.groups.length - 1;
   currentGroupIdx = rec.cur;
   saveJSON(K_DAY, rec);
@@ -207,7 +247,7 @@ function drawNew() {
 function bumpStat(key) {
   const stats = loadJSON(K_STATS, {});
   const t = todayStr();
-  if (!stats[t]) stats[t] = { pv: 0, draw: 0, again: 0, claim: 0, feedback: 0 };
+  if (!stats[t]) stats[t] = { pv: 0, draw: 0, again: 0, claim: 0, feedback: 0, pick: 0 };
   stats[t][key] = (stats[t][key] || 0) + 1;
   // 只保留最近 60 天
   const keys = Object.keys(stats).sort();
@@ -410,10 +450,10 @@ function showStatsPanel() {
   let html = '<div class="stats-panel"><h4>使用统计（本地 · 仅审核用）</h4>';
   if (days.length === 0) html += "<p>暂无数据。</p>";
   else {
-    html += "<table><tr><th>日期</th><th>访问</th><th>抽组</th><th>换组</th><th>认领</th><th>反馈</th></tr>";
+    html += "<table><tr><th>日期</th><th>访问</th><th>抽组</th><th>换组</th><th>认领</th><th>选行动</th><th>反馈</th></tr>";
     for (const d of days) {
       const s = stats[d] || {};
-      html += "<tr><td>" + d + "</td><td>" + (s.pv || 0) + "</td><td>" + (s.draw || 0) + "</td><td>" + (s.again || 0) + "</td><td>" + (s.claim || 0) + "</td><td>" + (s.feedback || 0) + "</td></tr>";
+      html += "<tr><td>" + d + "</td><td>" + (s.pv || 0) + "</td><td>" + (s.draw || 0) + "</td><td>" + (s.again || 0) + "</td><td>" + (s.claim || 0) + "</td><td>" + (s.pick || 0) + "</td><td>" + (s.feedback || 0) + "</td></tr>";
     }
     html += "</table>";
   }

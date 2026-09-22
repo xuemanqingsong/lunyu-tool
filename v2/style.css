@@ -132,6 +132,19 @@ body {
   background: #eef0e0; border-radius: 12px;
   font-size: 14px; line-height: 1.85; color: #4a4030;
 }
+.practice-tip {
+  font-size: 12px; color: #8a9a6a; margin: 4px 0 10px; letter-spacing: 1px;
+}
+.practice-item {
+  background: #fffdf7; border: 1px solid #d8ddc0; border-radius: 10px;
+  padding: 10px 12px; margin-bottom: 8px; cursor: pointer;
+  font-size: 13.5px; line-height: 1.7; color: #4a4030;
+  transition: all .15s;
+}
+.practice-item:hover { border-color: #b6c48a; }
+.practice-item.selected {
+  background: #6a7a4c; border-color: #6a7a4c; color: #faf6ee;
+}
 
 /* 分享按钮 */
 .share-btn {
