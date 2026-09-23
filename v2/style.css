@@ -14,14 +14,13 @@ body {
 
 /* 顶部 */
 .header { text-align: center; margin-bottom: 8px; }
-.help-row { display: flex; justify-content: flex-end; }
 .brand { font-size: 22px; letter-spacing: 4px; color: #3a3226; font-weight: 600; }
-.subtitle { font-size: 12px; color: #b0a48c; margin-top: 4px; }
+.subtitle { font-size: 15px; color: #b0a48c; margin-top: 6px; letter-spacing: 1px; }
 .help-link {
   font-size: 12px; color: #8a7a5c;
   border: 1px solid #c9b98e; border-radius: 16px;
   padding: 4px 12px; cursor: pointer; background: none;
-  letter-spacing: 1px;
+  letter-spacing: 1px; font-family: inherit;
 }
 .help-link:hover { background: #f7f1e4; }
 .date-line {
@@ -60,7 +59,7 @@ body {
 }
 .draw-btn:hover { transform: translateY(-1px); }
 .draw-btn:active { transform: scale(.97); }
-.draw-hint { text-align: center; font-size: 12px; color: #b0a48c; margin: 6px 0 20px; letter-spacing: 1px; }
+.draw-hint { text-align: center; font-size: 15px; color: #b0a48c; margin: 8px 0 20px; letter-spacing: 1px; }
 
 /* 情境卡片组 */
 .cards { display: flex; flex-direction: column; gap: 12px; }
@@ -189,6 +188,7 @@ body {
 
 /* 页脚反馈入口 */
 .v2-footer { margin-top: 28px; text-align: center; }
+.v2-footer .help-link { margin-right: 10px; }
 .feedback-link {
   font-size: 12px; color: #b0a48c; cursor: pointer;
   border: 1px solid #e5dcc8; border-radius: 16px;
