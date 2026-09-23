@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>时习·论语日课 · 情境版 — 数据看板</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #faf6ee; color: #3a3226; min-height: 100vh;
+    padding: 32px 16px 60px;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+  .header { text-align: center; margin-bottom: 24px; }
+  .brand { font-size: 22px; letter-spacing: 3px; color: #3a3226; font-weight: 600; }
+  .subtitle { font-size: 13px; color: #b0a48c; margin-top: 6px; letter-spacing: 1px; }
+  .refresh-line { text-align: center; font-size: 12px; color: #c4b9a0; margin-top: 10px; }
+  .refresh-line button {
+    background: none; border: 1px solid #c9b98e; color: #8a7a5c;
+    border-radius: 14px; padding: 2px 12px; font-size: 12px; cursor: pointer; margin-left: 8px;
+  }
+
+  .metrics { display: flex; gap: 12px; justify-content: center; margin: 20px 0; flex-wrap: wrap; }
+  .metric {
+    background: #fffdf7; border: 1px solid #e5dcc8; border-radius: 14px;
+    padding: 14px 22px; text-align: center; min-width: 110px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .metric .num { font-size: 26px; font-weight: 600; color: #8a3d2b; }
+  .metric .label { font-size: 12px; color: #8a7a5c; margin-top: 4px; letter-spacing: 1px; }
+
+  .card {
+    background: #fffdf7; border: 1px solid #e5dcc8; border-radius: 16px;
+    padding: 20px; margin-bottom: 18px; box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+  }
+  .card h2 { font-size: 15px; color: #3a3226; letter-spacing: 2px; margin-bottom: 14px; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { padding: 7px 8px; text-align: center; font-size: 13px; border-bottom: 1px solid #f0e8d8; }
+  th { color: #8a7a5c; font-weight: 500; font-size: 12px; letter-spacing: 1px; }
+  td:first-child, th:first-child { text-align: left; color: #4a4030; }
+  tr:hover td { background: #faf6ee; }
+  .fb-item { padding: 10px 4px; border-bottom: 1px dashed #e8ddc4; font-size: 13.5px; line-height: 1.7; }
+  .fb-item:last-child { border-bottom: none; }
+  .fb-meta { font-size: 11px; color: #b0a48c; margin-bottom: 3px; }
+  .empty { text-align: center; color: #b0a48c; font-size: 13px; padding: 20px 0; }
+  .err { text-align: center; color: #8a3d2b; font-size: 13px; padding: 20px; background: #fdf3ef; border-radius: 10px; }
+  .loading { text-align: center; color: #b0a48c; font-size: 13px; padding: 30px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="brand">时习·论语日课 · 情境版</div>
+    <div class="subtitle">数据看板 · 每日使用汇总</div>
+    <div class="refresh-line">
+      <span id="updateTime">加载中…</span>
+      <button onclick="loadAll()">刷新</button>
+    </div>
+  </div>
+
+  <div class="metrics" id="metrics"></div>
+  <div class="card" id="dailyCard"><h2>每日汇总</h2><div id="dailyBody" class="loading">加载中…</div></div>
+  <div class="card" id="feedbackCard"><h2>意见反馈</h2><div id="feedbackBody" class="loading">加载中…</div></div>
+</div>
+
+<script>
+const REPORT = "https://lunyu-tool-d8g7ein3wdae230a9-1493747713.ap-shanghai.app.tcloudbase.com/report";
+const EVT_LABELS = { pv: "访问", draw: "抽组", again: "换组", claim: "认领", pick: "选行动", checkin: "打卡", helpful: "帮到", feedback: "反馈", uv: "独立用户" };
+
+function todayStr() {
+  const d = new Date();
+  return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+}
+function fmtDate(s) {
+  const p = s.split("-");
+  return p[1] + "/" + p[2];
+}
+function esc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+
+async function fetchReport(params) {
+  const url = REPORT + "?" + new URLSearchParams(params);
+  const res = await fetch(url);
+  if (!res.ok) throw new Error("HTTP " + res.status);
+  return res.json();
+}
+
+async function loadAll() {
+  document.getElementById("updateTime").textContent = "更新中…";
+  const today = todayStr();
+  const from = new Date(Date.now() - 13 * 86400000).toISOString().slice(0, 10);
+
+  try {
+    const [daily, fb] = await Promise.all([
+      fetchReport({ report: "1", from: from, to: today }),
+      fetchReport({ report: "feedback", from: from, to: today })
+    ]);
+
+    const days = daily.days || {};
+    const dates = Object.keys(days).sort().reverse();
+
+    // 指标卡
+    let totalPv = 0, totalClaim = 0, totalCheckin = 0, totalFb = 0;
+    for (const d of dates) {
+      totalPv += days[d].pv || 0;
+      totalClaim += days[d].claim || 0;
+      totalCheckin += days[d].checkin || 0;
+      totalFb += days[d].feedback || 0;
+    }
+    const metricsHtml =
+      '<div class="metric"><div class="num">' + totalPv + '</div><div class="label">总访问</div></div>' +
+      '<div class="metric"><div class="num">' + totalClaim + '</div><div class="label">总认领</div></div>' +
+      '<div class="metric"><div class="num">' + totalCheckin + '</div><div class="label">总打卡</div></div>' +
+      '<div class="metric"><div class="num">' + totalFb + '</div><div class="label">总反馈</div></div>';
+    document.getElementById("metrics").innerHTML = metricsHtml;
+
+    // 每日表格
+    if (dates.length === 0) {
+      document.getElementById("dailyBody").innerHTML = '<div class="empty">暂无数据</div>';
+    } else {
+      let rows = "";
+      for (const d of dates) {
+        const s = days[d];
+        rows += "<tr><td>" + fmtDate(d) + "</td>" +
+          "<td>" + (s.pv || 0) + "</td>" +
+          "<td>" + (s.draw || 0) + "</td>" +
+          "<td>" + (s.again || 0) + "</td>" +
+          "<td>" + (s.claim || 0) + "</td>" +
+          "<td>" + (s.pick || 0) + "</td>" +
+          "<td>" + (s.checkin || 0) + "</td>" +
+          "<td>" + (s.helpful || 0) + "</td>" +
+          "<td>" + (s.feedback || 0) + "</td>" +
+          "<td>" + (s.uv || 0) + "</td></tr>";
+      }
+      document.getElementById("dailyBody").innerHTML =
+        "<table><tr><th>日期</th><th>访问</th><th>抽组</th><th>换组</th><th>认领</th><th>选行动</th><th>打卡</th><th>帮到</th><th>反馈</th><th>用户</th></tr>" +
+        rows + "</table>";
+    }
+
+    // 反馈
+    const list = fb.feedbacks || [];
+    if (list.length === 0) {
+      document.getElementById("feedbackBody").innerHTML = '<div class="empty">暂无反馈</div>';
+    } else {
+      let html = "";
+      for (const f of list.slice(0, 50)) {
+        const ts = f.ts ? new Date(f.ts).toLocaleString("zh-CN", { hour12: false }) : (f.date || "");
+        html += '<div class="fb-item"><div class="fb-meta">' + esc(ts) + "</div>" + esc(f.text) + "</div>";
+      }
+      document.getElementById("feedbackBody").innerHTML = html;
+    }
+
+    document.getElementById("updateTime").textContent = "更新于 " + new Date().toLocaleTimeString("zh-CN", { hour12: false });
+  } catch (e) {
+    const msg = '<div class="err">加载失败：' + esc(e.message) + "</div>";
+    document.getElementById("metrics").innerHTML = msg;
+    document.getElementById("dailyBody").innerHTML = msg;
+    document.getElementById("feedbackBody").innerHTML = msg;
+    document.getElementById("updateTime").textContent = "更新失败";
+  }
+}
+
+loadAll();
+setInterval(loadAll, 60000);
+</script>
+</body>
+</html>
