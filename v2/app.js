@@ -284,7 +284,7 @@ function updateAgainCount() {
   const rec = getTodayDraw();
   if (rec) {
     const n = rec.remaining;
-    $("againCount").textContent = n > 0 ? "还可以换 " + n + " 组" : "今天的组已用完，明天再来";
+    $("againCount").textContent = n > 0 ? "还可以换 " + n + " 组" : "今天可抽选的情境已用完，明天再来";
     $("againBtn").style.opacity = n > 0 ? 1 : 0.4;
   }
 }
