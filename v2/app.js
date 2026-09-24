@@ -246,6 +246,10 @@ function doCheckin() {
 
 // ===== 生成长图（打卡后：把详情页整块存成一张图，做记录/分享）=====
 let longpicCanvas = null;
+function longpicBlob(cb) {
+  if (!longpicCanvas) return;
+  longpicCanvas.toBlob(blob => cb(blob), "image/png");
+}
 function openLongpic() {
   $("longpicOverlay").classList.add("show");
   $("longpicTip").style.display = "block";
@@ -268,6 +272,18 @@ function openLongpic() {
       wrap.style.display = "flex";
       $("longpicActions").style.display = "flex";
       $("longpicHint").style.display = "block";
+      // iOS Safari 等支持 Web Share Level 2：调系统面板，可「存储图像」进相册/带图分享到 App
+      if (navigator.canShare) {
+        longpicBlob(blob => {
+          const file = new File([blob], "lunyu_rikq.png", { type: "image/png" });
+          if (navigator.canShare({ files: [file] })) {
+            $("longpicShare").style.display = "inline-block";
+          }
+        });
+      } else {
+        // 不支持时给「下载图片」兜底（电脑等场景仍需要）
+        $("longpicSave").style.display = "inline-block";
+      }
     }).catch(() => {
       $("longpicTip").textContent = "生成失败，请重试一次";
     });
@@ -449,6 +465,13 @@ $("fbOverlay").addEventListener("click", e => {
 $("fbSubmit").onclick = submitFeedback;
 $("checkinBtn").onclick = doCheckin;
 $("longpicBtn").onclick = openLongpic;
+$("longpicShare").onclick = () => {
+  // 系统分享面板：iPhone 上可选「存储图像」进相册，或直接带图分享到微信/小红书
+  longpicBlob(blob => {
+    const file = new File([blob], "论语日课打卡_" + todayStr() + ".png", { type: "image/png" });
+    navigator.share({ files: [file], title: "论语日课打卡" }).catch(() => {});
+  });
+};
 $("longpicSave").onclick = () => {
   if (!longpicCanvas) return;
   const a = document.createElement("a");

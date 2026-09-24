@@ -174,9 +174,12 @@ body {
 .share-panel {
   background: #fffdf7; border-radius: 16px; max-width: 480px; width: 100%;
   padding: 20px; text-align: center;
+  margin: auto; /* 内容高于视口时靠此可从顶部滚动（配合 align-items:stretch） */
 }
+.share-overlay.show { align-items: stretch; }
 #longpicWrap { display: flex; justify-content: center; }
 #longpicWrap canvas { max-width: 100%; height: auto; border-radius: 8px; }
+.longpic-hint { color: #8a7a5c; font-size: 13px; letter-spacing: 1px; padding-bottom: 10px; }
 .gen-tip { color: #b0a48c; font-size: 13px; padding: 24px 0; }
 .share-actions { display: flex; gap: 12px; justify-content: center; margin-top: 14px; }
 .dl-btn {
