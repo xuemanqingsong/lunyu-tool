@@ -178,7 +178,8 @@ body {
 }
 .share-overlay.show { align-items: stretch; }
 #longpicWrap { display: flex; justify-content: center; }
-#longpicWrap canvas { max-width: 100%; height: auto; border-radius: 8px; }
+#longpicWrap canvas, #longpicWrap img { max-width: 100%; height: auto; border-radius: 8px; }
+#longpicWrap img { -webkit-touch-callout: default; user-select: auto; }
 .longpic-hint { color: #8a7a5c; font-size: 13px; letter-spacing: 1px; padding-bottom: 10px; }
 .gen-tip { color: #b0a48c; font-size: 13px; padding: 24px 0; }
 .share-actions { display: flex; gap: 12px; justify-content: center; margin-top: 14px; }

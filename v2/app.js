@@ -268,7 +268,11 @@ function openLongpic() {
       $("longpicTip").style.display = "none";
       const wrap = $("longpicWrap");
       wrap.innerHTML = "";
-      wrap.appendChild(canvas);
+      // 用 <img> 而非 canvas 展示：iOS 的长按存图菜单只认 img 元素
+      const img = document.createElement("img");
+      img.src = canvas.toDataURL("image/png");
+      img.alt = "论语日课打卡长图";
+      wrap.appendChild(img);
       wrap.style.display = "flex";
       $("longpicActions").style.display = "flex";
       $("longpicHint").style.display = "block";
