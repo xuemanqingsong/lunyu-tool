@@ -157,6 +157,37 @@ body {
   background: #6a7a4c; color: #faf6ee; cursor: default;
 }
 
+/* 打卡后的生成长图按钮 + 长图浮层 */
+.longpic-btn {
+  display: block; width: 100%; margin-top: 8px; padding: 10px;
+  background: none; border: 1px solid #c9b98e; color: #8a7a5c;
+  border-radius: 22px; font-size: 14px; cursor: pointer; letter-spacing: 2px;
+  font-family: inherit; transition: all .15s;
+}
+.longpic-btn:hover { background: #f7f1e4; }
+.share-overlay {
+  display: none; position: fixed; inset: 0; z-index: 130;
+  background: rgba(58,50,38,0.6); align-items: center; justify-content: center;
+  padding: 20px; overflow-y: auto;
+}
+.share-overlay.show { display: flex; }
+.share-panel {
+  background: #fffdf7; border-radius: 16px; max-width: 480px; width: 100%;
+  padding: 20px; text-align: center;
+}
+#longpicWrap { display: flex; justify-content: center; }
+#longpicWrap canvas { max-width: 100%; height: auto; border-radius: 8px; }
+.gen-tip { color: #b0a48c; font-size: 13px; padding: 24px 0; }
+.share-actions { display: flex; gap: 12px; justify-content: center; margin-top: 14px; }
+.dl-btn {
+  padding: 9px 22px; background: #8a3d2b; color: #faf6ee; border: none;
+  border-radius: 22px; font-size: 14px; cursor: pointer;
+}
+.share-close {
+  padding: 9px 22px; background: none; border: 1px solid #c9b98e;
+  color: #8a7a5c; border-radius: 22px; font-size: 14px; cursor: pointer;
+}
+
 /* 这章帮到你了吗 */
 .helpful-box {
   margin-top: 16px; text-align: center; padding: 4px 0;

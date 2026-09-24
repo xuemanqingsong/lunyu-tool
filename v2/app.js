@@ -230,6 +230,8 @@ function renderCheckin(chId) {
   const done = getCheckins().indexOf(chId) >= 0;
   btn.classList.toggle("done", done);
   btn.textContent = done ? "今天已打卡 ✓" : "今天我做到了 ✓";
+  // 打卡后出现「生成长图」入口
+  $("longpicBtn").style.display = done ? "block" : "none";
 }
 function doCheckin() {
   const chId = currentChapter.id;
@@ -240,6 +242,36 @@ function doCheckin() {
   saveJSON(K_CHECKIN, { date: todayStr(), ids: ids });
   bumpStat("checkin", { chapterId: chId });
   renderCheckin(chId);
+}
+
+// ===== 生成长图（打卡后：把详情页整块存成一张图，做记录/分享）=====
+let longpicCanvas = null;
+function openLongpic() {
+  $("longpicOverlay").classList.add("show");
+  $("longpicTip").style.display = "block";
+  $("longpicWrap").style.display = "none";
+  $("longpicActions").style.display = "none";
+  $("longpicHint").style.display = "none";
+  longpicCanvas = null;
+  // 等浮层渲染完再截图（html2canvas 不认 display:none 的祖先）
+  setTimeout(() => {
+    html2canvas($("detailView"), {
+      backgroundColor: "#faf6ee",
+      scale: Math.min(2, window.devicePixelRatio || 1) * 1.25,
+      useCORS: true
+    }).then(canvas => {
+      longpicCanvas = canvas;
+      $("longpicTip").style.display = "none";
+      const wrap = $("longpicWrap");
+      wrap.innerHTML = "";
+      wrap.appendChild(canvas);
+      wrap.style.display = "flex";
+      $("longpicActions").style.display = "flex";
+      $("longpicHint").style.display = "block";
+    }).catch(() => {
+      $("longpicTip").textContent = "生成失败，请重试一次";
+    });
+  }, 60);
 }
 
 // ===== 这章帮到你了吗 =====
@@ -416,6 +448,18 @@ $("fbOverlay").addEventListener("click", e => {
 });
 $("fbSubmit").onclick = submitFeedback;
 $("checkinBtn").onclick = doCheckin;
+$("longpicBtn").onclick = openLongpic;
+$("longpicSave").onclick = () => {
+  if (!longpicCanvas) return;
+  const a = document.createElement("a");
+  a.download = "论语日课打卡_" + todayStr() + ".png";
+  a.href = longpicCanvas.toDataURL("image/png");
+  a.click();
+};
+$("longpicClose").onclick = () => $("longpicOverlay").classList.remove("show");
+$("longpicOverlay").addEventListener("click", e => {
+  if (e.target === $("longpicOverlay")) $("longpicOverlay").classList.remove("show");
+});
 $("helpfulYes").onclick = () => doHelpful("yes");
 $("helpfulNo").onclick = () => doHelpful("no");
 

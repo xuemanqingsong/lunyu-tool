@@ -62,6 +62,7 @@
         <div class="practice-tip">挑一件今天愿意做的小事</div>
         <div id="practiceList"></div>
         <button class="checkin-btn" id="checkinBtn" type="button">今天我做到了 ✓</button>
+        <button class="longpic-btn" id="longpicBtn" type="button" style="display:none">生成长图 · 存为记录</button>
       </div>
 
       <div class="helpful-box">
@@ -69,6 +70,19 @@
         <button class="helpful-btn" id="helpfulYes" type="button">帮到</button>
         <button class="helpful-btn" id="helpfulNo" type="button">没帮到</button>
       </div>
+    </div>
+  </div>
+
+  <!-- 长图浮层 -->
+  <div class="share-overlay" id="longpicOverlay">
+    <div class="share-panel">
+      <div class="gen-tip" id="longpicTip">正在生成长图…</div>
+      <div id="longpicWrap" style="display:none"></div>
+      <div class="share-actions" id="longpicActions" style="display:none">
+        <button class="dl-btn" id="longpicSave" type="button">保存图片</button>
+        <button class="share-close" id="longpicClose" type="button">关闭</button>
+      </div>
+      <div class="gen-tip" id="longpicHint" style="display:none; padding:10px 0 0">长图已含本页全部内容，可做记录或分享</div>
     </div>
   </div>
 
@@ -95,6 +109,7 @@
 </div>
 
 <script src="data.js"></script>
+<script src="html2canvas.min.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
