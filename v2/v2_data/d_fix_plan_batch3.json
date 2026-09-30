@@ -1,0 +1,582 @@
+{
+  "82": [
+    {
+      "pair": 1,
+      "action": "keep",
+      "idx": 0
+    }
+  ],
+  "134": [
+    {
+      "pair": 3,
+      "action": "keep",
+      "idx": 2
+    }
+  ],
+  "147": [
+    {
+      "pair": 2,
+      "action": "keep",
+      "idx": 1
+    },
+    {
+      "pair": 3,
+      "action": "keep",
+      "idx": 2
+    }
+  ],
+  "176": [
+    {
+      "pair": 2,
+      "action": "swap",
+      "pairs": [
+        1,
+        2
+      ]
+    }
+  ],
+  "182": [
+    {
+      "pair": 3,
+      "action": "keep",
+      "idx": 2
+    }
+  ],
+  "186": [
+    {
+      "pair": 2,
+      "action": "rewrite_practice",
+      "idx": 1,
+      "text": "今天让出一件事后，忍住不向人提起自己作过牺牲，让那次让步就此过去"
+    },
+    {
+      "pair": 3,
+      "action": "keep",
+      "idx": 2
+    }
+  ],
+  "206": [
+    {
+      "pair": 2,
+      "action": "swap",
+      "pairs": [
+        0,
+        1
+      ]
+    },
+    {
+      "pair": 3,
+      "action": "rewrite_practice",
+      "idx": 2,
+      "text": "今天比较一项可减的舒适开销与一项应保留的实际需要，各写一行再决定"
+    }
+  ],
+  "218": [
+    {
+      "pair": 2,
+      "action": "swap",
+      "pairs": [
+        1,
+        2
+      ]
+    },
+    {
+      "pair": 3,
+      "action": "keep",
+      "idx": 2
+    }
+  ],
+  "235": [
+    {
+      "pair": 2,
+      "action": "rewrite_practice",
+      "idx": 1,
+      "text": "今天守住与别人约定好的份额，把怕吃亏的心思放一放，不临时改约定"
+    }
+  ],
+  "240": [
+    {
+      "pair": 2,
+      "action": "rewrite_practice",
+      "idx": 1,
+      "text": "今天陪同或带路时放慢节奏，留意同行者是否跟得上，必要时等一等"
+    }
+  ],
+  "244": [
+    {
+      "pair": 3,
+      "action": "rewrite_practice",
+      "idx": 2,
+      "text": "今天处理一件重要事务时，做完一个阶段再看消息，不边做边刷"
+    }
+  ],
+  "255": [
+    {
+      "pair": 3,
+      "action": "swap",
+      "pairs": [
+        1,
+        2
+      ]
+    }
+  ],
+  "257": [
+    {
+      "pair": 2,
+      "action": "rewrite_practice",
+      "idx": 1,
+      "text": "今天评价大家时，按各自的所长分别看，不用同一项成绩衡量所有人"
+    }
+  ],
+  "261": [
+    {
+      "pair": 1,
+      "action": "swap",
+      "pairs": [
+        0,
+        2
+      ]
+    },
+    {
+      "pair": 2,
+      "action": "swap",
+      "pairs": [
+        1,
+        2
+      ]
+    },
+    {
+      "pair": 3,
+      "action": "keep",
+      "idx": 2
+    }
+  ],
+  "272": [
+    {
+      "pair": 2,
+      "action": "rewrite_practice",
+      "idx": 1,
+      "text": "今天评价同伴时，只描述具体行为，不给性格下结论"
+    }
+  ],
+  "276": [
+    {
+      "pair": 2,
+      "action": "rewrite_practice",
+      "idx": 1,
+      "text": "今天给朋友建议前，先问清他犹豫的具体原因，不急着给答案"
+    }
+  ],
+  "281": [
+    {
+      "pair": 1,
+      "action": "swap",
+      "pairs": [
+        0,
+        1
+      ]
+    },
+    {
+      "pair": 2,
+      "action": "swap",
+      "pairs": [
+        1,
+        2
+      ]
+    },
+    {
+      "pair": 3,
+      "action": "keep",
+      "idx": 2
+    }
+  ],
+  "298": [
+    {
+      "pair": 3,
+      "action": "keep",
+      "idx": 2
+    }
+  ],
+  "307": [
+    {
+      "pair": 3,
+      "action": "keep",
+      "idx": 2
+    }
+  ],
+  "308": [
+    {
+      "pair": 2,
+      "action": "keep",
+      "idx": 1
+    }
+  ],
+  "316": [
+    {
+      "pair": 2,
+      "action": "swap",
+      "pairs": [
+        1,
+        2
+      ]
+    }
+  ],
+  "317": [
+    {
+      "pair": 2,
+      "action": "swap",
+      "pairs": [
+        0,
+        1
+      ]
+    },
+    {
+      "pair": 3,
+      "action": "swap",
+      "pairs": [
+        1,
+        2
+      ]
+    }
+  ],
+  "329": [
+    {
+      "pair": 2,
+      "action": "swap",
+      "pairs": [
+        0,
+        1
+      ]
+    },
+    {
+      "pair": 3,
+      "action": "rewrite_practice",
+      "idx": 2,
+      "text": "今天把对家人的那份认真，用在公共事务的一件小事上"
+    }
+  ],
+  "337": [
+    {
+      "pair": 2,
+      "action": "swap",
+      "pairs": [
+        1,
+        2
+      ]
+    },
+    {
+      "pair": 3,
+      "action": "keep",
+      "idx": 2
+    }
+  ],
+  "345": [
+    {
+      "pair": 2,
+      "action": "swap",
+      "pairs": [
+        0,
+        2
+      ]
+    },
+    {
+      "pair": 3,
+      "action": "swap",
+      "pairs": [
+        1,
+        2
+      ]
+    }
+  ],
+  "354": [
+    {
+      "pair": 2,
+      "action": "swap",
+      "pairs": [
+        0,
+        1
+      ]
+    },
+    {
+      "pair": 2,
+      "action": "swap",
+      "pairs": [
+        0,
+        2
+      ]
+    }
+  ],
+  "361": [
+    {
+      "pair": 3,
+      "action": "swap",
+      "pairs": [
+        1,
+        2
+      ]
+    }
+  ],
+  "370": [
+    {
+      "pair": 1,
+      "action": "swap",
+      "pairs": [
+        0,
+        2
+      ]
+    },
+    {
+      "pair": 2,
+      "action": "swap",
+      "pairs": [
+        1,
+        2
+      ]
+    },
+    {
+      "pair": 3,
+      "action": "keep",
+      "idx": 2
+    }
+  ],
+  "374": [
+    {
+      "pair": 1,
+      "action": "swap",
+      "pairs": [
+        0,
+        1
+      ]
+    },
+    {
+      "pair": 3,
+      "action": "swap",
+      "pairs": [
+        1,
+        2
+      ]
+    }
+  ],
+  "381": [
+    {
+      "pair": 2,
+      "action": "swap",
+      "pairs": [
+        0,
+        1
+      ]
+    },
+    {
+      "pair": 3,
+      "action": "keep",
+      "idx": 2
+    }
+  ],
+  "385": [
+    {
+      "pair": 1,
+      "action": "keep",
+      "idx": 0
+    },
+    {
+      "pair": 2,
+      "action": "keep",
+      "idx": 1
+    }
+  ],
+  "393": [
+    {
+      "pair": 2,
+      "action": "rewrite_practice",
+      "idx": 1,
+      "text": "今天与对方深谈前，先把必要背景补上，再继续深入内容"
+    }
+  ],
+  "398": [
+    {
+      "pair": 2,
+      "action": "swap",
+      "pairs": [
+        0,
+        2
+      ]
+    },
+    {
+      "pair": 3,
+      "action": "swap",
+      "pairs": [
+        1,
+        2
+      ]
+    }
+  ],
+  "403": [
+    {
+      "pair": 3,
+      "action": "swap",
+      "pairs": [
+        0,
+        2
+      ]
+    }
+  ],
+  "409": [
+    {
+      "pair": 1,
+      "action": "keep",
+      "idx": 0
+    }
+  ],
+  "421": [
+    {
+      "pair": 3,
+      "action": "keep",
+      "idx": 2
+    }
+  ],
+  "424": [
+    {
+      "pair": 2,
+      "action": "swap",
+      "pairs": [
+        1,
+        2
+      ]
+    },
+    {
+      "pair": 3,
+      "action": "keep",
+      "idx": 2
+    }
+  ],
+  "430": [
+    {
+      "pair": 1,
+      "action": "swap",
+      "pairs": [
+        0,
+        1
+      ]
+    },
+    {
+      "pair": 2,
+      "action": "keep",
+      "idx": 1
+    }
+  ],
+  "435": [
+    {
+      "pair": 1,
+      "action": "swap",
+      "pairs": [
+        0,
+        2
+      ]
+    },
+    {
+      "pair": 2,
+      "action": "keep",
+      "idx": 1
+    },
+    {
+      "pair": 3,
+      "action": "keep",
+      "idx": 2
+    }
+  ],
+  "447": [
+    {
+      "pair": 2,
+      "action": "keep",
+      "idx": 1
+    },
+    {
+      "pair": 3,
+      "action": "swap",
+      "pairs": [
+        0,
+        2
+      ]
+    }
+  ],
+  "454": [
+    {
+      "pair": 3,
+      "action": "swap",
+      "pairs": [
+        0,
+        2
+      ]
+    }
+  ],
+  "465": [
+    {
+      "pair": 1,
+      "action": "rewrite_practice",
+      "idx": 0,
+      "text": "今天有人把'毒舌'当直率、把'抄捷径'当聪明时，不跟着附和，必要时平静说一句"
+    },
+    {
+      "pair": 2,
+      "action": "swap",
+      "pairs": [
+        1,
+        2
+      ]
+    },
+    {
+      "pair": 3,
+      "action": "keep",
+      "idx": 2
+    }
+  ],
+  "483": [
+    {
+      "pair": 2,
+      "action": "keep",
+      "idx": 1
+    }
+  ],
+  "490": [
+    {
+      "pair": 1,
+      "action": "keep",
+      "idx": 0
+    },
+    {
+      "pair": 3,
+      "action": "keep",
+      "idx": 2
+    }
+  ],
+  "493": [
+    {
+      "pair": 2,
+      "action": "swap",
+      "pairs": [
+        1,
+        2
+      ]
+    },
+    {
+      "pair": 3,
+      "action": "keep",
+      "idx": 2
+    }
+  ],
+  "503": [
+    {
+      "pair": 2,
+      "action": "swap",
+      "pairs": [
+        1,
+        2
+      ]
+    },
+    {
+      "pair": 3,
+      "action": "keep",
+      "idx": 2
+    }
+  ]
+}

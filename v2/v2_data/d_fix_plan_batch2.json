@@ -1,0 +1,186 @@
+{
+  "76": [
+    {"pair": 2, "action": "keep", "idx": 1}
+  ],
+  "125": [
+    {"pair": 3, "action": "keep", "idx": 2}
+  ],
+  "143": [
+    {"pair": 3, "action": "rewrite_practice", "idx": 2, "text": "今天认真读一段内容，让“重视学习”名副其实"}
+  ],
+  "155": [
+    {"pair": 3, "action": "rewrite_practice", "idx": 2, "text": "今天把要请教的尝试和疑问先整理成两三点，再开口求教"}
+  ],
+  "172": [
+    {"pair": 1, "action": "rewrite_practice", "idx": 0, "text": "今天办一件实际事务时，核对做法是否对得上自己学过的道理，有出入就改一处"}
+  ],
+  "180": [
+    {"pair": 3, "action": "rewrite_practice", "idx": 2, "text": "今天挑一件能落实的小事，把它认真做完，再考虑下一件"}
+  ],
+  "184": [
+    {"pair": 1, "action": "keep", "idx": 0}
+  ],
+  "192": [
+    {"pair": 2, "action": "keep", "idx": 1}
+  ],
+  "203": [
+    {"pair": 1, "action": "swap", "pairs": [0, 1]},
+    {"pair": 2, "action": "keep", "idx": 1}
+  ],
+  "217": [
+    {"pair": 3, "action": "rewrite_practice", "idx": 2, "text": "今天把那个仍难领会的部分单独拎出来，再请教或再试一次，不因练过就跳过"}
+  ],
+  "223": [
+    {"pair": 1, "action": "keep", "idx": 0}
+  ],
+  "234": [
+    {"pair": 1, "action": "rewrite_practice", "idx": 0, "text": "今天在困难的事务上如实说明一项问题，不跟着把问题瞒过去"}
+  ],
+  "239": [
+    {"pair": 3, "action": "swap", "pairs": [0, 2]}
+  ],
+  "241": [
+    {"pair": 3, "action": "rewrite_practice", "idx": 2, "text": "今天在正式场合放慢脚步，不因赶时间挡别人的路"}
+  ],
+  "249": [
+    {"pair": 1, "action": "rewrite_practice", "idx": 0, "text": "今天东西打翻或损坏时，先问一句有没有伤到人，再管物件"},
+    {"pair": 2, "action": "swap", "pairs": [1, 2]},
+    {"pair": 3, "action": "keep", "idx": 2}
+  ],
+  "266": [
+    {"pair": 3, "action": "rewrite_practice", "idx": 2, "text": "今天把一件本可处理的小事做掉，再继续想"}
+  ],
+  "267": [
+    {"pair": 1, "action": "swap", "pairs": [0, 1]},
+    {"pair": 2, "action": "swap", "pairs": [1, 2]},
+    {"pair": 3, "action": "keep", "idx": 2}
+  ],
+  "280": [
+    {"pair": 2, "action": "rewrite_practice", "idx": 1, "text": "今天被问起志向或打算时，先把自己真实想做的方向说出来，不因怕说得不够好而含糊"}
+  ],
+  "288": [
+    {"pair": 3, "action": "rewrite_practice", "idx": 2, "text": "今天介绍那个设想时，把实现它的困难一并说清，不把话说过满"}
+  ],
+  "290": [
+    {"pair": 2, "action": "keep", "idx": 1}
+  ],
+  "294": [
+    {"pair": 3, "action": "keep", "idx": 2}
+  ],
+  "303": [
+    {"pair": 2, "action": "swap", "pairs": [1, 2]},
+    {"pair": 3, "action": "keep", "idx": 2}
+  ],
+  "312": [
+    {"pair": 2, "action": "swap", "pairs": [1, 2]},
+    {"pair": 3, "action": "rewrite_practice", "idx": 2, "text": "今天承诺前先确认自己能否执行，把条件说清"}
+  ],
+  "321": [
+    {"pair": 2, "action": "keep", "idx": 1}
+  ],
+  "328": [
+    {"pair": 2, "action": "rewrite_practice", "idx": 1, "text": "今天把受托的那件小事办妥一个部分，或向对方说明进度"}
+  ],
+  "330": [
+    {"pair": 1, "action": "rewrite_practice", "idx": 0, "text": "今天留意同伴身上进取或守原则的具体表现，记下一处"}
+  ],
+  "336": [
+    {"pair": 3, "action": "swap", "pairs": [0, 2]}
+  ],
+  "338": [
+    {"pair": 3, "action": "swap", "pairs": [1, 2]}
+  ],
+  "341": [
+    {"pair": 2, "action": "swap", "pairs": [1, 2]},
+    {"pair": 3, "action": "keep", "idx": 2}
+  ],
+  "351": [
+    {"pair": 2, "action": "rewrite_practice", "idx": 1, "text": "今天核对那位同伴的管理准备，缺什么先补什么，不急着直接上阵"}
+  ],
+  "360": [
+    {"pair": 2, "action": "keep", "idx": 1}
+  ],
+  "366": [
+    {"pair": 2, "action": "swap", "pairs": [0, 1]},
+    {"pair": 3, "action": "rewrite_practice", "idx": 2, "text": "今天把责任边界向越权者或相关人说明白"}
+  ],
+  "371": [
+    {"pair": 1, "action": "swap", "pairs": [0, 1]},
+    {"pair": 2, "action": "swap", "pairs": [0, 1]},
+    {"pair": 3, "action": "rewrite_practice", "idx": 2, "text": "今天把担心不被了解的精力，分一些给一项欠缺的本领练习"}
+  ],
+  "378": [
+    {"pair": 3, "action": "swap", "pairs": [1, 3]},
+    {"pair": 4, "action": "swap", "pairs": [2, 3]}
+  ],
+  "383": [
+    {"pair": 2, "action": "rewrite_practice", "idx": 1, "text": "今天布置一项安排时，向对方补一句理由，不只要求服从"}
+  ],
+  "390": [
+    {"pair": 3, "action": "rewrite_practice", "idx": 2, "text": "今天把自己分内的一项责任认真办妥"}
+  ],
+  "392": [
+    {"pair": 3, "action": "rewrite_practice", "idx": 2, "text": "今天向一位坚持到底、一位选择暂退的人，各问一句实际承担过什么"}
+  ],
+  "396": [
+    {"pair": 2, "action": "swap", "pairs": [1, 2]},
+    {"pair": 3, "action": "keep", "idx": 2}
+  ],
+  "400": [
+    {"pair": 2, "action": "swap", "pairs": [1, 2]},
+    {"pair": 3, "action": "keep", "idx": 2}
+  ],
+  "420": [
+    {"pair": 3, "action": "rewrite_practice", "idx": 2, "text": "今天主动向一个人表达一句关心，不因环境冷漠而收着"}
+  ],
+  "422": [
+    {"pair": 3, "action": "rewrite_practice", "idx": 2, "text": "今天面对那句要求兑现的话，先核对当时约定的条件是否还成立，不机械照办"}
+  ],
+  "427": [
+    {"pair": 1, "action": "rewrite_practice", "idx": 0, "text": "今天陪同视障者走路时，先问清他习惯怎样的提示，再照做"},
+    {"pair": 2, "action": "keep", "idx": 1}
+  ],
+  "432": [
+    {"pair": 2, "action": "rewrite_practice", "idx": 1, "text": "今天在一件不花钱的小事上待一会儿，看自己还能不能被它打动"},
+    {"pair": 3, "action": "keep", "idx": 2}
+  ],
+  "440": [
+    {"pair": 3, "action": "rewrite_practice", "idx": 2, "text": "今天挑“好好说话”或“懂规矩”中的一样，在生活中教孩子一个具体做法，并示范给他看"}
+  ],
+  "443": [
+    {"pair": 3, "action": "keep", "idx": 2}
+  ],
+  "446": [
+    {"pair": 3, "action": "keep", "idx": 2}
+  ],
+  "450": [
+    {"pair": 3, "action": "rewrite_practice", "idx": 2, "text": "今天把触动你的那句诗抄下来，写一句自己的理解"}
+  ],
+  "451": [
+    {"pair": 2, "action": "rewrite_practice", "idx": 1, "text": "今天家人说起家常时，认真接住一句，顺着他的话多问一句"}
+  ],
+  "462": [
+    {"pair": 2, "action": "swap", "pairs": [1, 2]},
+    {"pair": 3, "action": "keep", "idx": 2}
+  ],
+  "477": [
+    {"pair": 3, "action": "keep", "idx": 2}
+  ],
+  "482": [
+    {"pair": 2, "action": "keep", "idx": 1},
+    {"pair": 3, "action": "rewrite_practice", "idx": 2, "text": "今天有人约谈正事时，不拿“忙着玩手艺”当借口推掉，先应下来赴约"}
+  ],
+  "491": [
+    {"pair": 1, "action": "keep", "idx": 0},
+    {"pair": 3, "action": "rewrite_practice", "idx": 2, "text": "今天不等“闲下来”，现在就为充电安排一小段时间（通勤、午休或睡前都行）"}
+  ],
+  "498": [
+    {"pair": 2, "action": "keep", "idx": 1}
+  ],
+  "501": [
+    {"pair": 3, "action": "rewrite_practice", "idx": 2, "text": "今天核对那个因夸赞接下的项目自己能否完成，不能就及早向对方说明"}
+  ],
+  "505": [
+    {"pair": 7, "action": "rewrite_practice", "idx": 6, "text": "今天对新人或小事，也拿出对待上级的那份认真"}
+  ]
+}

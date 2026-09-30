@@ -1,0 +1,181 @@
+{
+  "58": [
+    {"pair": 3, "action": "rewrite_practice", "idx": 2, "text": "今天依礼向该打招呼的人照常致意，不因怕被误解为讨好而刻意避开"}
+  ],
+  "97": [
+    {"pair": 3, "action": "rewrite_practice", "idx": 2, "text": "今天与人交谈时，发现自己又想用话术压人，就停一下，只讲事实、不噎人"}
+  ],
+  "137": [
+    {"pair": 2, "action": "swap", "pairs": [1, 2]},
+    {"pair": 3, "action": "keep", "idx": 2}
+  ],
+  "170": [
+    {"pair": 2, "action": "swap", "pairs": [1, 2]}
+  ],
+  "179": [
+    {"pair": 2, "action": "swap", "pairs": [0, 2]},
+    {"pair": 3, "action": "swap", "pairs": [1, 2]}
+  ],
+  "188": [
+    {"pair": 2, "action": "keep", "idx": 1}
+  ],
+  "201": [
+    {"pair": 3, "action": "swap", "pairs": [0, 2]}
+  ],
+  "211": [
+    {"pair": 3, "action": "rewrite_practice", "idx": 2, "text": "今天把那条批评与外部阻力分开，各写一句，再决定如何回应"}
+  ],
+  "214": [
+    {"pair": 3, "action": "rewrite_practice", "idx": 2, "text": "今天先问清对方卡在哪一点，再决定怎么答"}
+  ],
+  "220": [
+    {"pair": 2, "action": "rewrite_practice", "idx": 1, "text": "今天与条件有限的同伴相处时，照常保持尊重与礼貌，不因环境简陋而敷衍"}
+  ],
+  "227": [
+    {"pair": 3, "action": "swap", "pairs": [1, 2]}
+  ],
+  "237": [
+    {"pair": 1, "action": "swap", "pairs": [0, 1]},
+    {"pair": 2, "action": "keep", "idx": 1}
+  ],
+  "245": [
+    {"pair": 2, "action": "keep", "idx": 1}
+  ],
+  "256": [
+    {"pair": 2, "action": "keep", "idx": 1}
+  ],
+  "259": [
+    {"pair": 1, "action": "swap", "pairs": [0, 1]},
+    {"pair": 2, "action": "swap", "pairs": [1, 2]},
+    {"pair": 3, "action": "keep", "idx": 2}
+  ],
+  "271": [
+    {"pair": 3, "action": "rewrite_practice", "idx": 2, "text": "今天核对该业务的一项收费或做法，确认是否在给弱势客户增加负担，想清有无可调整的办法"}
+  ],
+  "273": [
+    {"pair": 2, "action": "swap", "pairs": [0, 2]},
+    {"pair": 3, "action": "swap", "pairs": [1, 2]}
+  ],
+  "283": [
+    {"pair": 2, "action": "swap", "pairs": [1, 2]},
+    {"pair": 3, "action": "keep", "idx": 2}
+  ],
+  "292": [
+    {"pair": 3, "action": "swap", "pairs": [1, 2]}
+  ],
+  "299": [
+    {"pair": 2, "action": "swap", "pairs": [1, 2]},
+    {"pair": 3, "action": "keep", "idx": 2}
+  ],
+  "310": [
+    {"pair": 1, "action": "keep", "idx": 0},
+    {"pair": 3, "action": "keep", "idx": 2}
+  ],
+  "318": [
+    {"pair": 2, "action": "rewrite_practice", "idx": 1, "text": "今天先顾好孩子的吃饭休息，再谈学习计划"}
+  ],
+  "324": [
+    {"pair": 1, "action": "swap", "pairs": [0, 1]},
+    {"pair": 2, "action": "keep", "idx": 0}
+  ],
+  "334": [
+    {"pair": 1, "action": "keep", "idx": 0},
+    {"pair": 2, "action": "rewrite_practice", "idx": 1, "text": "今天核对自己被要求承担的任务是否超出合理范围，必要时向负责人说明"},
+    {"pair": 3, "action": "rewrite_practice", "idx": 2, "text": "今天分派任务时，按能力核对安排，不被对某人的好感带偏"}
+  ],
+  "346": [
+    {"pair": 1, "action": "keep", "idx": 0}
+  ],
+  "350": [
+    {"pair": 1, "action": "swap", "pairs": [0, 2]},
+    {"pair": 3, "action": "keep", "idx": 0}
+  ],
+  "364": [
+    {"pair": 1, "action": "keep", "idx": 0},
+    {"pair": 2, "action": "rewrite_practice", "idx": 1, "text": "今天对照证书对应的实际能力，找出一个具体欠缺，补一个环节"},
+    {"pair": 3, "action": "rewrite_practice", "idx": 2, "text": "今天与人分享学习进度前，先用一句话自测是否真懂，再说出已经实践的部分"}
+  ],
+  "373": [
+    {"pair": 2, "action": "swap", "pairs": [1, 2]},
+    {"pair": 3, "action": "keep", "idx": 2}
+  ],
+  "376": [
+    {"pair": 2, "action": "swap", "pairs": [0, 1]},
+    {"pair": 3, "action": "swap", "pairs": [0, 2]}
+  ],
+  "382": [
+    {"pair": 2, "action": "swap", "pairs": [0, 1]}
+  ],
+  "386": [
+    {"pair": 2, "action": "keep", "idx": 1}
+  ],
+  "391": [
+    {"pair": 1, "action": "keep", "idx": 0}
+  ],
+  "395": [
+    {"pair": 2, "action": "swap", "pairs": [1, 2]},
+    {"pair": 3, "action": "keep", "idx": 2}
+  ],
+  "399": [
+    {"pair": 3, "action": "keep", "idx": 2}
+  ],
+  "407": [
+    {"pair": 3, "action": "swap", "pairs": [0, 2]}
+  ],
+  "419": [
+    {"pair": 2, "action": "swap", "pairs": [1, 2]},
+    {"pair": 3, "action": "swap", "pairs": [0, 2]}
+  ],
+  "426": [
+    {"pair": 2, "action": "rewrite_practice", "idx": 1, "text": "今天把讨论的核心意思总结成一句，先说结论"}
+  ],
+  "428": [
+    {"pair": 3, "action": "swap", "pairs": [1, 2]}
+  ],
+  "431": [
+    {"pair": 2, "action": "keep", "idx": 1}
+  ],
+  "434": [
+    {"pair": 3, "action": "keep", "idx": 2}
+  ],
+  "439": [
+    {"pair": 3, "action": "keep", "idx": 2}
+  ],
+  "441": [
+    {"pair": 2, "action": "keep", "idx": 1},
+    {"pair": 3, "action": "keep", "idx": 2}
+  ],
+  "448": [
+    {"pair": 1, "action": "swap", "pairs": [0, 2]},
+    {"pair": 3, "action": "keep", "idx": 2}
+  ],
+  "458": [
+    {"pair": 3, "action": "rewrite_practice", "idx": 2, "text": "今天对上级或重要的人，也讲一句真实的话，不只挑好听的"}
+  ],
+  "466": [
+    {"pair": 3, "action": "rewrite_practice", "idx": 2, "text": "今天被那位黏人的朋友缠住时，温和地说明一次自己的边界（时间或精力），不因怕伤感情而勉强硬撑"}
+  ],
+  "476": [
+    {"pair": 1, "action": "keep", "idx": 0}
+  ],
+  "480": [
+    {"pair": 2, "action": "keep", "idx": 1}
+  ],
+  "487": [
+    {"pair": 1, "action": "swap", "pairs": [0, 1]},
+    {"pair": 2, "action": "keep", "idx": 1}
+  ],
+  "492": [
+    {"pair": 1, "action": "rewrite_practice", "idx": 0, "text": "今天为自己留一小段安静时间，好好怀念或难过一场，不急着继续张罗别的事"},
+    {"pair": 2, "action": "keep", "idx": 1}
+  ],
+  "494": [
+    {"pair": 1, "action": "keep", "idx": 0}
+  ],
+  "499": [
+    {"pair": 2, "action": "swap", "pairs": [1, 2]}
+  ],
+  "504": [
+    {"pair": 3, "action": "keep", "idx": 2}
+  ]
+}
