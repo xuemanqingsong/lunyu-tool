@@ -185,7 +185,14 @@ function openDetail(item, idx) {
   $("chapterText").textContent = ch.text;
   $("chapterTranslation").textContent = ch.translation || "";
   $("chapterSource").textContent = "《论语 · " + ch.source + "》";
-  $("insightText").textContent = ch.insight || "";
+  // 深入讲解按空行分段渲染（旧数据无空行则整段显示，兼容）
+  const insightEl = $("insightText");
+  insightEl.innerHTML = "";
+  (ch.insight || "").split(/\n\s*\n/).forEach(para => {
+    const p = document.createElement("p");
+    p.textContent = para.trim();
+    if (p.textContent) insightEl.appendChild(p);
+  });
   renderPractices(ch, currentSceneIdx);
   currentChapter = ch;
   renderCheckin(ch.id);
@@ -195,6 +202,7 @@ function openDetail(item, idx) {
 }
 
 // 今日行动：列出该章全部行动，用户自选（默认选中与认领情境同下标的那条）
+// 认领的情境与其同下标的行动一一对应：该条行动加「推荐」标记并默认高亮，用户仍可换选
 function renderPractices(ch, sceneIdx) {
   const wrap = $("practiceList");
   wrap.innerHTML = "";
@@ -212,6 +220,14 @@ function renderPractices(ch, sceneIdx) {
       savePick(ch.id, sceneIdx, i);
       bumpStat("pick");
     };
+    // 与认领情境同下标的行动：标记为「推荐」
+    if (i === sceneIdx) {
+      div.classList.add("recommended");
+      const tag = document.createElement("span");
+      tag.className = "practice-tag";
+      tag.textContent = "对应你认领的情境";
+      div.appendChild(tag);
+    }
     // 默认选中：今天已选过则沿用，否则选中与认领情境同下标那条（若存在）
     const want = prev && prev.practiceIdx != null ? prev.practiceIdx : sceneIdx;
     if (i === want) div.classList.add("selected");
